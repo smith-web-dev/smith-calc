@@ -1,7 +1,5 @@
 <template lang="pug">
   v-container
-    p {{ calcInput }}
-    p {{ setCompFac }}
     v-btn(@click.native='doTheCalculation()') try it
     v-stepper(v-model='currentStep' vertical)
       //- Steps
@@ -17,27 +15,14 @@
 
         //- Shank OD
         v-stepper-content(step='2')
-          v-card.mb-5
-            v-card-title(primary-title style='display: block;')
-              .headline Determine the average OD of the fitting shank
-              div.grey--text.text--darken-1 Measure the shank's outside diameter in at least 3 places, always at the highest points of the serrations.
-            v-card-text
-              p avg: {{ shankOdAverage }}
-              v-container.pt-0
-                div(v-for='(f, i) in calcInput.shankMeas' :key='i')
-                  v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i].value' clearable)
-                    v-btn(flat icon color='error' slot="append-outer" v-show='f.btn' style='top: -10px;' @click.native='removeShankOdMeas(i)')
-                      v-icon remove
-                v-btn.info(@click.native='addShankOdMeas()' :disabled='calcInput.shankMeas.length < 6 ? false : true') ass
+          include ./CrimpSpec/_step2.pug
           v-btn(color='primary', @click='currentStep = 3')
             | Continue
           v-btn(flat='') Cancel
-        //-
-        //-
+
+        //- Hose Wall
         v-stepper-content(step='3')
-          v-card.mb-5(color='grey lighten-1', height='200px')
-            v-card-text
-              p Measure the hose wall thickness
+          include ./CrimpSpec/_step3.pug
           v-btn(color='primary', @click='currentStep = 4')
             | Continue
           v-btn(flat='') Cancel
@@ -64,7 +49,7 @@
   export default {
     data () {
       return {
-        currentStep: 2,
+        currentStep: 0,
         steps: {
           compFactor: {
             warn: false,
@@ -83,6 +68,11 @@
             box: null
           },
           shankMeas: [
+            { value: null },
+            { value: null },
+            { value: null }
+          ],
+          hoseWallMeas: [
             { value: null },
             { value: null },
             { value: null }
@@ -105,23 +95,31 @@
         var measArray = this.calcInput.shankMeas
         measArray.splice(index, 1)
         this.calcInput.shankMeas = measArray
+      },
+      addHoseWallMeas () {
+        var newMeas = { value: null, btn: true }
+        var measArray = this.calcInput.hoseWallMeas
+
+        measArray.push(newMeas)
+      },
+      removeHoseWallMeas (index) {
+        var measArray = this.calcInput.hoseWallMeas
+        measArray.splice(index, 1)
+        this.calcInput.hoseWallMeas = measArray
       }
     },
     computed: {
       setCompFac () {
         var theCompFac
         if (this.calcInput.comp.box === null && this.calcInput.comp.sel === null) {
-          console.log('nothing: ' + theCompFac)
         } else if (this.calcInput.comp.box !== null) {
           //
           this.calcInput.comp.sel = null
           theCompFac = (this.calcInput.comp.box / 100)
-          console.log('Entered comp factor of ' + theCompFac)
           //
         } else if (this.calcInput.comp.sel !== null) {
           //
           theCompFac = this.calcInput.comp.sel
-          console.log('Selected comp factor of ' + theCompFac)
           //
         }
         return theCompFac
@@ -156,19 +154,33 @@
         var theSum = theArray.reduce(function (a, b) {
           return b.value == null ? a : parseFloat(a) + parseFloat(b.value)
         }, 0)
-        console.log('sum of array: ' + theSum + ' divided by ' + theArray.length)
-        console.log('average: ' + (theSum / theArray.length))
 
         return (theSum / theArray.length)
       },
       shankMeasAddDisable () {
         var measArray = this.calcInput.shankMeas
         var arrLen = parseInt(measArray.length)
-        console.log(arrLen)
         if (arrLen < 7) {
           this.steps.shankMeas.disableAdd = true
         } else {
           this.steps.shankMeas.disableAdd = false
+        }
+      },
+      hoseWallAverage () {
+        var theArray = this.calcInput.hoseWallMeas
+        var theSum = theArray.reduce(function (a, b) {
+          return b.value == null ? a : parseFloat(a) + parseFloat(b.value)
+        }, 0)
+
+        return (theSum / theArray.length)
+      },
+      hoseWallAddDisable () {
+        var measArray = this.calcInput.hoseWallMeas
+        var arrLen = parseInt(measArray.length)
+        if (arrLen < 7) {
+          this.steps.hoseWallMeas.disableAdd = true
+        } else {
+          this.steps.hoseWallMeas.disableAdd = false
         }
       }
     }
