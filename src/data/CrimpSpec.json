@@ -20,5 +20,27 @@
       "value": 0.25,
       "warn": "No gum tube hose, no layflat hose, and no industrial steel braided hose"
     }
-  ]
+  ],
+  "defaultInputs": {
+    "comp": {
+      "sel": null,
+      "box": null
+    },
+    "shankMeas": [
+      { "value": null },
+      { "value": null },
+      { "value": null }
+    ],
+    "hoseWallMeas": [
+      { "value": null },
+      { "value": null },
+      { "value": null }
+    ],
+    "ferruleWallMeas": [
+      { "value": null },
+      { "value": null },
+      { "value": null }
+    ],
+    "result": null
+  }
 }

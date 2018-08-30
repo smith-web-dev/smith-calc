@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget android-versionCode="1" id="me.coryg.smithcalc" ios-CFBundleVersion="1" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>calc</name>
+    <name>SmithCalc</name>
     <description>Calculations web and mobile app for Smith Industrial Rubber and Plastics</description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="cory.gantenbein@pm.me" href="http://coryg.me">
+        Cory G
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />

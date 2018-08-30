@@ -1,51 +1,44 @@
 <template lang="pug">
-  v-container
-    v-btn(@click.native='doTheCalculation()') try it
-    v-stepper(v-model='currentStep' vertical)
+  v-container.pa-0(fluid)
+    //- p {{ calcInput }}
+    v-stepper.transparent.elevation-0(v-model='currentStep')
       //- Steps
       include ./CrimpSpec/_step0.pug
 
       v-stepper-items
         //- Compression factor
-        v-stepper-content(step='1')
+        v-stepper-content.px-1.pt-1(step='1')
           include ./CrimpSpec/_step1.pug
-          v-btn(color='primary', @click='currentStep = 2')
-            | Continue
-          v-btn(flat='') Cancel
 
         //- Shank OD
-        v-stepper-content(step='2')
+        v-stepper-content.px-1.pt-1(step='2')
           include ./CrimpSpec/_step2.pug
-          v-btn(color='primary', @click='currentStep = 3')
-            | Continue
-          v-btn(flat='') Cancel
 
         //- Hose Wall
-        v-stepper-content(step='3')
+        v-stepper-content.px-1.pt-1(step='3')
           include ./CrimpSpec/_step3.pug
-          v-btn(color='primary', @click='currentStep = 4')
-            | Continue
-          v-btn(flat='') Cancel
-        v-stepper-content(step='4')
-          v-card.mb-5(color='grey lighten-1', height='200px')
-            v-card-text
-              p Measure the sleeve or ferrule wall
-          v-btn(color='primary', @click='currentStep = 5')
-            | Continue
-          v-btn(flat='') Cancel
-        //-
-        //-
-        v-stepper-content(step='5')
-          v-card.mb-5(color='grey lighten-1', height='200px')
-            v-card-text
-              p Results
-          v-btn(color='primary', @click='currentStep = 1')
-            | Continue
-          v-btn(flat='') Cancel
+
+        //- Ferrule Wall
+        v-stepper-content.px-1.pt-1(step='4')
+          include ./CrimpSpec/_step4.pug
+
+        //- Result
+        v-stepper-content.px-1.pt-1(step='5')
+          include ./CrimpSpec/_step5.pug
+          //- v-card.mb-5(color='grey lighten-1', height='200px')
+          //-   v-card-text
+          //-     p result: {{ calcInput.result }}
+          //-     p(v-html='decToFrac')
+          //- v-layout(row justify-center)
+          //-   v-flex(xs12 sm10 md8)
+          //-     v-btn(block color='accent', @click='resetAll()')
+          //-       | Start Over
 </template>
 
 <script>
   import CrimpSpecData from '@/data/CrimpSpec.json'
+  import * as math from 'mathjs'
+
   export default {
     data () {
       return {
@@ -76,36 +69,68 @@
             { value: null },
             { value: null },
             { value: null }
-          ]
+          ],
+          ferruleWallMeas: [
+            { value: null },
+            { value: null },
+            { value: null }
+          ],
+          result: null,
+          resultMetric: null
         }
       }
     },
     methods: {
+      doCopy (theText) {
+        this.$copyText(theText).then(function (e) {
+          alert('Copied ' + theText)
+          console.log(e)
+        }, function (e) {
+          alert('Can not copy')
+          console.log(e)
+        })
+      },
+      resetAll () {
+        this.currentStep = 1
+        this.calcInput = CrimpSpecData.defaultInputs
+      },
       doTheCalculation () {
-        console.log(this.setCompFac)
-        // this.shankOdAverage + (avgHoseWall * 2) + (1 - this.setCompFac) + (avgFerruleWall * 2)
-      },
-      addShankOdMeas () {
-        var newMeas = { value: null, btn: true }
-        var measArray = this.calcInput.shankMeas
+        this.currentStep = 5
 
+        var a = this.shankOdAverage
+        var b = ((this.hoseWallAverage * 2) * (1 - this.setCompFac))
+        var c = (this.ferruleWallAverage * 2)
+
+        var result = (a + b + c)
+
+        this.calcInput.result = (result).toFixed(3)
+        this.calcInput.resultMetric = ((result) * 25.4).toFixed(3)
+
+        // ((calcInput.result) * 25.4).toFixed(3)
+        // (calcInput.result).toFixed(3)
+      },
+      addMeasurement (arr) {
+        var newMeas = { value: null, btn: true }
+        var measArray = arr
         measArray.push(newMeas)
       },
-      removeShankOdMeas (index) {
-        var measArray = this.calcInput.shankMeas
+      removeMeas (arr, index) {
+        var measArray = arr
         measArray.splice(index, 1)
-        this.calcInput.shankMeas = measArray
+        arr = measArray
       },
-      addHoseWallMeas () {
-        var newMeas = { value: null, btn: true }
-        var measArray = this.calcInput.hoseWallMeas
-
-        measArray.push(newMeas)
-      },
-      removeHoseWallMeas (index) {
-        var measArray = this.calcInput.hoseWallMeas
-        measArray.splice(index, 1)
-        this.calcInput.hoseWallMeas = measArray
+      moveStep (direction) {
+        // direction = 'f' => forward
+        // direction = 'b' => back
+        var thisStep = parseInt(this.currentStep)
+        var moveToStep
+        if (direction === 'f') {
+          moveToStep = thisStep + 1
+          this.currentStep = moveToStep
+        } else if (direction === 'b') {
+          moveToStep = thisStep - 1
+          this.currentStep = moveToStep
+        }
       }
     },
     computed: {
@@ -182,6 +207,37 @@
         } else {
           this.steps.hoseWallMeas.disableAdd = false
         }
+      },
+      ferruleWallAverage () {
+        var theArray = this.calcInput.ferruleWallMeas
+        var theSum = theArray.reduce(function (a, b) {
+          return b.value == null ? a : parseFloat(a) + parseFloat(b.value)
+        }, 0)
+
+        return (theSum / theArray.length)
+      },
+      ferruleWallAddDisable () {
+        var measArray = this.calcInput.ferruleWallMeas
+        var arrLen = parseInt(measArray.length)
+        if (arrLen < 7) {
+          this.steps.ferruleWallMeas.disableAdd = true
+        } else {
+          this.steps.ferruleWallMeas.disableAdd = false
+        }
+      },
+      decToFrac () {
+        var nume
+        var whole
+        var td = 64
+        if (this.calcInput.result !== null) {
+          var num = this.calcInput.result
+          whole = Math.floor(this.calcInput.result)
+          var dec = (num - whole)
+          var frac = math.fraction(dec)
+          nume = Math.round(((td * frac.n) / frac.d))
+        }
+        // <sup>1</sup>&frasl;<sub>10</sub>
+        return (whole + ' <sup>' + nume + '</sup>&frasl;<sub>' + td + '</sub>')
       }
     }
   }
@@ -194,7 +250,7 @@
   }
 
   .sirp-divider {
-    width: 80%;
+    width: 95%;
     text-align: center;
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
     line-height: 0px;

@@ -1,0 +1,23 @@
+//- v-card.mb-5
+v-card-title.pb-0(primary-title style='display: block;')
+  .headline Determine the average wall thickness of the sleeve or ferrule
+  div.grey--text.text--darken-1 Measure the wall of the sleeve or ferrule in at least 3 places
+v-card-text
+  v-container.pa-0(fluid)
+    div(v-for='(f, i) in calcInput.ferruleWallMeas' :key='i')
+      v-text-field(type='number' label='' box v-model='calcInput.ferruleWallMeas[i].value' clearable :label='`Ferrule wall thickness #` + (i + 1)')
+        v-btn(flat icon color='error' slot='append-outer' v-show='f.btn' style='top: -10px;' @click.native='removeMeas(calcInput.ferruleWallMeas, i)')
+          v-icon delete
+    v-layout(row justify-center)
+      v-flex(xs12 sm10 md8)
+        v-btn(block color='accent' @click.native='addMeasurement(calcInput.ferruleWallMeas)' :disabled='calcInput.ferruleWallMeas.length < 6 ? false : true') Add A Measurement
+//- Navigation buttons
+v-layout(row justify-center)
+  v-flex(flex xs4 sm5 md6)
+    v-btn(@click='currentStep = 3')
+      v-icon(left) navigate_before
+      | Back
+  v-flex.text-xs-right(flex xs4 sm5 md6)
+    v-btn.primary(@click='doTheCalculation()' :disabled='hoseWallAverage == 0 ? true : false')
+      | Next
+      v-icon(right) navigate_next

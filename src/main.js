@@ -10,6 +10,8 @@ import VueHead from 'vue-head'
 import App from './App'
 import router from './router'
 
+import VueClipboard from 'vue-clipboard2'
+
 let theme = {
   primary: colors.indigo.base,
   secondary: colors.indigo.darken4,
@@ -20,10 +22,13 @@ let theme = {
   success: colors.green.base
 }
 
-Vue.use(Vuetify, { theme: theme })
 Vue.config.productionTip = false
+VueClipboard.config.autoSetContainer = true // add this line
+
+Vue.use(Vuetify, { theme: theme })
 Vue.use(VueCordova)
 Vue.use(VueHead)
+Vue.use(VueClipboard)
 
 // add cordova.js only if serving the app through file://
 if (window.location.protocol === 'file:' || window.location.port === '3000') {

@@ -1,13 +1,23 @@
-v-card.mb-5
-  v-card-title(primary-title style='display: block;')
-    .headline Determine the average OD of the fitting shank
-    div.grey--text.text--darken-1 Measure the shank's outside diameter in at least 3 places, always at the highest points of the serrations.
-  v-card-text
-    v-container.pt-0
-      div(v-for='(f, i) in calcInput.shankMeas' :key='i')
-        v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i].value' clearable :label='`Measurement ` + (i + 1)')
-          v-btn(flat icon color='error' slot="append-outer" v-show='f.btn' style='top: -10px;' @click.native='removeShankOdMeas(i)')
-            v-icon delete
-      v-layout(row)
-        v-spacer
-        v-btn(color='accent' @click.native='addShankOdMeas()' :disabled='calcInput.shankMeas.length < 6 ? false : true') Add A Measurement
+//- v-card.mb-5
+v-card-title.pb-0(primary-title style='display: block;')
+  .headline Determine the average OD of the fitting shank
+  div.grey--text.text--darken-1 Measure the shank's outside diameter in at least 3 places, always at the highest points of the serrations.
+v-card-text
+  v-container.pa-0(fluid)
+    div(v-for='(f, i) in calcInput.shankMeas' :key='i')
+      v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i].value' clearable :label='`Shank OD #` + (i + 1)')
+        v-btn(flat icon color='error' slot='append-outer' v-show='f.btn' style='top: -10px;' @click.native='removeMeas(calcInput.shankMeas, i)')
+          v-icon delete
+    v-layout(row justify-center)
+      v-flex(xs12 sm10 md8)
+        v-btn(block color='accent' @click.native='addMeasurement(calcInput.shankMeas)' :disabled='calcInput.shankMeas.length < 6 ? false : true') Add A Measurement
+//- Navigation buttons
+v-layout(row justify-center)
+  v-flex(flex xs4 sm5 md6)
+    v-btn(@click='currentStep = 1')
+      v-icon(left) navigate_before
+      | Back
+  v-flex.text-xs-right(flex xs4 sm5 md6)
+    v-btn.primary(@click='moveStep(`f`)' :disabled='shankOdAverage == 0 ? true : false')
+      | Next
+      v-icon(right) navigate_next
