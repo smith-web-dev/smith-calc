@@ -1,0 +1,14 @@
+v-card.mb-5
+  v-card-text
+    p.heading Determine the compression factor
+    v-alert.mb-3.sirp-alert-text(:value="showCompFacWarn" :type="compFacWarnType")
+      strong
+        | {{ compFacWarnType === 'warning' ? 'WARNING!' : 'DANGER!' }}
+        em  {{ setWarning }}
+    v-select(box :items="calcData.hoseTypes" label='Select a type of hose' v-model='calcInput.comp.sel' @change='calcInput.comp.box = null' clearable)
+    v-layout(row)
+      v-spacer
+      p.sirp-divider
+        span or
+      v-spacer
+    v-text-field(type='number' hint='Enter as a full percentage, not a decimal' label='Enter a custom compression factor' box v-model='calcInput.comp.box' clearable suffix='%')

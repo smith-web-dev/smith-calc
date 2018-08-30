@@ -1,0 +1,24 @@
+{
+  "hoseTypes": [
+    {
+      "text": "Layflat (10%)",
+      "value": 0.10,
+      "warn": "Only use with layflat hose"
+    },
+    {
+      "text": "Gum Tube (15%)",
+      "value": 0.15,
+      "warn": "Only use for hose with a gum rubber tube"
+    },
+    {
+      "text": "Industrial Steel Braid Hose (10%)",
+      "value": 0.18,
+      "warn": "Only use with hose that has a steel braid (not a steel helix)"
+    },
+    {
+      "text": "Industrial Hose (25%)",
+      "value": 0.25,
+      "warn": "No gum tube hose, no layflat hose, and no industrial steel braided hose"
+    }
+  ]
+}
