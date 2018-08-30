@@ -1,0 +1,15 @@
+v-stepper-header
+  v-stepper-step(editable :complete='currentStep > 1', step='1')
+  //- Determine the compression factor
+  v-divider
+  v-stepper-step(editable :complete='currentStep > 2', step='2')
+  //- Determine the average OD of the fitting shank
+  v-divider
+  v-stepper-step(editable :complete='currentStep > 3', step='3')
+  //- Measure the hose wall thickness
+  v-divider
+  v-stepper-step(editable :complete='currentStep > 4', step='4')
+  //- Measure the sleeve or ferrule wall
+  v-divider
+  v-stepper-step(editable step='5')
+  //- Results

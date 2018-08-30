@@ -6,6 +6,7 @@ import 'vuetify/dist/vuetify.css'
 import colors from 'vuetify/es5/util/colors'
 import VueCordova from 'vue-cordova'
 import VueHead from 'vue-head'
+import VueLodash from 'vue-lodash'
 
 import App from './App'
 import router from './router'
@@ -24,6 +25,7 @@ Vue.use(Vuetify, { theme: theme })
 Vue.config.productionTip = false
 Vue.use(VueCordova)
 Vue.use(VueHead)
+Vue.use(VueLodash)
 
 // add cordova.js only if serving the app through file://
 if (window.location.protocol === 'file:' || window.location.port === '3000') {
