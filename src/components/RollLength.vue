@@ -1,5 +1,6 @@
 <template lang="pug">
-  div {{ msg }}
+  div
+    p {{ msg }}
 </template>
 
 <script>

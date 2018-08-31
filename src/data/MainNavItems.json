@@ -1,0 +1,50 @@
+[
+  {
+    "icon": {
+      "type": "mdi",
+      "name": "straighten"
+    },
+    "text": "Roll Length",
+    "path": "/roll-length"
+  },
+  {
+    "icon": {
+      "type": "sirp",
+      "name": "belt-length"
+    },
+    "text": "Conveyor Length",
+    "path": "/cb-length"
+  },
+  {
+    "icon": {
+      "type": "mdi",
+      "name": "border_all"
+    },
+    "text": "Square Footage",
+    "path": "/sqft"
+  },
+  {
+    "icon": {
+      "type": "sirp",
+      "name": "belt-weight"
+    },
+    "text": "Conveyor Belt Weight",
+    "path": "/cb-weight"
+  },
+  {
+    "icon": {
+      "type": "sirp",
+      "name": "snow"
+    },
+    "text": "Snowplow Blade Weight",
+    "path": "/snowplow-weight"
+  },
+  {
+    "icon": {
+      "type": "sirp",
+      "name": "crimp"
+    },
+    "text": "Crimp",
+    "path": "/crimp"
+  }
+]

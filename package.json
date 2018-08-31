@@ -16,7 +16,8 @@
     "browser": "npm run build && cordova run browser",
     "ios": "npm run build && cordova run ios",
     "android": "npm run build && cordova run android --device",
-    "android-vm": "npm run build && cordova run android"
+    "android-vm": "npm run build && cordova run android",
+    "svg": "vsvg -s ./svg -t ./src/assets/sirp-icon"
   },
   "dependencies": {
     "@sinonjs/formatio": "^2.0.0",
@@ -39,6 +40,7 @@
     "vue-head": "^2.0.12",
     "vue-lodash": "^2.0.0",
     "vue-router": "^3.0.1",
+    "vue-svgicon": "^3.1.0",
     "vuetify": "^1.0.18",
     "web": "0.0.2"
   },

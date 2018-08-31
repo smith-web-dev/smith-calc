@@ -8,18 +8,62 @@
 
 <script>
   import Vue from 'vue'
+  import navItems from './data/MainNavItems.json'
   export default {
     data () {
       return {
         drawer: false,
-        navItems: [
-          { icon: 'star', text: 'Roll Length', path: '/roll-length' },
-          { icon: 'star', text: 'Conveyor Length', path: '/cb-length' },
-          { icon: 'star', text: 'Square Footage', path: '/sqft' },
-          { icon: 'star', text: 'Conveyor Belt Weight', path: '/cb-weight' },
-          { icon: 'star', text: 'Snowplow Blade Weight', path: '/snowplow-weight' },
-          { icon: 'star', text: 'Crimp', path: '/crimp' }
-        ],
+        // navItems: [
+        //   {
+        //     icon: {
+        //       type: 'mdi',
+        //       name: 'star'
+        //     },
+        //     text: 'Roll Length',
+        //     path: '/roll-length'
+        //   },
+        //   {
+        //     icon: {
+        //       type: 'mdi',
+        //       name: 'star'
+        //     },
+        //     text: 'Conveyor Length',
+        //     path: '/cb-length'
+        //   },
+        //   {
+        //     icon: {
+        //       type: 'mdi',
+        //       name: 'star'
+        //     },
+        //     text: 'Square Footage',
+        //     path: '/sqft'
+        //   },
+        //   {
+        //     icon: {
+        //       type: 'mdi',
+        //       name: 'star'
+        //     },
+        //     text: 'Conveyor Belt Weight',
+        //     path: '/cb-weight'
+        //   },
+        //   {
+        //     icon: {
+        //       type: 'mdi',
+        //       name: 'star'
+        //     },
+        //     text: 'Snowplow Blade Weight',
+        //     path: '/snowplow-weight'
+        //   },
+        //   {
+        //     icon: {
+        //       type: 'sirp',
+        //       name: 'crimp'
+        //     },
+        //     text: 'Crimp',
+        //     path: '/crimp'
+        //   }
+        // ],
+        navItems: navItems,
         cordova: Vue.cordova,
         title: 'SmithCalc'
       }

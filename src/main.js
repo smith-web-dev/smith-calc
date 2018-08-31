@@ -6,6 +6,9 @@ import 'vuetify/dist/vuetify.css'
 import colors from 'vuetify/es5/util/colors'
 import VueCordova from 'vue-cordova'
 import VueHead from 'vue-head'
+import SvgIcon from 'vue-svgicon'
+import './assets/sirp-icon'
+import './assets/styles/sirp-icons.css'
 
 import App from './App'
 import router from './router'
@@ -29,6 +32,10 @@ Vue.use(Vuetify, { theme: theme })
 Vue.use(VueCordova)
 Vue.use(VueHead)
 Vue.use(VueClipboard)
+Vue.use(SvgIcon, {
+  tagName: 'sirp-icon',
+  classPrefix: 'sirp-svg'
+})
 
 // add cordova.js only if serving the app through file://
 if (window.location.protocol === 'file:' || window.location.port === '3000') {
