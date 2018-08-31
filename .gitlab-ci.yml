@@ -7,11 +7,11 @@ build site:
   artifacts:
     expire_in: 1 week
     paths:
-      - dist
+      - www
 
 pages:
   script:
-  - mv dist public
+  - mv www public
   artifacts:
     paths:
     - public
