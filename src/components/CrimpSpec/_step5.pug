@@ -16,15 +16,16 @@ v-card-text
       //- Fractional Result
       v-list-tile
         v-list-tile-content
-          v-list-tile-title(v-html='decToFrac')
+          //- v-list-tile-title(v-html='decToFrac')
+          v-list-tile-title {{ calcInput.resultFrac }}
           v-list-tile-sub-title Fractional Inches
         v-list-tile-action
-          v-btn(icon ripple @click.native='doCopy(decToFrac)')
+          v-btn(icon ripple @click.native='doCopy(calcInput.resultFrac)')
             v-icon(color="grey lighten-1") file_copy
       //- Metric Result
       v-list-tile
         v-list-tile-content
-          v-list-tile-title {{ calcInput.resultMetric }}mm
+          v-list-tile-title {{ calcInput.resultMetric }}
           //- v-list-tile-title {{ dsplyRslt() }}mm
           v-list-tile-sub-title Metric
         v-list-tile-action

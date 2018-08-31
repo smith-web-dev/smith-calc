@@ -1,5 +1,6 @@
 <template lang="pug">
   v-container.pa-0(fluid)
+    include ./CrimpSpec/_snackbar.pug
     //- p {{ calcInput }}
     v-stepper.transparent.elevation-0(v-model='currentStep')
       //- Steps
@@ -39,10 +40,30 @@
   import CrimpSpecData from '@/data/CrimpSpec.json'
   import * as math from 'mathjs'
 
+  function makeFraction (input, td) {
+    var nume
+    var whole
+    // var td = 64
+
+    var num = input
+    whole = Math.floor(input)
+    var dec = (num - whole)
+    var frac = math.fraction(dec)
+    nume = Math.round(((td * frac.n) / frac.d))
+
+    // return (whole + '-' + nume + '⁄' + td)
+    return (whole + '-' + nume + '/' + td)
+  }
+
   export default {
     data () {
       return {
         currentStep: 0,
+        snackbar: {
+          display: false,
+          text: null,
+          timeout: 3000
+        },
         steps: {
           compFactor: {
             warn: false,
@@ -76,15 +97,19 @@
             { value: null }
           ],
           result: null,
-          resultMetric: null
+          resultMetric: null,
+          resultFrac: null
         }
       }
     },
     methods: {
       doCopy (theText) {
+        var compo = this
         this.$copyText(theText).then(function (e) {
-          alert('Copied ' + theText)
-          console.log(e)
+          // alert('Copied ' + theText)
+          // console.log(e)
+          compo.snackbar.text = 'Copied the value: ' + theText + ' to the clipboard'
+          compo.snackbar.display = true
         }, function (e) {
           alert('Can not copy')
           console.log(e)
@@ -103,8 +128,10 @@
 
         var result = (a + b + c)
 
-        this.calcInput.result = (result).toFixed(3)
-        this.calcInput.resultMetric = ((result) * 25.4).toFixed(3)
+        this.calcInput.result = ((result).toFixed(3) + '"')
+        // this.calcInput.resultFrac = (result).toFixed(3)
+        this.calcInput.resultFrac = (makeFraction(result, 64) + '"')
+        this.calcInput.resultMetric = (((result) * 25.4).toFixed(3) + 'mm')
 
         // ((calcInput.result) * 25.4).toFixed(3)
         // (calcInput.result).toFixed(3)
@@ -224,21 +251,33 @@
         } else {
           this.steps.ferruleWallMeas.disableAdd = false
         }
-      },
-      decToFrac () {
-        var nume
-        var whole
-        var td = 64
-        if (this.calcInput.result !== null) {
-          var num = this.calcInput.result
-          whole = Math.floor(this.calcInput.result)
-          var dec = (num - whole)
-          var frac = math.fraction(dec)
-          nume = Math.round(((td * frac.n) / frac.d))
-        }
-        // <sup>1</sup>&frasl;<sub>10</sub>
-        return (whole + ' <sup>' + nume + '</sup>&frasl;<sub>' + td + '</sub>')
       }
+      // decToFrac () {
+      //   var nume
+      //   var whole
+      //   var td = 64
+      //   if (this.calcInput.result !== null) {
+      //     var num = this.calcInput.result
+      //     whole = Math.floor(this.calcInput.result)
+      //     var dec = (num - whole)
+      //     var frac = math.fraction(dec)
+      //     nume = Math.round(((td * frac.n) / frac.d))
+      //   }
+      //   // <sup>1</sup>&frasl;<sub>10</sub>
+      //   return (whole + ' <sup>' + nume + '</sup>&frasl;<sub>' + td + '</sub>')
+      // },
+      // resultToInchDec () {
+      //   var displayThis
+      //   if (this.calcInput.result !== null) {
+      //     displayThis = result
+      //   }
+      // },
+      // resultToInchFrac () {
+      //   //
+      // },
+      // resultToMetric () {
+      //   //
+      // }
     }
   }
 </script>

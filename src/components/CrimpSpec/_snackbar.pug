@@ -1,0 +1,3 @@
+v-snackbar(v-model="snackbar.display" :timeout='snackbar.timeout' top)
+  | {{ snackbar.text }}
+  v-btn(color="pink" flat @click="snackbar.display = false") Close
