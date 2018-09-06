@@ -1,0 +1,13 @@
+v-dialog(v-model="saveShipmentNote.dialog" width="500")
+  v-card
+    v-card-title(class="subheading grey lighten-3")
+      | Shipment Note
+      span.font-weight-light.pl-1 (Optional)
+    v-card-text.pb-0
+      //- v-textarea(label="Tap here to add a note to this shipment" v-model='saveShipmentNote.text')
+      v-text-field(label="Tap here to add a note to this shipment" v-model='saveShipmentNote.text')
+      p {{ saveShipmentNote.text === null ? `0` : saveShipmentNote.text.length }}
+    v-divider
+    v-card-actions
+      v-spacer
+      v-btn(color="primary" flat @click="saveShipment()") {{ saveShipmentNote.text === null ? `Don't add a Note` : `Save` }}

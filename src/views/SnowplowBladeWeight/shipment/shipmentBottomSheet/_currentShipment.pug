@@ -1,0 +1,26 @@
+v-subheader.py-1(v-show='shipment.history.length > 0')
+  | Current Shipment
+  //- span.font-weight-light.ml-1 (Will be removed after 90 days)
+v-list(three-line subheader)
+  v-list-tile.accent.lighten-1(dark v-show='shipment.items.length < 1')
+    v-list-tile-content
+      v-list-tile-title No items yet
+      v-list-tile-sub-title Add items to a shipment to see them totaled here
+  //-
+  template(v-for='(l, i) in shipment.items')
+    v-list-tile(:key='i')
+      v-list-tile-content
+        v-list-tile-title {{ l.size }}
+        v-list-tile-sub-title.grey--text.text--darken-3 {{ l.quantity }} {{ l.quantity > 1 ? `pcs` : `pc` }}
+        v-list-tile-sub-title {{ l.weight }} pounds
+      v-list-tile-action
+        v-icon(color='error lighten-1' @click="deleteConfirmShow(l)") delete
+    v-divider
+  v-list-tile()
+    v-list-tile-content
+      v-list-tile-title.font-weight-medium Total Weight
+    v-list-tile-action {{ shipmentWeight }} pounds
+
+v-layout(row)
+  v-btn(:disabled='shipment.items.length > 0 ? false : true' color='error' @click.native='confirmClearShipment()') Clear shipment
+  v-spacer

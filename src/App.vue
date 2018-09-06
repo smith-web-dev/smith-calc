@@ -1,7 +1,7 @@
 <template lang="pug">
   v-app#inspire
-    include ./App/_01-navDrawer.pug
-    include ./App/_02-toolbar.pug
+    include ./views/Global/_navDrawer.pug
+    include ./views/Global/_toolbar.pug
     v-content
       //- span {{ $route['name'] }}
       router-view

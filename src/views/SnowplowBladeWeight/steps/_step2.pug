@@ -16,7 +16,7 @@ v-card-text
       v-spacer
 
     //- div(v-for='(f, i) in calcInput.shankMeas' :key='i')
-      v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i].value' clearable :label='`Shank OD #` + (i + 1)')
+      v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i]' clearable :label='`Shank OD #` + (i + 1)')
         v-btn(flat icon color='error' slot='append-outer' v-show='f.btn' style='top: -10px;' @click.native='removeMeas(calcInput.shankMeas, i)')
           v-icon delete
     //- v-layout(row justify-center)

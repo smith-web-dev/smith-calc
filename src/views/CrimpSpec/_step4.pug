@@ -5,8 +5,8 @@ v-card-title.pb-0(primary-title style='display: block;')
 v-card-text
   v-container.pa-0(fluid)
     div(v-for='(f, i) in calcInput.ferruleWallMeas' :key='i')
-      v-text-field(type='number' label='' box v-model='calcInput.ferruleWallMeas[i].value' clearable :label='`Ferrule wall thickness #` + (i + 1)')
-        v-btn(flat icon color='error' slot='append-outer' v-show='f.btn' style='top: -10px;' @click.native='removeMeas(calcInput.ferruleWallMeas, i)')
+      v-text-field(type='number' label='' box v-model='calcInput.ferruleWallMeas[i]' clearable :label='`Ferrule wall thickness #` + (i + 1)')
+        v-btn(flat icon color='error' slot='append-outer' v-show='(i + 1) > 3' style='top: -10px;' @click.native='removeMeas(calcInput.ferruleWallMeas, i)')
           v-icon delete
     v-layout(row justify-center)
       v-flex(xs12 sm10 md8)
@@ -18,6 +18,6 @@ v-layout(row justify-center)
       v-icon(left) navigate_before
       | Back
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn.primary(@click='doTheCalculation()' :disabled='hoseWallAverage == 0 ? true : false')
+    v-btn.primary(@click='doTheCalculation()' :disabled='$makeAverage(calcInput.hoseWallMeas) == 0 ? true : false')
       | Next
       v-icon(right) navigate_next

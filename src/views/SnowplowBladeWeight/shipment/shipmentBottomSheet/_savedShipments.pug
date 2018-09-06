@@ -1,0 +1,30 @@
+v-divider.mt-2(v-show='shipment.history.length > 0')
+v-subheader(v-show='shipment.history.length > 0')
+  | Saved Shipments
+  span.font-weight-light.ml-1 (Will be removed after 90 days)
+v-list(two-line)
+  v-list-group(v-for="(item, index) in orderBy(shipment.history, 'date', -1)" v-model="item.active" :key="index" no-action)
+    v-list-tile(slot="activator")
+      v-list-tile-content
+        //- v-list-tile-title {{ item.date | moment("dddd, MMMM Do YYYY, h:mm A") }}
+        v-list-tile-title {{ item.date | moment("calendar", null, { sameElse: 'dddd, MMMM Do YYYY, h:mm A' }) }}
+        v-list-tile-sub-title(v-show='item.note !== null')
+          v-icon.mr-2(small) note
+          | {{ item.note }}
+        v-list-tile-sub-title
+          v-icon.mr-2(small) format_list_bulleted
+          | {{ item.items.length }} {{ item.items.length | pluralize(`line`) }} with {{ parseInt(item.items.sum(`quantity`)) }} {{ parseInt(item.items.sum(`quantity`)) | pluralize(`blade`) }}
+
+    v-list-tile(v-for="(sub, ind) in item.items" :key="ind" @click="")
+      v-list-tile-content
+        v-list-tile-title {{ sub.size }}
+        v-list-tile-sub-title {{ sub.quantity }} {{ sub.quantity | pluralize(`pc`) }} weighing about {{ Math.round(sub.weight) }} {{ Math.round(sub.weight) | pluralize(`pound`) }}
+      v-list-tile-action
+        v-icon(@click='restoreShipmentLine(sub)') restore_page
+
+    v-list-tile
+      v-list-tile-content
+        v-list-tile-title(style='height: unset; line-height: unset;').text-xs-right
+          v-btn(color='accent' @click='restoreShipment(item.items)')
+            v-icon(left) restore
+            | Restore Shipment

@@ -1,31 +1,31 @@
 <template lang="pug">
   v-container.pa-0(fluid)
-    include ./CrimpSpec/_snackbar.pug
+    include ../views/Global/_snackbar.pug
     //- p {{ calcInput }}
     v-stepper.transparent.elevation-0(v-model='currentStep')
       //- Steps
-      include ./CrimpSpec/_step0.pug
+      include ../views/CrimpSpec/_step0.pug
 
       v-stepper-items
         //- Compression factor
         v-stepper-content.px-1.pt-1(step='1')
-          include ./CrimpSpec/_step1.pug
+          include ../views/CrimpSpec/_step1.pug
 
         //- Shank OD
         v-stepper-content.px-1.pt-1(step='2')
-          include ./CrimpSpec/_step2.pug
+          include ../views/CrimpSpec/_step2.pug
 
         //- Hose Wall
         v-stepper-content.px-1.pt-1(step='3')
-          include ./CrimpSpec/_step3.pug
+          include ../views/CrimpSpec/_step3.pug
 
         //- Ferrule Wall
         v-stepper-content.px-1.pt-1(step='4')
-          include ./CrimpSpec/_step4.pug
+          include ../views/CrimpSpec/_step4.pug
 
         //- Result
         v-stepper-content.px-1.pt-1(step='5')
-          include ./CrimpSpec/_step5.pug
+          include ../views/CrimpSpec/_step5.pug
 </template>
 
 <script>
@@ -51,43 +51,14 @@
     data () {
       return {
         currentStep: 0,
-        snackbar: {
-          display: false,
-          text: null,
-          timeout: 3000
-        },
-        steps: {
-          compFactor: {
-            warn: false,
-            warnType: 'info'
-          },
-          shankMeas: {
-            disableAdd: false
-          }
-        },
-        calcData: {
-          hoseTypes: CrimpSpecData.hoseTypes
-        },
+        snackbar: { display: false, text: null },
+        steps: { compFactor: { warn: false, warnType: 'info' }, shankMeas: { disableAdd: false } },
+        calcData: { hoseTypes: CrimpSpecData.hoseTypes },
         calcInput: {
-          comp: {
-            sel: null,
-            box: null
-          },
-          shankMeas: [
-            { value: null },
-            { value: null },
-            { value: null }
-          ],
-          hoseWallMeas: [
-            { value: null },
-            { value: null },
-            { value: null }
-          ],
-          ferruleWallMeas: [
-            { value: null },
-            { value: null },
-            { value: null }
-          ],
+          comp: { sel: null, box: null },
+          shankMeas: [ null, null, null ],
+          hoseWallMeas: [ null, null, null ],
+          ferruleWallMeas: [ null, null, null ],
           result: null,
           resultMetric: null,
           resultFrac: null
@@ -98,9 +69,7 @@
       doCopy (theText) {
         var compo = this
         this.$copyText(theText).then(function (e) {
-          // alert('Copied ' + theText)
-          // console.log(e)
-          compo.snackbar.text = 'Copied <em>[ ' + theText + ' ]</em> to the clipboard'
+          compo.snackbar.text = 'Copied [<em> ' + theText + ' </em>] to the clipboard'
           compo.snackbar.display = true
         }, function (e) {
           alert('Can not copy')
@@ -114,9 +83,9 @@
       doTheCalculation () {
         this.currentStep = 5
 
-        var a = this.shankOdAverage
-        var b = ((this.hoseWallAverage * 2) * (1 - this.setCompFac))
-        var c = (this.ferruleWallAverage * 2)
+        var a = this.$makeAverage(this.calcInput.shankMeas)
+        var b = (((this.$makeAverage(this.calcInput.hoseWallMeas)) * 2) * (1 - this.setCompFac))
+        var c = ((this.$makeAverage(this.calcInput.ferruleWallMeas)) * 2)
 
         var result = (a + b + c)
 
@@ -129,7 +98,7 @@
         // (calcInput.result).toFixed(3)
       },
       addMeasurement (arr) {
-        var newMeas = { value: null, btn: true }
+        var newMeas = null
         var measArray = arr
         measArray.push(newMeas)
       },
@@ -192,57 +161,6 @@
           this.steps.compFactor.warn = false
         }
         return theWarning
-      },
-      shankOdAverage () {
-        var theArray = this.calcInput.shankMeas
-        var theSum = theArray.reduce(function (a, b) {
-          return b.value == null ? a : parseFloat(a) + parseFloat(b.value)
-        }, 0)
-
-        return (theSum / theArray.length)
-      },
-      shankMeasAddDisable () {
-        var measArray = this.calcInput.shankMeas
-        var arrLen = parseInt(measArray.length)
-        if (arrLen < 7) {
-          this.steps.shankMeas.disableAdd = true
-        } else {
-          this.steps.shankMeas.disableAdd = false
-        }
-      },
-      hoseWallAverage () {
-        var theArray = this.calcInput.hoseWallMeas
-        var theSum = theArray.reduce(function (a, b) {
-          return b.value == null ? a : parseFloat(a) + parseFloat(b.value)
-        }, 0)
-
-        return (theSum / theArray.length)
-      },
-      hoseWallAddDisable () {
-        var measArray = this.calcInput.hoseWallMeas
-        var arrLen = parseInt(measArray.length)
-        if (arrLen < 7) {
-          this.steps.hoseWallMeas.disableAdd = true
-        } else {
-          this.steps.hoseWallMeas.disableAdd = false
-        }
-      },
-      ferruleWallAverage () {
-        var theArray = this.calcInput.ferruleWallMeas
-        var theSum = theArray.reduce(function (a, b) {
-          return b.value == null ? a : parseFloat(a) + parseFloat(b.value)
-        }, 0)
-
-        return (theSum / theArray.length)
-      },
-      ferruleWallAddDisable () {
-        var measArray = this.calcInput.ferruleWallMeas
-        var arrLen = parseInt(measArray.length)
-        if (arrLen < 7) {
-          this.steps.ferruleWallMeas.disableAdd = true
-        } else {
-          this.steps.ferruleWallMeas.disableAdd = false
-        }
       }
     }
   }

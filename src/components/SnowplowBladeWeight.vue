@@ -1,34 +1,36 @@
 <template lang="pug">
   div
-    include ./SnowplowBladeWeight/_fab.pug
-    include ./SnowplowBladeWeight/_shipmentDialog.pug
-    include ./SnowplowBladeWeight/_shipmentInfoDialog.pug
-    include ./SnowplowBladeWeight/_confirmDialog.pug
+    include ../views/SnowplowBladeWeight/shipment/_shipmentControlFAB.pug
+    include ../views/SnowplowBladeWeight/shipment/_shipmentAddNotesDialog.pug
+    include ../views/SnowplowBladeWeight/shipment/_shipmentBottomSheet.pug
+    include ../views/SnowplowBladeWeight/shipment/_shipmentInfoBottomSheet.pug
+    include ../views/SnowplowBladeWeight/shipment/_confirmClearDeleteDialog.pug
     v-container.pa-0(fluid)
-      include ./Global/_snackbar.pug
+      include ../views/Global/_snackbar.pug
       v-stepper.transparent.elevation-0(v-model='currentStep')
         //- Steps
-        include ./SnowplowBladeWeight/_step0.pug
+        include ../views/SnowplowBladeWeight/steps/_step0.pug
 
         v-stepper-items
           //- Select snowplow material size
           v-stepper-content.px-1.pt-1(step='1')
-            include ./SnowplowBladeWeight/_step1.pug
+            include ../views/SnowplowBladeWeight/steps/_step1.pug
 
           //- Enter snowplow blade length
           v-stepper-content.px-1.pt-1(step='2')
-            include ./SnowplowBladeWeight/_step2.pug
+            include ../views/SnowplowBladeWeight/steps/_step2.pug
 
           //- Enter quantity
           v-stepper-content.px-1.pt-1(step='3')
-            include ./SnowplowBladeWeight/_step3.pug
+            include ../views/SnowplowBladeWeight/steps/_step3.pug
 
           //- Results
           v-stepper-content.px-1.pt-1(step='4')
-            include ./SnowplowBladeWeight/_step4.pug
+            include ../views/SnowplowBladeWeight/steps/_step4.pug
 </template>
 
 <script>
+  // import * as moment from 'moment'
   import SnowplowData from '@/data/Snowplow.json'
 
   /* eslint-disable no-extend-native */
@@ -44,33 +46,24 @@
   export default {
     data () {
       return {
+        currentShipments: null,
         delSelect: null,
         currentStep: 0,
-        calcInput: {
-          size: null,
-          length: {
-            feet: null,
-            inches: null
-          },
-          quantity: null
-        },
+        calcInput: { size: null, length: { feet: null, inches: null }, quantity: null },
         bladeSizes: SnowplowData.bladeSizes,
         shipment: {
           dialog: false,
           info: false,
           btn: false,
           headers: SnowplowData.shipmentHeaders,
-          items: []
+          // items: [],
+          items: SnowplowData.dummyData,
+          history: null,
+          historyActive: null
         },
-        snackbar: {
-          text: null,
-          display: false
-        },
-        alert: {
-          display: false,
-          type: 'error',
-          text: 'Are you sure?'
-        }
+        snackbar: { text: null, display: false },
+        alert: { display: false, type: 'error', text: 'Are you sure?' },
+        saveShipmentNote: { dialog: false, text: null }
       }
     },
     methods: {
@@ -81,7 +74,7 @@
       doCopy (theText) {
         var compo = this
         this.$copyText(theText).then(function (e) {
-          compo.snackbar.text = 'Copied <em>[ ' + theText + ' ]</em> to the clipboard'
+          compo.snackbar.text = 'Copied [<em> ' + theText + ' </em>] to the clipboard'
           compo.snackbar.display = true
         }, function (e) {
           alert('Can not copy')
@@ -139,6 +132,34 @@
         this.alert.display = false
         this.shipment.items = []
         this.resetAll()
+      },
+      saveShipmentMemoPopup () {
+        this.saveShipmentNote.dialog = true
+      },
+      saveShipment () {
+        this.saveShipmentNote.dialog = false
+        var shipmentItems = this.shipment.items
+        var toAdd = {
+          items: shipmentItems,
+          date: new Date(),
+          note: this.saveShipmentNote.text
+        }
+        var shipmentArray = this.shipment.history
+        shipmentArray.push(toAdd)
+        this.shipment.history = shipmentArray
+        this.$ls.set('shipments', JSON.stringify(shipmentArray))
+        this.saveShipmentNote.text = null
+      },
+      restoreShipment (itmArr) {
+        this.shipment.items = itmArr
+      },
+      restoreShipmentLine (item) {
+        var currentLines = this.shipment.items
+        currentLines.push(item)
+        this.shipment.items = currentLines
+      },
+      doTheConfirmThing () {
+        //
       }
     },
     computed: {
@@ -220,6 +241,22 @@
         var shpmnt = this.shipment.items
         return shpmnt.sum('weight')
       }
+    },
+    created () {
+      var currentShipments = this.$ls.get('shipments')
+
+      // check if its in localstorage
+      if (currentShipments === null) {
+        this.$ls.set('shipments', JSON.stringify([]))
+        currentShipments = this.$ls.get('shipments')
+      }
+      var ninetyAgo = this.$moment().subtract(90, 'days')
+
+      // Filter dates more than 90 days ago
+      var allDates = JSON.parse(currentShipments)
+      var someDates = allDates.filter(shmnt => this.$moment(shmnt.date) > ninetyAgo)
+      this.$ls.set('shipments', JSON.stringify(someDates))
+      this.shipment.history = someDates
     }
   }
 </script>
