@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
-import colors from 'vuetify/es5/util/colors'
 import VueCordova from 'vue-cordova'
 import VueHead from 'vue-head'
 import SvgIcon from 'vue-svgicon'
@@ -15,15 +14,7 @@ import router from './router'
 
 import VueClipboard from 'vue-clipboard2'
 
-let theme = {
-  primary: colors.indigo.base,
-  secondary: colors.indigo.darken4,
-  accent: colors.blue.accent2,
-  error: colors.red.base,
-  warning: colors.amber.base,
-  info: colors.cyan.base,
-  success: colors.green.base
-}
+import theme from '@/data/theme.js'
 
 Vue.config.productionTip = false
 VueClipboard.config.autoSetContainer = true // add this line

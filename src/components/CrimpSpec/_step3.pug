@@ -13,11 +13,11 @@ v-card-text
         v-btn(block color='accent' @click.native='addMeasurement(calcInput.hoseWallMeas)' :disabled='calcInput.hoseWallMeas.length < 6 ? false : true') Add A Measurement
 //- Navigation buttons
 v-layout(row justify-center)
-  v-flex(flex xs4 sm5 md6)
+  v-flex(flex xs6 sm5 md4)
     v-btn(@click='currentStep = 2')
       v-icon(left) navigate_before
       | Back
-  v-flex.text-xs-right(flex xs4 sm5 md6)
+  v-flex.text-xs-right(flex xs6 sm5 md4)
     v-btn.primary(@click='moveStep(`f`)' :disabled='hoseWallAverage == 0 ? true : false')
       | Next
       v-icon(right) navigate_next

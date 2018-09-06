@@ -1,0 +1,75 @@
+{
+  "bladeSizes": [
+    {
+      "value": 0.2,
+      "text": "1\" x 4\""
+    },
+    {
+      "value": 0.28,
+      "text": "1\" x 6\""
+    },
+    {
+      "value": 0.37,
+      "text": "1\" x 8\""
+    },
+    {
+      "value": 0.47,
+      "text": "1\" x 10\""
+    },
+    {
+      "value": 0.57,
+      "text": "1.5\" x 8\""
+    },
+    {
+      "value": 0.71,
+      "text": "1.5\" x 10\""
+    },
+    {
+      "value": 0.85,
+      "text": "1.5\" x 12\""
+    }
+  ],
+  "shipmentHeaders": [
+    {
+      "text": "Quantity",
+      "value": "Quantity",
+      "width": "5%"
+    },
+    {
+      "text": "Size",
+      "value": "Size",
+      "width": "45%"
+    },
+    {
+      "text": "Weight",
+      "value": "Weight",
+      "width": "45%"
+    },
+    {
+      "text": "Remove",
+      "value": "Remove",
+      "width": "5%"
+    }
+  ],
+  "dummyData": [
+    {
+      "size": "1.5\" x 8\" x 5'",
+      "quantity": 25,
+      "weight": "855.000"
+    },
+    {
+      "size": "1.5\" x 10\" x 9' 6.5\"",
+      "quantity": 1,
+      "weight": "975.540"
+    }
+  ],
+  "dummyWeights": [200, 120],
+  "defaultInputs": {
+    "size": null,
+    "length": {
+      "feet": null,
+      "inches": null
+    },
+    "quantity": null
+  }
+}

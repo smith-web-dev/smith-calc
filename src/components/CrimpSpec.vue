@@ -26,14 +26,6 @@
         //- Result
         v-stepper-content.px-1.pt-1(step='5')
           include ./CrimpSpec/_step5.pug
-          //- v-card.mb-5(color='grey lighten-1', height='200px')
-          //-   v-card-text
-          //-     p result: {{ calcInput.result }}
-          //-     p(v-html='decToFrac')
-          //- v-layout(row justify-center)
-          //-   v-flex(xs12 sm10 md8)
-          //-     v-btn(block color='accent', @click='resetAll()')
-          //-       | Start Over
 </template>
 
 <script>
@@ -108,7 +100,7 @@
         this.$copyText(theText).then(function (e) {
           // alert('Copied ' + theText)
           // console.log(e)
-          compo.snackbar.text = 'Copied the value: ' + theText + ' to the clipboard'
+          compo.snackbar.text = 'Copied <em>[ ' + theText + ' ]</em> to the clipboard'
           compo.snackbar.display = true
         }, function (e) {
           alert('Can not copy')
@@ -252,32 +244,6 @@
           this.steps.ferruleWallMeas.disableAdd = false
         }
       }
-      // decToFrac () {
-      //   var nume
-      //   var whole
-      //   var td = 64
-      //   if (this.calcInput.result !== null) {
-      //     var num = this.calcInput.result
-      //     whole = Math.floor(this.calcInput.result)
-      //     var dec = (num - whole)
-      //     var frac = math.fraction(dec)
-      //     nume = Math.round(((td * frac.n) / frac.d))
-      //   }
-      //   // <sup>1</sup>&frasl;<sub>10</sub>
-      //   return (whole + ' <sup>' + nume + '</sup>&frasl;<sub>' + td + '</sub>')
-      // },
-      // resultToInchDec () {
-      //   var displayThis
-      //   if (this.calcInput.result !== null) {
-      //     displayThis = result
-      //   }
-      // },
-      // resultToInchFrac () {
-      //   //
-      // },
-      // resultToMetric () {
-      //   //
-      // }
     }
   }
 </script>

@@ -17,8 +17,8 @@ v-card-text
     v-text-field(type='number' hint='Enter as a full percentage, not a decimal' label='Enter a custom compression factor' box v-model='calcInput.comp.box' clearable suffix='%')
 //- Navigation buttons
 v-layout(row justify-center)
-  v-flex(flex xs4 sm5 md6)
-  v-flex.text-xs-right(flex xs4 sm5 md6)
+  v-flex(flex xs6 sm5 md4)
+  v-flex.text-xs-right(flex xs6 sm5 md4)
     v-btn.primary( @click='moveStep(`f`)' :disabled='!!setCompFac ? false : true')
       | Next
       v-icon(right) navigate_next

@@ -15,37 +15,37 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
+      name: 'Home',
       component: Hello
     },
     {
       path: '/roll-length',
-      name: 'RollLength',
+      name: 'Roll Length',
       component: RollLength
     },
     {
       path: '/cb-length',
-      name: 'ConveyorLength',
+      name: 'Conveyor Length',
       component: ConveyorLength
     },
     {
       path: '/sqft',
-      name: 'SquareFootage',
+      name: 'Square Footage',
       component: SquareFootage
     },
     {
       path: '/cb-weight',
-      name: 'ConveyorBeltWeight',
+      name: 'Conveyor Belt Weight',
       component: ConveyorBeltWeight
     },
     {
       path: '/snowplow-weight',
-      name: 'SnowplowBladeWeight',
+      name: 'Snowplow Blade Weight',
       component: SnowplowBladeWeight
     },
     {
       path: '/crimp',
-      name: 'CrimpSpec',
+      name: 'Crimp Spec',
       component: CrimpSpec
     }
   ]

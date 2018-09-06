@@ -1,5 +1,8 @@
 v-toolbar.primary(fixed clipped-left app dark)
   v-toolbar-side-icon(@click.stop='drawer = !drawer')
-  v-toolbar-title.mr-5.align-center
-    span.title SmithCalc
+  v-toolbar-title.align-center
+    span.title
+      span.font-weight-light SmithCalc
+      span.font-weight-regular {{ $route.name == 'Home' ? '' : ' // ' }}
+    span.subheading.font-weight-medium {{ $route.name == 'Home' ? '' : $route.name }}
   v-spacer

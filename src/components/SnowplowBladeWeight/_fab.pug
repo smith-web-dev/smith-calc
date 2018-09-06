@@ -1,0 +1,12 @@
+v-fab-transition
+  v-speed-dial(v-model='shipment.btn' fixed bottom right transition='scale-transition')
+    v-btn(slot='activator' v-model='shipment.btn' color='accent' dark fab)
+      v-icon local_shipping
+      v-icon close
+    v-btn(fab dark small color='info' @click.native='shipment.info = true')
+      v-icon info
+    v-btn(fab dark small color='success' @click='shipment.dialog = true')
+      v-icon visibility
+    v-btn(v-show='currentStep === 4' fab dark small color='indigo' @click.native='addToShipment()')
+      v-icon add
+
