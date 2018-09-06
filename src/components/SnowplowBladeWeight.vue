@@ -56,8 +56,8 @@
           info: false,
           btn: false,
           headers: SnowplowData.shipmentHeaders,
-          // items: [],
-          items: SnowplowData.dummyData,
+          items: [],
+          // items: SnowplowData.dummyData,
           history: null,
           historyActive: null
         },
