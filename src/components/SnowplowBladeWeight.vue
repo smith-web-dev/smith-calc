@@ -141,7 +141,7 @@
         var shipmentItems = this.shipment.items
         var toAdd = {
           items: shipmentItems,
-          date: new Date(),
+          date: this.$moment(),
           note: this.saveShipmentNote.text
         }
         var shipmentArray = this.shipment.history

@@ -7,7 +7,7 @@ const makeAverage = {
         return b == null ? a : Number(a) + Number(b)
       }, 0)
 
-      console.log((theSum / theArray.length))
+      // console.log((theSum / theArray.length))
       return (theSum / theArray.length)
     }
   }
