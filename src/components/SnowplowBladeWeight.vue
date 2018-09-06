@@ -60,8 +60,7 @@
           info: false,
           btn: false,
           headers: SnowplowData.shipmentHeaders,
-          items: SnowplowData.dummyData
-          // items: []
+          items: []
         },
         snackbar: {
           text: null,
