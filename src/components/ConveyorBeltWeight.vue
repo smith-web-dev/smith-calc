@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    v-toolbar.primary(style='margin-top: -55px;')
     //- include ../views/SnowplowBladeWeight/shipment/_shipmentControlFAB.pug
     //- include ../views/SnowplowBladeWeight/shipment/_shipmentAddNotesDialog.pug
     //- include ../views/SnowplowBladeWeight/shipment/_shipmentBottomSheet.pug

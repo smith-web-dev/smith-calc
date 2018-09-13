@@ -1,11 +1,21 @@
 <template lang="pug">
   div
-    include ../views/SnowplowBladeWeight/shipment/_shipmentControlFAB.pug
+    //- include ../views/SnowplowBladeWeight/shipment/_shipmentControlFAB.pug
     include ../views/SnowplowBladeWeight/shipment/_shipmentAddNotesDialog.pug
     include ../views/SnowplowBladeWeight/shipment/_shipmentBottomSheet.pug
     include ../views/SnowplowBladeWeight/shipment/_shipmentInfoBottomSheet.pug
     include ../views/SnowplowBladeWeight/shipment/_confirmClearDeleteDialog.pug
-    v-container.pa-0(fluid)
+    v-toolbar.primary(style='margin-top: -26px;')
+      v-btn(
+        color='accent'
+        dark
+        absolute
+        bottom
+        right
+        @click='shipment.dialog = true'
+        fab)
+        v-icon(size='20px') fas fa-truck
+    v-container.px-0.pb-0(fluid)
       include ../views/Global/_snackbar.pug
       v-stepper.transparent.elevation-0(v-model='currentStep')
         //- Steps
@@ -74,7 +84,7 @@
     methods: {
       makeFileName (date) {
         var theDate = moment(date).format('YYYYMMDD-HHmmss')
-        return ('shipment-' + theDate + '.xls')
+        return ('shipment-' + theDate + '.csv')
       },
       qtyChange (value) {
         if (value < 0 && (this.calcInput.quantity === 0 || this.calcInput.quantity === null)) {

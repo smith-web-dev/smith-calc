@@ -1,31 +1,33 @@
 <template lang="pug">
-  v-container.pa-0(fluid)
-    include ../views/Global/_snackbar.pug
-    //- p {{ calcInput }}
-    v-stepper.transparent.elevation-0(v-model='currentStep')
-      //- Steps
-      include ../views/CrimpSpec/_step0.pug
+  div
+    v-toolbar.primary(style='margin-top: -55px;')
+    v-container.pa-0(fluid)
+      include ../views/Global/_snackbar.pug
+      //- p {{ calcInput }}
+      v-stepper.transparent.elevation-0(v-model='currentStep')
+        //- Steps
+        include ../views/CrimpSpec/_step0.pug
 
-      v-stepper-items
-        //- Compression factor
-        v-stepper-content.px-1.pt-1(step='1')
-          include ../views/CrimpSpec/_step1.pug
+        v-stepper-items
+          //- Compression factor
+          v-stepper-content.px-1.pt-1(step='1')
+            include ../views/CrimpSpec/_step1.pug
 
-        //- Shank OD
-        v-stepper-content.px-1.pt-1(step='2')
-          include ../views/CrimpSpec/_step2.pug
+          //- Shank OD
+          v-stepper-content.px-1.pt-1(step='2')
+            include ../views/CrimpSpec/_step2.pug
 
-        //- Hose Wall
-        v-stepper-content.px-1.pt-1(step='3')
-          include ../views/CrimpSpec/_step3.pug
+          //- Hose Wall
+          v-stepper-content.px-1.pt-1(step='3')
+            include ../views/CrimpSpec/_step3.pug
 
-        //- Ferrule Wall
-        v-stepper-content.px-1.pt-1(step='4')
-          include ../views/CrimpSpec/_step4.pug
+          //- Ferrule Wall
+          v-stepper-content.px-1.pt-1(step='4')
+            include ../views/CrimpSpec/_step4.pug
 
-        //- Result
-        v-stepper-content.px-1.pt-1(step='5')
-          include ../views/CrimpSpec/_step5.pug
+          //- Result
+          v-stepper-content.px-1.pt-1(step='5')
+            include ../views/CrimpSpec/_step5.pug
 </template>
 
 <script>

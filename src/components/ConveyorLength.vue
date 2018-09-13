@@ -1,5 +1,7 @@
 <template lang="pug">
-  div {{ msg }}
+  div
+    v-toolbar.primary(style='margin-top: -55px;')
+    p {{ msg }}
 </template>
 
 <script>

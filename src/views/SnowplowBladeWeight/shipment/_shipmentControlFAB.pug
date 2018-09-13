@@ -1,6 +1,25 @@
 v-fab-transition
-  v-btn(fixed bottom right v-model='shipment.btn' color='accent' dark fab @click='shipment.dialog = true')
+  v-btn(
+    fixed
+    bottom
+    right
+    v-model='shipment.btn'
+    color='accent'
+    dark
+    fab
+    @click='shipment.dialog = true')
     v-icon local_shipping
+
+  //- v-btn(
+    color='accent'
+    dark
+    absolute
+    bottom
+    right
+    @click='shipment.dialog = true'
+    fab)
+    v-icon(size='20px') fas fa-truck
+
 
 //- v-fab-transition
 //-   v-speed-dial(v-model='shipment.btn' fixed bottom right transition='scale-transition')
