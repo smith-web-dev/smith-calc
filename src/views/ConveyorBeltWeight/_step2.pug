@@ -1,0 +1,24 @@
+//- v-card.mb-5
+v-card-title.pb-0(primary-title style='display: block;')
+  .headline Determine belt width
+  div.grey--text.text--darken-1 Either select a standard belt width or enter a custom width
+//- v-card-text
+//-   v-container.pa-0(fluid)
+//-     div(v-for='(f, i) in calcInput.shankMeas' :key='i')
+//-       v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i]' clearable :label='`Shank OD #` + (i + 1)')
+//-         v-btn(flat icon color='error' slot='append-outer' v-show='(i + 1) > 3' style='top: -10px;' @click.native='removeMeas(calcInput.shankMeas, i)')
+//-           v-icon delete
+//-     v-layout(row justify-center)
+//-       v-flex(xs12 sm10 md8)
+//-         v-btn(block color='accent' @click.native='addMeasurement(calcInput.shankMeas)' :disabled='calcInput.shankMeas.length < 6 ? false : true') Add A Measurement
+//- Navigation buttons
+v-layout(row justify-center)
+  v-flex(flex xs6 sm5 md4)
+    v-btn(@click='currentStep = 1')
+      v-icon(left) navigate_before
+      | Back
+  v-flex.text-xs-right(flex xs6 sm5 md4)
+    //- v-btn.primary(@click='moveStep(`f`)' :disabled='$makeAverage(calcInput.shankMeas) == 0 ? true : false')
+    v-btn.primary(@click='moveStep(`f`)')
+      | Next
+      v-icon(right) navigate_next

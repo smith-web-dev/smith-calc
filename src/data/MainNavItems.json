@@ -1,50 +1,32 @@
 [
   {
-    "icon": {
-      "type": "mdi",
-      "name": "straighten"
-    },
+    "icon": "far fa-tape",
     "text": "Roll Length",
     "path": "/roll-length"
   },
   {
-    "icon": {
-      "type": "sirp",
-      "name": "belt-length"
-    },
+    "icon": "far fa-ruler",
     "text": "Conveyor Length",
     "path": "/cb-length"
   },
   {
-    "icon": {
-      "type": "mdi",
-      "name": "border_all"
-    },
+    "icon": "far fa-th-large",
     "text": "Square Footage",
     "path": "/sqft"
   },
   {
-    "icon": {
-      "type": "sirp",
-      "name": "belt-weight"
-    },
+    "icon": "far fa-weight",
     "text": "Conveyor Belt Weight",
     "path": "/cb-weight"
   },
   {
-    "icon": {
-      "type": "sirp",
-      "name": "snow"
-    },
+    "icon": "far fa-snowflake",
     "text": "Snowplow Blade Weight",
     "path": "/snowplow-weight"
   },
   {
-    "icon": {
-      "type": "sirp",
-      "name": "crimp"
-    },
-    "text": "Crimp",
+    "icon": "far fa-compress",
+    "text": "Crimp Spec",
     "path": "/crimp"
   }
 ]

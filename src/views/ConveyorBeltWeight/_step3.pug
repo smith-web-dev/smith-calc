@@ -1,0 +1,24 @@
+//- v-card.mb-5
+v-card-title.pb-0(primary-title style='display: block;')
+  .headline Enter the belt length
+  //- div.grey--text.text--darken-1 Measure the wall of the hose in at least 3 places
+//- v-card-text
+//-   v-container.pa-0(fluid)
+//-     div(v-for='(f, i) in calcInput.hoseWallMeas' :key='i')
+//-       v-text-field(type='number' label='' box v-model='calcInput.hoseWallMeas[i]' clearable :label='`Hose wall thickness #` + (i + 1)')
+//-         v-btn(flat icon color='error' slot='append-outer' v-show='(i + 1) > 3' style='top: -10px;' @click.native='removeMeas(calcInput.hoseWallMeas, i)')
+//-           v-icon delete
+//-     v-layout(row justify-center)
+//-       v-flex(xs12 sm10 md8)
+//-         v-btn(block color='accent' @click.native='addMeasurement(calcInput.hoseWallMeas)' :disabled='calcInput.hoseWallMeas.length < 6 ? false : true') Add A Measurement
+//- Navigation buttons
+v-layout(row justify-center)
+  v-flex(flex xs6 sm5 md4)
+    v-btn(@click='currentStep = 2')
+      v-icon(left) navigate_before
+      | Back
+  v-flex.text-xs-right(flex xs6 sm5 md4)
+    //- v-btn.primary(@click='moveStep(`f`)' :disabled='$makeAverage(calcInput.hoseWallMeas) == 0 ? true : false')
+    v-btn.primary(@click='moveStep(`f`)')
+      | Next
+      v-icon(right) navigate_next

@@ -1,5 +1,7 @@
 v-toolbar.primary(fixed clipped-left app dark)
-  v-toolbar-side-icon(@click.stop='drawer = !drawer')
+  v-btn(flat icon @click.stop='drawer = !drawer')
+    v-icon(size='19px') far fa-bars
+  //- v-toolbar-side-icon(@click.stop='drawer = !drawer')
   v-toolbar-title.align-center
     span.title
       span.font-weight-light SmithCalc

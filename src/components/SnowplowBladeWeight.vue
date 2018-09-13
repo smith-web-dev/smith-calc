@@ -31,7 +31,12 @@
 
 <script>
   // import * as moment from 'moment'
+  import Vue from 'vue'
   import SnowplowData from '@/data/Snowplow.json'
+  import moment from 'moment'
+  import JsonExcel from 'vue-json-excel'
+
+  Vue.component('downloadExcel', JsonExcel)
 
   /* eslint-disable no-extend-native */
   Array.prototype.sum = function (prop) {
@@ -67,6 +72,18 @@
       }
     },
     methods: {
+      makeFileName (date) {
+        var theDate = moment(date).format('YYYYMMDD-HHmmss')
+        return ('shipment-' + theDate + '.xls')
+      },
+      qtyChange (value) {
+        if (value < 0 && (this.calcInput.quantity === 0 || this.calcInput.quantity === null)) {
+          /* eslint-disable no-useless-return */
+          return
+        } else {
+          this.calcInput.quantity = this.calcInput.quantity + value
+        }
+      },
       resetAll () {
         this.currentStep = 1
         this.calcInput = SnowplowData.defaultInputs
@@ -107,7 +124,14 @@
         this.shipment.items.push(newItem)
         this.snackbar.text = 'Added (' + qty + ') - ' + sze + ' to shipment'
         this.snackbar.display = true
-        this.calcInput = SnowplowData.defaultInputs
+        this.calcInput = {
+          size: null,
+          length: {
+            feet: null,
+            inches: null
+          },
+          quantity: null
+        }
         this.currentStep = 1
       },
       deleteConfirmShow (item) {
@@ -141,7 +165,7 @@
         var shipmentItems = this.shipment.items
         var toAdd = {
           items: shipmentItems,
-          date: this.$moment(),
+          date: this.$moment().format(),
           note: this.saveShipmentNote.text
         }
         var shipmentArray = this.shipment.history

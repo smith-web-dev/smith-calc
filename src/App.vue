@@ -63,6 +63,11 @@
     margin-bottom: constant(safe-area-inset-bottom);
     margin-bottom: env(safe-area-inset-bottom);
   }
+
+  .v-btn--xlarge {
+    height: 120px;
+    width: 120px;
+  }
 </style>
 
 <style scoped>

@@ -6,7 +6,6 @@ v-list(two-line)
   v-list-group(v-for="(item, index) in orderBy(shipment.history, 'date', -1)" v-model="item.active" :key="index" no-action)
     v-list-tile(slot="activator")
       v-list-tile-content
-        //- v-list-tile-title {{ item.date | moment("dddd, MMMM Do YYYY, h:mm A") }}
         v-list-tile-title {{ item.date | moment("calendar", null, { sameElse: 'dddd, MMMM Do YYYY, h:mm A' }) }}
         v-list-tile-sub-title(v-show='item.note !== null')
           v-icon.mr-2(small) note
@@ -25,6 +24,13 @@ v-list(two-line)
     v-list-tile
       v-list-tile-content
         v-list-tile-title(style='height: unset; line-height: unset;').text-xs-right
+          //- p {{ item.date }}
+          //- p {{ makeFileName(item.date) }}
+          download-excel.v-btn.theme--light.accent(:data='item.items' type='xls' :name='makeFileName(item.date)')
+            .v-btn__content
+              v-icon(left) far fa-file-spreadsheet
+              | Download Data
           v-btn(color='accent' @click='restoreShipment(item.items)')
             v-icon(left) restore
             | Restore Shipment
+

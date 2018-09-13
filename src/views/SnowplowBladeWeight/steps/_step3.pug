@@ -4,18 +4,29 @@ v-card-title.pb-0(primary-title style='display: block;')
   div.grey--text.text--darken-1 Either enter or use the arrows to adjust the quantity of snowplow blades
 v-card-text
   v-container.pa-0(fluid)
-    v-layout(row)
-      v-flex.text-xs-center(xs12)
-        v-btn(icon color='primary' @click.native='calcInput.quantity = calcInput.quantity + 1')
+    //- v-layout(row justify-center)
+      v-flex.text-xs-center(xs4)
+        v-btn(block color='primary' @click.native='calcInput.quantity = calcInput.quantity + 1')
           v-icon arrow_upward
     v-layout(row)
       v-spacer
-      v-flex.text-xs-center(xs4)
-        v-text-field(type='number' label='Quantity' box v-model='calcInput.quantity' clearable)
+      v-flex.text-xs-center(xs6)
+        v-text-field(
+          append-outer-icon='fas fa-plus'
+          @click:append-outer='qtyChange(1)'
+          prepend-icon='fas fa-minus'
+          @click:prepend='qtyChange(-1)'
+          type='number'
+          label='Quantity'
+          box
+          v-model='calcInput.quantity'
+          clearable)
+        v-btn()
+          v-icon fas fa-plus
       v-spacer
-    v-layout(row)
-      v-flex.text-xs-center(xs12)
-        v-btn(icon color='primary' @click.native='calcInput.quantity = calcInput.quantity - 1')
+    //- v-layout(row justify-center)
+      v-flex.text-xs-center(xs4)
+        v-btn(block  color='primary' @click.native='calcInput.quantity = calcInput.quantity - 1')
           v-icon arrow_downward
 //- Navigation buttons
 v-layout(row justify-center)
@@ -25,6 +36,6 @@ v-layout(row justify-center)
       v-icon(left) navigate_before
       | Back
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn.primary(@click='moveStep(`f`)')
+    v-btn.primary(@click='moveStep(`f`)' :disabled='calcInput.quantity === 0 || calcInput.quantity === null ? true : false')
       | Next
       v-icon(right) navigate_next

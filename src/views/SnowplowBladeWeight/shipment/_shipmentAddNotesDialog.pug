@@ -3,6 +3,9 @@ v-dialog(v-model="saveShipmentNote.dialog" width="500")
     v-card-title(class="subheading grey lighten-3")
       | Shipment Note
       span.font-weight-light.pl-1 (Optional)
+      v-spacer
+      v-btn(icon flat @click='saveShipmentNote.dialog = false')
+        v-icon(small) fas fa-times
     v-card-text.pb-0
       //- v-textarea(label="Tap here to add a note to this shipment" v-model='saveShipmentNote.text')
       v-text-field(label="Tap here to add a note to this shipment" v-model='saveShipmentNote.text')

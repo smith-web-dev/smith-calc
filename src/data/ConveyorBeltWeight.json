@@ -1,0 +1,113 @@
+{
+  "beltTypes": [
+    {
+      "name": "PVC",
+      "items": [
+        {
+          "name": 120,
+          "items": [
+            { "name": "Roughtop", "value": 0.0900 },
+            { "name": "Cover One Side", "value": 0.073 },
+            { "name": "Cover x Cover", "value": 0.075 },
+            { "name": "Crescent Top", "value": 0.0750 }
+          ]
+        },
+        {
+          "name": 150,
+          "items": [
+            { "name": "Cover One Side", "value": 0.087 },
+            { "name": "Cover x Cover", "value": 0.106 }
+          ]
+        },
+        {
+          "name": 200,
+          "items": [
+            { "name": "Cover One Side", "value": 0.106 }
+          ]
+        },
+        {
+          "name": 250,
+          "items": [
+            { "name": "Cover One Side", "value": 0.098 }
+          ]
+        },
+        {
+          "name": 450,
+          "items": [
+            { "name": "Cover X Cover", "value": 0.194 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rubber",
+      "items": [
+        {
+          "name": 135,
+          "items": [
+            {
+              "name": "3 Ply",
+              "items": [
+                { "name": "White Nitrile", "value": 0.075 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": 150,
+          "items": [
+            {
+              "name": "2 Ply",
+              "items": [
+                { "name": "Roughtop", "value": 0.100 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": 220,
+          "items": [
+            {
+              "name": "2 Ply",
+              "items": [
+                { "name": "220 1/8\" x Bare", "value": 0.080 },
+                { "name": "3x1", "value": 0.189 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": 330,
+          "items": [
+            {
+              "name": "3 Ply",
+              "items": [
+                { "name": "3x1", "value": 0.207 },
+                { "name": "3x1 Hot Asphalt", "value": 0.20 },
+                { "name": "1/4\" x 1/16\"", "value": 0.219 },
+                { "name": "1/4\" x 1/8\"", "value": 0.226 }
+              ]
+            }
+          ]
+        },
+        {
+          "name": 440,
+          "items": [
+            {
+              "name": "1 Ply",
+              "items": [
+                { "name": "440 1/4\" x 1/16\"", "value": 0.280 }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Misc",
+      "items": [
+        { "name": "0.060\" EPDM C.I. Sheet", "value": 0.037 }
+      ]
+    }
+  ]
+}

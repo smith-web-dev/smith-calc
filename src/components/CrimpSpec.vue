@@ -62,7 +62,17 @@
           result: null,
           resultMetric: null,
           resultFrac: null
-        }
+        },
+        calcHistory: [
+          {
+            date: '2018-09-06T16:16:55-05:00',
+            comp: 0.25,
+            avgShank: 2,
+            avgHoseWall: 0.25,
+            avgFerWall: 0.09,
+            result: 2.555
+          }
+        ]
       }
     },
     methods: {
@@ -119,6 +129,9 @@
           moveToStep = thisStep - 1
           this.currentStep = moveToStep
         }
+      },
+      addToHistory () {
+
       }
     },
     computed: {

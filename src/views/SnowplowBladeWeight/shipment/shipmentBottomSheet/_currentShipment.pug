@@ -14,13 +14,13 @@ v-list(three-line subheader)
         v-list-tile-sub-title.grey--text.text--darken-3 {{ l.quantity }} {{ l.quantity > 1 ? `pcs` : `pc` }}
         v-list-tile-sub-title {{ l.weight }} pounds
       v-list-tile-action
-        v-icon(color='error lighten-1' @click="deleteConfirmShow(l)") delete
+        v-icon(color='error lighten-1' @click="deleteConfirmShow(l)") fas fa-trash-alt
     v-divider
   v-list-tile()
     v-list-tile-content
       v-list-tile-title.font-weight-medium Total Weight
     v-list-tile-action {{ shipmentWeight }} pounds
 
-v-layout(row)
-  v-btn(:disabled='shipment.items.length > 0 ? false : true' color='error' @click.native='confirmClearShipment()') Clear shipment
-  v-spacer
+//- v-layout(row)
+//-   v-btn(:disabled='shipment.items.length > 0 ? false : true' color='error' @click.native='confirmClearShipment()') Clear shipment
+//-   v-spacer

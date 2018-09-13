@@ -11,13 +11,11 @@ import Vue2Filters from 'vue2-filters'
 // import * as moment from 'moment'
 import './assets/sirp-icon'
 import './assets/styles/sirp-icons.css'
+import VueClipboard from 'vue-clipboard2'
+import theme from '@/data/theme.js'
 
 import App from './App'
 import router from './router'
-
-import VueClipboard from 'vue-clipboard2'
-
-import theme from '@/data/theme.js'
 
 import { makeAverage } from '@/util/index.js'
 

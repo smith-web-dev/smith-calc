@@ -1,0 +1,17 @@
+v-toolbar(flat color='primary' dark)
+  //- v-toolbar-title.body-2.grey--text Title
+
+  v-spacer
+  //- v-btn(icon)
+  //-   v-icon search
+  //- v-btn(icon)
+  //-   v-icon apps
+  //- v-btn(icon)
+  //-   v-icon more_vert
+
+  v-btn(icon @click.native='shipment.info = true')
+    v-icon fas fa-info-circle
+  v-btn(icon :disabled='shipment.items.length === 0' @click='saveShipmentMemoPopup()')
+    v-icon fas fa-save
+  v-btn(icon :disabled='shipment.items.length > 0 ? false : true' @click.native='confirmClearShipment()')
+    v-icon fas fa-trash-alt

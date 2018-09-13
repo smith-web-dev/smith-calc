@@ -12,7 +12,6 @@ v-navigation-drawer(v-model='drawer' fixed clipped app)
     //-
     v-list-tile(v-for='(n, i) in navItems' :key='i' :to='n.path')
       v-list-tile-action
-        v-icon(v-if='n.icon.type === `mdi`') {{ n.icon.name }}
-        sirp-icon(v-if='n.icon.type === `sirp`' width='24' height='24' :name='n.icon.name')
+        v-icon {{ n.icon }}
       v-list-tile-content
         v-list-tile-title {{ n.text }}

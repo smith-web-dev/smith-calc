@@ -6,6 +6,7 @@ v-dialog(v-model='shipment.dialog' fullscreen hide-overlay transition='dialog-bo
 
       v-toolbar-title.font-weight-light Shipment
       v-spacer
+    include ./_shipmentToolbar.pug
     v-container(fluid)
       include ./shipmentBottomSheet/_currentShipment.pug
       include ./shipmentBottomSheet/_savedShipments.pug
