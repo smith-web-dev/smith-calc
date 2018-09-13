@@ -4,9 +4,32 @@ v-subheader(v-show='shipment.history.length > 0')
   span.font-weight-light.ml-1 (Will be removed after 90 days)
 v-list(two-line)
   v-list-group(v-for="(item, index) in orderBy(shipment.history, 'date', -1)" v-model="item.active" :key="index" no-action)
-    v-list-tile(slot="activator")
+
+    v-list-tile(avatar slot="activator")
+      v-list-tile-avatar
+        v-menu(bottom right)
+          v-btn(
+            slot="activator"
+            icon
+            @click.prevent)
+            v-icon far fa-ellipsis-v
+
+          v-list
+            v-list-tile(@click='restoreShipment(item.items)')
+              v-list-tile-title
+                v-icon.mr-2(left size='20px') fas fa-redo-alt fa-flip-horizontal
+                | Restore Shipment
+            v-list-tile
+              v-list-tile-title(@click='')
+                download-excel(:data='item.items' type='csv' :name='makeFileName(item.date)')
+                  v-icon.mr-2(left size='20px') fas fa-file-spreadsheet
+                  | Download Data as .csv
+            v-list-tile
+              v-list-tile-title(@click='')
+                v-icon.mr-2(left size='20px') fas fa-minus-hexagon
+                | Delete Shipment
       v-list-tile-content
-        v-list-tile-title {{ item.date | moment("calendar", null, { sameElse: 'dddd, MMMM Do YYYY, h:mm A' }) }}
+        v-list-tile-title {{ item.date | moment('calendar', null, { sameElse: 'dddd, MMMM Do YYYY, h:mm A' }) }}
         v-list-tile-sub-title(v-show='item.note !== null')
           v-icon.mr-2(small) note
           | {{ item.note }}
@@ -20,17 +43,3 @@ v-list(two-line)
         v-list-tile-sub-title {{ sub.quantity }} {{ sub.quantity | pluralize(`pc`) }} weighing about {{ Math.round(sub.weight) }} {{ Math.round(sub.weight) | pluralize(`pound`) }}
       v-list-tile-action
         v-icon(@click='restoreShipmentLine(sub)') restore_page
-
-    v-list-tile
-      v-list-tile-content
-        v-list-tile-title(style='height: unset; line-height: unset;').text-xs-right
-          //- p {{ item.date }}
-          //- p {{ makeFileName(item.date) }}
-          download-excel.v-btn.theme--light.accent(:data='item.items' type='csv' :name='makeFileName(item.date)')
-            .v-btn__content
-              v-icon(left) far fa-file-spreadsheet
-              | Download Data
-          v-btn(color='accent' @click='restoreShipment(item.items)')
-            v-icon(left) restore
-            | Restore Shipment
-
