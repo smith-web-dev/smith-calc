@@ -3,8 +3,12 @@
     include ./views/Global/_navDrawer.pug
     include ./views/Global/_toolbar.pug
     v-content
-      //- span {{ $route['name'] }}
-      router-view
+      //- span {{ $route }}
+      //- p {{ toolbarExtended }}
+      router-view(
+      @toolbarExtended='makeToolbarExtended'
+      @toolbarFab='setToolbarFab'
+      @childFunc='fabClicked')
 </template>
 
 <script>
@@ -16,7 +20,15 @@
         drawer: false,
         navItems: navItems,
         cordova: Vue.cordova,
-        title: 'SmithCalc'
+        title: 'SmithCalc',
+        toolbarExtended: false,
+        toolbarFab: {
+          visible: false,
+          icon: String
+        },
+        toolbarFabVisible: false,
+        toolbarFabIcon: null,
+        childFunc: Function
       }
     },
     created () {
@@ -26,6 +38,15 @@
       })
     },
     methods: {
+      fabClicked (func) {
+        this.childFunc = func
+      },
+      makeToolbarExtended (theBool) {
+        this.toolbarExtended = theBool
+      },
+      setToolbarFab (fabObj) {
+        this.toolbarFab = fabObj
+      },
       onDeviceReady: function () {
         // Handle the device ready event.
         this.cordova.on('pause', this.onPause, false)

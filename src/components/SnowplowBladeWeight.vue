@@ -5,16 +5,8 @@
     include ../views/SnowplowBladeWeight/shipment/_shipmentBottomSheet.pug
     include ../views/SnowplowBladeWeight/shipment/_shipmentInfoBottomSheet.pug
     include ../views/SnowplowBladeWeight/shipment/_confirmClearDeleteDialog.pug
-    v-toolbar.primary(style='margin-top: -26px;')
-      v-btn(
-        color='accent'
-        dark
-        absolute
-        bottom
-        right
-        @click='shipment.dialog = true'
-        fab)
-        v-icon(size='20px') fas fa-truck
+    //- v-toolbar.primary(style='margin-top: -26px;')
+
     v-container.px-0.pb-0(fluid)
       include ../views/Global/_snackbar.pug
       v-stepper.transparent.elevation-0(v-model='currentStep')
@@ -59,6 +51,10 @@
   }
 
   export default {
+    props: {
+      toolbarExtended: Boolean,
+      toolbarFab: Object
+    },
     data () {
       return {
         currentShipments: null,
@@ -192,8 +188,8 @@
         currentLines.push(item)
         this.shipment.items = currentLines
       },
-      doTheConfirmThing () {
-        //
+      openShipmentDialog () {
+        this.shipment.dialog = true
       }
     },
     computed: {
@@ -275,6 +271,14 @@
         var shpmnt = this.shipment.items
         return shpmnt.sum('weight')
       }
+    },
+    mounted () {
+      this.$emit('toolbarExtended', true)
+      this.$emit('toolbarFab', {
+        visible: true,
+        icon: 'fas fa-truck'
+      })
+      this.$emit('childFunc', this.openShipmentDialog)
     },
     created () {
       var currentShipments = this.$ls.get('shipments')

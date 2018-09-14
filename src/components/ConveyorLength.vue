@@ -1,11 +1,14 @@
 <template lang="pug">
   div
-    v-toolbar.primary(style='margin-top: -55px;')
     p {{ msg }}
 </template>
 
 <script>
   export default {
+    mounted () {
+      this.$emit('toolbarExtended', false)
+      this.$emit('toolbarFab', { visible: false })
+    },
     data () {
       return {
         msg: 'ConveyorLength'

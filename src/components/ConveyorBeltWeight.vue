@@ -1,40 +1,37 @@
 <template lang="pug">
-  div
-    v-toolbar.primary(style='margin-top: -55px;')
-    //- include ../views/SnowplowBladeWeight/shipment/_shipmentControlFAB.pug
-    //- include ../views/SnowplowBladeWeight/shipment/_shipmentAddNotesDialog.pug
-    //- include ../views/SnowplowBladeWeight/shipment/_shipmentBottomSheet.pug
-    //- include ../views/SnowplowBladeWeight/shipment/_shipmentInfoBottomSheet.pug
-    //- include ../views/SnowplowBladeWeight/shipment/_confirmClearDeleteDialog.pug
-    v-container.pa-0(fluid)
-      p {{ calcInput.beltSel.val === null ? `nullz` : calcInput.beltSel.val.value }}
-      include ../views/Global/_snackbar.pug
-      v-stepper.transparent.elevation-0(v-model='currentStep')
-        //- Steps
-        include ../views/ConveyorBeltWeight/_step0.pug
+  v-container.pa-0(fluid)
+    p {{ calcInput.beltSel.val === null ? `nullz` : calcInput.beltSel.val.value }}
+    include ../views/Global/_snackbar.pug
+    v-stepper.transparent.elevation-0(v-model='currentStep')
+      //- Steps
+      include ../views/ConveyorBeltWeight/_step0.pug
 
-        v-stepper-items
-          //- Select snowplow material size
-          v-stepper-content.px-1.pt-1(step='1')
-            include ../views/ConveyorBeltWeight/_step1.pug
+      v-stepper-items
+        //- Select snowplow material size
+        v-stepper-content.px-1.pt-1(step='1')
+          include ../views/ConveyorBeltWeight/_step1.pug
 
-          //- Enter snowplow blade length
-          v-stepper-content.px-1.pt-1(step='2')
-            include ../views/ConveyorBeltWeight/_step2.pug
+        //- Enter snowplow blade length
+        v-stepper-content.px-1.pt-1(step='2')
+          include ../views/ConveyorBeltWeight/_step2.pug
 
-          //- Enter quantity
-          v-stepper-content.px-1.pt-1(step='3')
-            include ../views/ConveyorBeltWeight/_step3.pug
+        //- Enter quantity
+        v-stepper-content.px-1.pt-1(step='3')
+          include ../views/ConveyorBeltWeight/_step3.pug
 
-          //- Results
-          v-stepper-content.px-1.pt-1(step='4')
-            include ../views/ConveyorBeltWeight/_step4.pug
+        //- Results
+        v-stepper-content.px-1.pt-1(step='4')
+          include ../views/ConveyorBeltWeight/_step4.pug
 </template>
 
 <script>
   import ConveyorBeltData from '../data/ConveyorBeltWeight.json'
 
   export default {
+    mounted () {
+      this.$emit('toolbarExtended', false)
+      this.$emit('toolbarFab', { visible: false })
+    },
     data () {
       return {
         currentStep: 0,

@@ -2,7 +2,7 @@ v-subheader.py-1(v-show='shipment.history.length > 0')
   | Current Shipment
   //- span.font-weight-light.ml-1 (Will be removed after 90 days)
 v-list(three-line subheader)
-  v-list-tile.accent.lighten-1(dark v-show='shipment.items.length < 1')
+  v-list-tile.accent.lighten-1.elevation-2(style='border-radius: 2px;' dark v-show='shipment.items.length < 1')
     v-list-tile-content
       v-list-tile-title No items yet
       v-list-tile-sub-title Add items to a shipment to see them totaled here

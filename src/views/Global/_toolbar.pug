@@ -1,10 +1,21 @@
-v-toolbar.primary(fixed clipped-left app dark flat)
+v-toolbar.primary(fixed clipped-left app dark flat :extended='toolbarExtended')
   v-btn(flat icon @click.stop='drawer = !drawer')
     v-icon(size='19px') far fa-bars
-  //- v-toolbar-side-icon(@click.stop='drawer = !drawer')
   v-toolbar-title.align-center
     span.title
       span.font-weight-light SmithCalc
       span.font-weight-regular {{ $route.name == 'Home' ? '' : ' // ' }}
     span.subheading.font-weight-medium {{ $route.name == 'Home' ? '' : $route.name }}
   v-spacer
+  //- v-toolbar-title(slot='extension') Title
+  v-fab-transition
+    v-btn(
+      v-show='toolbarFab.visible === true'
+      color='accent'
+      dark
+      absolute
+      bottom
+      right
+      @click='childFunc'
+      fab)
+      v-icon(size='18px') {{ toolbarFab.icon }}

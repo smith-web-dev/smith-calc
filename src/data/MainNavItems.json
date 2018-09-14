@@ -2,31 +2,37 @@
   {
     "icon": "far fa-tape",
     "text": "Roll Length",
-    "path": "/roll-length"
+    "path": "/roll-length",
+    "color": "primary darken-2"
   },
   {
     "icon": "far fa-ruler",
     "text": "Conveyor Length",
-    "path": "/cb-length"
+    "path": "/cb-length",
+    "color": "accent darken-1"
   },
   {
     "icon": "far fa-th-large",
     "text": "Square Footage",
-    "path": "/sqft"
+    "path": "/sqft",
+    "color": "primary lighten-2"
   },
   {
     "icon": "far fa-weight",
     "text": "Conveyor Belt Weight",
-    "path": "/cb-weight"
+    "path": "/cb-weight",
+    "color": "accent darken-1"
   },
   {
     "icon": "far fa-snowflake",
     "text": "Snowplow Blade Weight",
-    "path": "/snowplow-weight"
+    "path": "/snowplow-weight",
+    "color": "primary lighten-2"
   },
   {
     "icon": "far fa-compress",
     "text": "Crimp Spec",
-    "path": "/crimp"
+    "path": "/crimp",
+    "color": "accent darken-1"
   }
 ]
