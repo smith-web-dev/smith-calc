@@ -1,3 +1,4 @@
 v-snackbar(v-model='snackbar.display' :timeout='3250' top)
   span(v-html='snackbar.text')
-  v-btn(color='accent' flat @click='snackbar.display = false') Close
+  v-btn(icon color='accent' flat @click='snackbar.display = false')
+    v-icon() far fa-times

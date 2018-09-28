@@ -109,5 +109,119 @@
         { "name": "0.060\" EPDM C.I. Sheet", "value": 0.037 }
       ]
     }
-  ]
+  ],
+  "types": [
+    {
+      "text": "PVC",
+      "disabled": true,
+      "prepend-icon": "fas fa-angle-right",
+      "item-avatar": "fas fa-angle-right"
+    },
+    {
+      "value": 0.102,
+      "text": "PVC - Rough Top"
+    },
+    {
+      "value": 0.073,
+      "text": "PVC - 120 Cover One Side"
+    },
+    {
+      "value": 0.075,
+      "text": "PVC - 120 Cover x Cover"
+    },
+    {
+      "value": 0.087,
+      "text": "PVC - 150 Cover One Side"
+    },
+    {
+      "value": 0.106,
+      "text": "PVC - 150 Cover x Cover"
+    },
+    {
+      "value": 0.106,
+      "text": "PVC - 200 Cover One Side"
+    },
+    {
+      "value": 0.098,
+      "text": "PVC - 250 Cover One Side"
+    },
+    {
+      "value": 0.194,
+      "text": "PVC - 450 Cover x Cover"
+    },
+    {
+      "value": 0.089,
+      "text": "PVC - Crescent/Z Top"
+    },
+    {
+      "text": "Rubber",
+      "disabled": true
+    },
+    {
+      "value": 0.075,
+      "text": "Rubber - 3 ply - 135 White Nitrile"
+    },
+    {
+      "value": 0.080,
+      "text": "Rubber - 2 ply - 220 1/8\" x Bare"
+    },
+    {
+      "value": 0.189,
+      "text": "Rubber - 2 ply - 220 3x1"
+    },
+    {
+      "value": 0.207,
+      "text": "Rubber - 3 ply - 330 3x1"
+    },
+    {
+      "value": 0.20,
+      "text": "Rubber - 3 ply 330 Hot Asphalt"
+    },
+    {
+      "value": 0.219,
+      "text": "Rubber - 3 ply - 330 1/4\" x 1/16\""
+    },
+    {
+      "value": 0.226,
+      "text": "Rubber - 3 ply - 330 1/4\" x 1/8\""
+    },
+    {
+      "value": 0.280,
+      "text": "Rubber - 1 ply - 440 1/4\" x 1/16\""
+    },
+    {
+      "text": "Misc",
+      "disabled": true
+    },
+    {
+      "value": 0.037,
+      "text": "Misc - 0.060\" EPDM C.I. Sheet"
+    }
+  ],
+  "widths": [
+    { "value": 12, "text": "12\"" },
+    { "value": 16, "text": "16\"" },
+    { "value": 18, "text": "18\"" },
+    { "value": 20, "text": "20\"" },
+    { "value": 24, "text": "24\"" },
+    { "value": 30, "text": "30\"" },
+    { "value": 36, "text": "36\"" },
+    { "value": 42, "text": "42\"" },
+    { "value": 48, "text": "48\"" },
+    { "value": 60, "text": "60\"" },
+    { "value": 72, "text": "72\"" }
+  ],
+  "defaultInputs": {
+    "currentInput": null,
+    "belt": {},
+    "width": {
+      "sel": null,
+      "box": null
+    },
+    "length": {
+      "feet": null,
+      "inches": null
+    }
+  }
 }
+

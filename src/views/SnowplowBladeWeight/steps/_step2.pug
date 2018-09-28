@@ -14,14 +14,6 @@ v-card-text
       v-flex(xs6)
         v-text-field(type='number' label='Inches' box v-model='calcInput.length.inches' clearable)
       v-spacer
-
-    //- div(v-for='(f, i) in calcInput.shankMeas' :key='i')
-      v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i]' clearable :label='`Shank OD #` + (i + 1)')
-        v-btn(flat icon color='error' slot='append-outer' v-show='f.btn' style='top: -10px;' @click.native='removeMeas(calcInput.shankMeas, i)')
-          v-icon delete
-    //- v-layout(row justify-center)
-      v-flex(xs12 sm10 md8)
-        v-btn(block color='accent' @click.native='addMeasurement(calcInput.shankMeas)' :disabled='calcInput.shankMeas.length < 6 ? false : true') Add A Measurement
 //- Navigation buttons
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)

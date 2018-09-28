@@ -1,6 +1,5 @@
 <template lang="pug">
   v-container.pa-0(fluid)
-    p {{ calcInput.beltSel.val === null ? `nullz` : calcInput.beltSel.val.value }}
     include ../views/Global/_snackbar.pug
     v-stepper.transparent.elevation-0(v-model='currentStep')
       //- Steps
@@ -38,34 +37,40 @@
         snackbar: { text: null, display: false },
         beltTypes: ConveyorBeltData.beltTypes,
         beltData: {
-          materials: [
-            { text: 'Rubber', value: 'rubber' },
-            { text: 'PVC', value: 'pvc' }
-          ],
-          plies: [
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-          ],
-          piw: [
-            120, 150, 200, 220, 250, 275, 300, 330
-          ]
+          types: ConveyorBeltData.types,
+          widths: ConveyorBeltData.widths
         },
         calcInput: {
           currentInput: null,
-          belt: null,
-          beltSel: {
-            mat: null,
-            ply: null,
-            piw: null,
-            val: null,
-            topCover: null,
-            botCover: null
+          belt: {},
+          width: {
+            sel: null,
+            box: null
+          },
+          length: {
+            feet: null,
+            inches: null
           }
         }
       }
     },
     methods: {
+      doTheCalculation () {
+        //
+      },
+      doCopy (theText) {
+        var compo = this
+        this.$copyText(theText).then(function (e) {
+          compo.snackbar.text = 'Copied [<em> ' + theText + ' </em>] to the clipboard'
+          compo.snackbar.display = true
+        }, function (e) {
+          alert('Can not copy')
+          console.log(e)
+        })
+      },
       resetAll () {
         this.currentStep = 1
+        this.calcInput = ConveyorBeltData.defaultInputs
       },
       moveStep (direction) {
         var thisStep = parseInt(this.currentStep)
@@ -77,40 +82,51 @@
           moveToStep = thisStep - 1
           this.currentStep = moveToStep
         }
-      },
-      wasSelected () {
-        var selMat = this.calcInput.beltSel.mat
-        var newSet = this.currentInput
-        if (selMat === null) {
-          this.calcInput.beltSel.mat = newSet
-        }
-        this.currentInput = null
       }
     },
     computed: {
-      selectedMaterialItems () {
-        var selMat = this.calcInput.beltSel.mat
-        if (selMat !== null) {
-          return selMat.items
+      beltDescription () {
+        var b = this.calcInput.belt.text
+        var w = this.setWidth + '"'
+        var lf = Number(this.calcInput.length.feet)
+        var li = Number(this.calcInput.length.inches)
+        var l
+        if (lf === 0) {
+          l = li + '"'
+        } else if (li === 0) {
+          l = lf + '\''
         } else {
-          return []
+          l = lf + '\'' + ' ' + li + '"'
         }
+        return w + ' wide ' + b + ', ' + l + ' long'
       },
-      selectedPiwItems () {
-        var selPiw = this.calcInput.beltSel.piw
-        if (selPiw !== null) {
-          return selPiw.items
-        } else {
-          return []
-        }
+      beltWeight () {
+        var b = this.calcInput.belt.value
+        var w = this.setWidth
+        var l = this.beltLengthToFeet
+
+        return ((b * w) * l).toFixed(3)
       },
-      selectedPlyItems () {
-        var selPly = this.calcInput.beltSel.ply
-        if (selPly !== null) {
-          return selPly.items
-        } else {
-          return []
+      beltLengthToFeet () {
+        var foot = this.calcInput.length.feet
+        var inch = this.calcInput.length.inches
+        var totalFeet = (Number(foot) + Number(inch / 12))
+        return totalFeet
+      },
+      setWidth () {
+        var theWidth
+        if (this.calcInput.width.box === null && this.calcInput.width.sel === null) {
+        } else if (this.calcInput.width.box !== null) {
+          //
+          this.calcInput.width.sel = null
+          theWidth = this.calcInput.width.box
+          //
+        } else if (this.calcInput.width.sel !== null) {
+          //
+          theWidth = this.calcInput.width.sel
+          //
         }
+        return theWidth
       }
     }
   }

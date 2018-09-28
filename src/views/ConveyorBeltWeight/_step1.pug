@@ -4,39 +4,15 @@ v-card-title.pb-0(primary-title style='display: block;')
 v-card-text
   v-container.pa-0(fluid)
     v-layout(row)
-      .text-xs-center
-        v-chip(v-model='calcInput.beltSel.mat !== null ? true : false')
-          | {{ calcInput.beltSel.mat === null ? `null` : calcInput.beltSel.mat.name }}
-          v-icon.ml-2(small @click='calcInput.beltSel.mat = null, calcInput.beltSel.piw = null, calcInput.beltSel.ply = null, calcInput.beltSel.val = null') far fa-times
-        v-chip(v-model='calcInput.beltSel.piw !== null ? true : false')
-          | {{ calcInput.beltSel.piw === null ? `null` : calcInput.beltSel.piw.name }}
-          v-icon.ml-2(small @click='calcInput.beltSel.piw = null, calcInput.beltSel.ply = null, calcInput.beltSel.val = null') far fa-times
-        v-chip(v-model='calcInput.beltSel.ply !== null ? true : false')
-          | {{ calcInput.beltSel.ply === null ? `null` : calcInput.beltSel.ply.name }}
-          v-icon.ml-2(small @click='calcInput.beltSel.ply = null, calcInput.beltSel.val = null') far fa-times
-        v-chip(v-model='calcInput.beltSel.val !== null ? true : false')
-          | {{ calcInput.beltSel.val === null ? `null` : calcInput.beltSel.val.name }}
-          v-icon.ml-2(small @click='calcInput.beltSel.val = null') far fa-times
-    //- v-alert.mb-3.sirp-alert-text(:value='steps.compFactor.warn' :type='steps.compFactor.warnType')
-    //-   strong
-    //-     | {{ steps.compFactor.warnType === 'warning' ? 'WARNING!' : 'DANGER!' }}
-    //-     em  {{ setWarning }}
-    v-select(v-show='calcInput.beltSel.mat === null' box return-object :items='beltTypes' item-text='name' item-value='name' label='Select a material' v-model='calcInput.beltSel.mat')
-    v-select(v-show='calcInput.beltSel.mat !== null && calcInput.beltSel.piw === null' box return-object :items='selectedMaterialItems' item-text='name' item-value='name' label='Select a tensile strength' v-model='calcInput.beltSel.piw')
-    v-select(v-show='calcInput.beltSel.piw !== null && calcInput.beltSel.ply === null' box return-object :items='selectedPiwItems' item-text='name' item-value='name' :label='calcInput.beltSel.mat !== null && calcInput.beltSel.mat.name === `PVC` ? `Select Covers` : `Select number of plies`' v-model='calcInput.beltSel.ply')
-    v-select(v-show='calcInput.beltSel.ply !== null && calcInput.beltSel.val === null' box return-object :items='selectedPlyItems' item-text='name' item-value='name' label='Select belt covers' v-model='calcInput.beltSel.val')
-    //- v-layout(row)
-    //-   v-spacer
-    //-   p.sirp-divider
-    //-     span or
-    //-   v-spacer
-    //- v-text-field(type='number' hint='Enter as a full percentage, not a decimal' label='Enter a custom compression factor' box v-model='calcInput.comp.box' clearable suffix='%')
+      //- v-select(:items='beltData.types')
+      v-select.belt-types-select(box v-model='calcInput.belt' :items="beltData.types" return-object label="Select a type of belt" clearable)
+
 //- Navigation buttons
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)
   v-flex.text-xs-right(flex xs6 sm5 md4)
     //- v-btn.primary( @click='moveStep(`f`)' :disabled='!!setCompFac ? false : true')
-    v-btn.primary( @click='moveStep(`f`)')
+    v-btn.primary(@click='moveStep(`f`)' :disabled='calcInput.belt.value === undefined ? true : false')
       | Next
       v-icon(right) navigate_next
 

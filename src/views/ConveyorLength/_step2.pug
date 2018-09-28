@@ -1,0 +1,27 @@
+//- v-card.mb-5
+v-card-title.pb-0(primary-title style='display: block;')
+  .headline Determine span between pullies
+  div.grey--text.text--darken-1 Enter the distance in feet between the shaft centers
+v-card-text
+  v-container.pa-0(fluid)
+    v-layout(row)
+      v-spacer
+      v-flex(xs6)
+        v-text-field(type='number' label='Feet' box v-model='calcInput.span.feet' clearable)
+      v-spacer
+    v-layout(row)
+      v-spacer
+      v-flex(xs6)
+        v-text-field(type='number' label='Inches' box v-model='calcInput.span.inches' clearable)
+      v-spacer
+//- Navigation buttons
+v-layout(row justify-center)
+  v-flex(flex xs6 sm5 md4)
+    v-btn(@click='currentStep = 1')
+      v-icon(left) navigate_before
+      | Back
+  v-flex.text-xs-right(flex xs6 sm5 md4)
+    //- v-btn.primary(@click='moveStep(`f`)' :disabled='$makeAverage(calcInput.shankMeas) == 0 ? true : false')
+    v-btn.primary(@click='moveStep(`f`)' :disabled='calcInput.span.feet === null && calcInput.span.inches === null ? true : false')
+      | Next
+      v-icon(right) navigate_next

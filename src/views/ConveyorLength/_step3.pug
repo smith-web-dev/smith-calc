@@ -1,0 +1,39 @@
+//- v-card.mb-5
+v-card-title.pb-0(primary-title style='display: block;')
+  .headline Results
+v-card-text
+  v-container.pa-0(fluid)
+    v-list(three-line subheader)
+      //- Description
+      v-list-tile
+        v-list-tile-content
+          v-list-tile-title Description
+          v-list-tile-sub-title {{ makeDesc }}
+        v-list-tile-action
+          v-btn(icon ripple @click.native='doCopy(makeDesc)')
+            v-icon(color="grey lighten-1") file_copy
+      //- Length
+      v-list-tile
+        v-list-tile-content
+          //- v-list-tile-title(v-html='decToFrac')
+          v-list-tile-title Conveyor Length
+          v-list-tile-sub-title {{ doCalculation }}
+        v-list-tile-action
+          v-btn(icon ripple @click.native='doCopy(doCalculation)')
+            v-icon(color="grey lighten-1") file_copy
+      //- Extended weight
+      //- v-list-tile
+      //-   v-list-tile-content
+      //-     v-list-tile-title {{ extWeight }} pounds
+      //-     //- v-list-tile-title {{ dsplyRslt() }}mm
+      //-     v-list-tile-sub-title Extended quantity weight
+      //-   v-list-tile-action
+      //-     v-btn(icon ripple @click.native='doCopy((extWeight + ` pounds`))')
+      //-       v-icon(color="grey lighten-1") file_copy
+//- Navigation buttons
+v-layout(row justify-center)
+  v-flex(flex xs6 sm5 md4)
+    v-btn(@click='resetAll()')
+      v-icon(left small) far fa-undo
+      | Start Over
+

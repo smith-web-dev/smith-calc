@@ -49,6 +49,8 @@ Vue.mixin({
   }
 })
 
+// this.$Vuetify.icons.dropdown = 'fas fa-star'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
