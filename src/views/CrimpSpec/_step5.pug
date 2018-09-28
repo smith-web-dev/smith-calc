@@ -4,7 +4,7 @@ v-card-title.pb-0(primary-title style='display: block;')
   //- div.grey--text.text--darken-1 Either select a type of hose or enter a custom compression factor
 v-card-text
   v-container.pa-0(fluid)
-    v-list(two-line subheader)
+    v-list(three-line subheader)
       //- Decimal Result
       v-list-tile
         v-list-tile-content
@@ -36,6 +36,7 @@ v-card-text
 v-layout(row justify-center)
   v-flex(xs12 sm10 md8)
     v-btn(block color='accent', @click='resetAll()')
+      v-icon(left small) far fa-undo
       | Start Over
 
 

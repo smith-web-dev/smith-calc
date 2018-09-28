@@ -1,0 +1,13 @@
+{
+  "defaultInputs": {
+    "equalPulleys": false,
+    "pully": {
+      "one": null,
+      "two": null
+    },
+    "span": {
+      "feet": null,
+      "inches": null
+    }
+  }
+}

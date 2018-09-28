@@ -4,40 +4,31 @@ v-subheader(v-show='shipment.history.length > 0')
   span.font-weight-light.ml-1 (Will be removed after 90 days)
 v-list(two-line)
   v-list-group(v-for="(item, index) in orderBy(shipment.history, 'date', -1)" v-model="item.active" :key="index" no-action)
-
-    v-list-tile(avatar slot="activator")
-      v-list-tile-avatar
-        v-menu(bottom right)
-          v-btn(
-            slot="activator"
-            icon
-            @click.prevent)
-            v-icon far fa-ellipsis-v
-
-          v-list
-            v-list-tile(@click='restoreShipment(item.items)')
-              v-list-tile-title
-                v-icon.mr-2(left size='20px') fas fa-redo-alt fa-flip-horizontal
-                | Restore Shipment
-            v-list-tile
-              v-list-tile-title(@click='')
-                download-excel(:data='item.items' type='csv' :name='makeFileName(item.date)')
-                  v-icon.mr-2(left size='20px') fas fa-file-spreadsheet
-                  | Download Data as .csv
-            v-list-tile
-              v-list-tile-title(@click='')
-                v-icon.mr-2(left size='20px') fas fa-minus-hexagon
-                | Delete Shipment
+    v-list-tile(slot="activator")
       v-list-tile-content
         v-list-tile-title {{ item.date | moment('calendar', null, { sameElse: 'dddd, MMMM Do YYYY, h:mm A' }) }}
         v-list-tile-sub-title(v-show='item.note !== null')
-          v-icon.mr-2(small) note
+          v-icon.pr-2(small) note
           | {{ item.note }}
         v-list-tile-sub-title
-          v-icon.mr-2(small) format_list_bulleted
-          | {{ item.items.length }} {{ item.items.length | pluralize(`line`) }} with {{ parseInt(item.items.sum(`quantity`)) }} {{ parseInt(item.items.sum(`quantity`)) | pluralize(`blade`) }}
+          v-icon.pr-2(small) format_list_bulleted
+          | {{ item.items.length }} {{ item.items.length | pluralize(`line`) }} with {{ parseInt(item.items.sum(`quantity`)) }} {{ parseInt(item.items.sum(`quantity`)) | pluralize(`blade`) }} weighs about {{ savedLineDesc(item.items, `weight`) }} pounds
+
+    div(style="flex: 1 1 auto; display: flex;")
+      v-layout(row justify-center)
+        v-btn(color='info' small @click='restoreShipment(item.items)')
+          v-icon.mr-2(left size='16px') fas fa-redo-alt fa-flip-horizontal
+          | Restore
+        v-btn(color='success' small @click='')
+          download-excel(:data='item.items' type='csv' :name='makeFileName(item.date)')
+            v-icon.mr-2(left size='16px') fas fa-file-spreadsheet
+            | Download CSV
+        v-btn(color='error' small @click='deleteShipment(index)')
+          v-icon.mr-2(left size='16px') fas fa-minus-hexagon
+          | Delete
 
     v-list-tile(v-for="(sub, ind) in item.items" :key="ind" @click="")
+
       v-list-tile-content
         v-list-tile-title {{ sub.size }}
         v-list-tile-sub-title {{ sub.quantity }} {{ sub.quantity | pluralize(`pc`) }} weighing about {{ Math.round(sub.weight) }} {{ Math.round(sub.weight) | pluralize(`pound`) }}

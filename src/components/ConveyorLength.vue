@@ -12,12 +12,13 @@
           include ../views/ConveyorLength/_step2.pug
         v-stepper-content.px-1.pt-1(step='3')
           include ../views/ConveyorLength/_step3.pug
-    //- v-btn(@click='doCalculation(25, equalPullies, 12)') click
-    //- p {{ equalPullies }}
+    //- v-btn(@click='doCalculation(25, calcInput.equalPulleys, 12)') click
+    //- p {{ calcInput.equalPulleys }}
 
 </template>
 
 <script>
+  import cbLengthData from '../data/cbLength.json'
   export default {
     mounted () {
       this.$emit('toolbarExtended', false)
@@ -28,9 +29,9 @@
         currentStep: 0,
         snackbar: { display: false, text: null },
         msg: 'ConveyorLength',
-        equalPullies: false,
         result: null,
         calcInput: {
+          equalPulleys: false,
           pully: {
             one: null,
             two: null
@@ -45,7 +46,7 @@
     computed: {
       firstStepNextDisabled () {
         var theBool
-        if (this.equalPullies) {
+        if (this.calcInput.equalPulleys) {
           if (this.calcInput.pully.one === null) {
             theBool = true
           } else {
@@ -64,7 +65,7 @@
         var D, d, C, result
         var pOne = Number(this.calcInput.pully.one)
         var pTwo = Number(this.calcInput.pully.two)
-        var pEq = Number(this.equalPullies)
+        var pEq = Number(this.calcInput.equalPulleys)
         if (pEq) {
           D = pOne
           d = pOne
@@ -93,15 +94,15 @@
         var cI = Number(this.calcInput.span.inches)
         var diamText
         var spanText
-        if (this.equalPullies) {
-          diamText = 'Pullies with diameter of ' + p1 + '" '
+        if (this.calcInput.equalPulleys) {
+          diamText = 'Pulleys with diameter of ' + p1 + '" '
         } else {
-          diamText = 'Pullies with diameters of ' + p1 + '" and ' + p2 + '"'
+          diamText = 'Pulleys with diameters of ' + p1 + '" and ' + p2 + '"'
         }
         if (cI === null || cI === 0) {
-          spanText = 'With distance between pullies of ' + cF + '\''
+          spanText = 'with distance between pulleys of ' + cF + '\''
         } else {
-          spanText = 'With distance between pullies of ' + cF + '\' ' + cI + '"'
+          spanText = 'with distance between pulleys of ' + cF + '\' ' + cI + '"'
         }
         return diamText + spanText
       }
@@ -119,7 +120,7 @@
       },
       resetAll () {
         this.currentStep = 1
-        // this.calcInput = CrimpSpecData.defaultInputs
+        this.calcInput = cbLengthData.defaultInputs
       },
       moveStep (direction) {
         // direction = 'f' => forward

@@ -158,7 +158,7 @@
         this.alert.display = true
       },
       clearShipment () {
-        this.shipment.dialog = false
+        // this.shipment.dialog = false
         this.alert.display = false
         this.shipment.items = []
         this.resetAll()
@@ -190,6 +190,24 @@
       },
       openShipmentDialog () {
         this.shipment.dialog = true
+      },
+      deleteShipment (index) {
+        var array = this.shipment.history
+        var len = (this.shipment.history.length - 1)
+        var delPos = (len - index)
+        console.log('len: ' + len)
+        console.log('index: ' + index)
+        console.log('delete at: ' + delPos)
+        console.log('array: ' + JSON.stringify(array))
+        if (delPos > -1) {
+          array.splice(delPos, 1)
+        }
+        this.shipment.history = array
+        this.$ls.set('shipments', JSON.stringify(array))
+      },
+      savedLineDesc (items, sort) {
+        var theItems = items.sum(sort)
+        return Math.ceil(theItems)
       }
     },
     computed: {
