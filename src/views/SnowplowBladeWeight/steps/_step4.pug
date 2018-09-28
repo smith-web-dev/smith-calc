@@ -8,8 +8,8 @@ v-card-text
       //- Part size x length
       v-list-tile
         v-list-tile-content
-          v-list-tile-title {{ descDisp }}
-          v-list-tile-sub-title Description
+          v-list-tile-title Description
+          v-list-tile-sub-title {{ descDisp }}
         v-list-tile-action
           v-btn(icon ripple @click.native='doCopy(descDisp)')
             v-icon(color="grey lighten-1") file_copy
@@ -17,17 +17,16 @@ v-card-text
       v-list-tile
         v-list-tile-content
           //- v-list-tile-title(v-html='decToFrac')
-          v-list-tile-title {{ pcWeight }} pounds
-          v-list-tile-sub-title Weight per piece
+          v-list-tile-title Weight per piece
+          v-list-tile-sub-title {{ pcWeight }} pounds
         v-list-tile-action
           v-btn(icon ripple @click.native='doCopy((pcWeight + ` pounds`))')
             v-icon(color="grey lighten-1") file_copy
       //- Extended weight
       v-list-tile
         v-list-tile-content
-          v-list-tile-title {{ extWeight }} pounds
-          //- v-list-tile-title {{ dsplyRslt() }}mm
-          v-list-tile-sub-title Extended quantity weight
+          v-list-tile-title Extended quantity weight
+          v-list-tile-sub-title {{ extWeight }} pounds
         v-list-tile-action
           v-btn(icon ripple @click.native='doCopy((extWeight + ` pounds`))')
             v-icon(color="grey lighten-1") file_copy

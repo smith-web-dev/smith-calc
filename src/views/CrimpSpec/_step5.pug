@@ -8,8 +8,8 @@ v-card-text
       //- Decimal Result
       v-list-tile
         v-list-tile-content
-          v-list-tile-title {{ calcInput.result }}
-          v-list-tile-sub-title Decimal Inches
+          v-list-tile-title Decimal Inches
+          v-list-tile-sub-title {{ calcInput.result }}
         v-list-tile-action
           v-btn(icon ripple @click.native='doCopy(calcInput.result)')
             v-icon(color="grey lighten-1") file_copy
@@ -17,17 +17,16 @@ v-card-text
       v-list-tile
         v-list-tile-content
           //- v-list-tile-title(v-html='decToFrac')
-          v-list-tile-title {{ calcInput.resultFrac }}
-          v-list-tile-sub-title Fractional Inches
+          v-list-tile-title Fractional Inches
+          v-list-tile-sub-title {{ calcInput.resultFrac }}
         v-list-tile-action
           v-btn(icon ripple @click.native='doCopy(calcInput.resultFrac)')
             v-icon(color="grey lighten-1") file_copy
       //- Metric Result
       v-list-tile
         v-list-tile-content
-          v-list-tile-title {{ calcInput.resultMetric }}
-          //- v-list-tile-title {{ dsplyRslt() }}mm
-          v-list-tile-sub-title Metric
+          v-list-tile-title Metric
+          v-list-tile-sub-title {{ calcInput.resultMetric }}
         v-list-tile-action
           v-btn(icon ripple @click.native='doCopy(calcInput.resultMetric)')
             v-icon(color="grey lighten-1") file_copy
