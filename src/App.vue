@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-app#inspire
+  v-app(:dark='isDark')
     include ./views/Global/_navDrawer.pug
     include ./views/Global/_toolbar.pug
     v-content
@@ -17,6 +17,7 @@
   export default {
     data () {
       return {
+        isDark: false,
         drawer: false,
         navItems: navItems,
         cordova: Vue.cordova,
@@ -36,8 +37,29 @@
       this.cordova.on('deviceready', () => {
         self.onDeviceReady()
       })
+      var appDarkMode = this.$ls.get('appDarkMode')
+      // check if its in localstorage
+      if (appDarkMode === null) {
+        this.$ls.set('appDarkMode', false)
+        appDarkMode = this.$ls.get('appDarkMode')
+        this.isDark = JSON.parse(appDarkMode)
+      } else {
+        appDarkMode = this.$ls.get('appDarkMode')
+        this.isDark = JSON.parse(appDarkMode)
+      }
     },
     methods: {
+      toggleDarkMode () {
+        var appDarkMode = this.$ls.get('appDarkMode')
+
+        if (JSON.parse(appDarkMode) === false) {
+          this.$ls.set('appDarkMode', JSON.stringify(true))
+          this.isDark = true
+        } else {
+          this.$ls.set('appDarkMode', JSON.stringify(false))
+          this.isDark = false
+        }
+      },
       fabClicked (func) {
         this.childFunc = func
       },

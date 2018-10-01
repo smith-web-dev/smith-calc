@@ -183,7 +183,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .sirp-alert-text {
     color: rgba(0, 0, 0, 0.8);
     letter-spacing: 0.3px;
@@ -202,7 +202,19 @@
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.6);
     font-weight: 700;
-    background: #fafafa;
     padding:0 10px;
   }
+
+  .theme--dark {
+    .sirp-divider span {
+      background: #303030;
+    }
+  }
+
+  .theme--light {
+    .sirp-divider span {
+      background: #fafafa;
+    }
+  }
+
 </style>
