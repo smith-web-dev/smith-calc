@@ -6,8 +6,6 @@ const makeAverage = {
       var theSum = theArray.reduce(function (a, b) {
         return b == null ? a : Number(a) + Number(b)
       }, 0)
-
-      // console.log((theSum / theArray.length))
       return (theSum / theArray.length)
     }
   }

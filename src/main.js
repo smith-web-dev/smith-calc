@@ -17,7 +17,7 @@ import theme from '@/data/theme.js'
 import App from './App'
 import router from './router'
 
-import { makeAverage } from '@/util/index.js'
+import { makeAverage, findCrimpSpec } from '@/util/index.js'
 
 Vue.config.productionTip = false
 VueClipboard.config.autoSetContainer = true // add this line
@@ -33,6 +33,7 @@ Vue.use(Vue2Filters)
 Vue.use(require('moment'))
 
 Vue.use(makeAverage)
+Vue.use(findCrimpSpec)
 
 // add cordova.js only if serving the app through file://
 if (window.location.protocol === 'file:' || window.location.port === '3000') {
@@ -45,7 +46,10 @@ if (window.location.protocol === 'file:' || window.location.port === '3000') {
 // Mixins
 Vue.mixin({
   methods: {
-    capitalizeFirstLetter: str => str.charAt(0).toUpperCase() + str.slice(1)
+    //
+  },
+  computed: {
+
   }
 })
 

@@ -31,6 +31,7 @@
 <script>
   import CrimpSpecData from '@/data/CrimpSpec.json'
   import * as math from 'mathjs'
+  let convert = require('convert-units')
 
   function makeFraction (input, td) {
     var nume
@@ -97,19 +98,24 @@
       doTheCalculation () {
         this.currentStep = 5
 
-        var a = this.$makeAverage(this.calcInput.shankMeas)
-        var b = (((this.$makeAverage(this.calcInput.hoseWallMeas)) * 2) * (1 - this.setCompFac))
-        var c = ((this.$makeAverage(this.calcInput.ferruleWallMeas)) * 2)
+        var v = this.metricConvertCmIn
+        var w = this.setCompFac
+        var x = this.$makeAverage(this.calcInput.shankMeas)
+        var y = this.$makeAverage(this.calcInput.hoseWallMeas)
+        var z = this.$makeAverage(this.calcInput.ferruleWallMeas)
 
-        var result = (a + b + c)
+        var b = (((convert(y).from(v).to('in')) * 2) * (1 - w))
+        var c = ((convert(z).from(v).to('in')) * 2)
 
-        this.calcInput.result = ((result).toFixed(3) + '"')
-        // this.calcInput.resultFrac = (result).toFixed(3)
-        this.calcInput.resultFrac = (makeFraction(result, 64) + '"')
+        var result = ((convert(x).from(v).to('in')) + b + c)
+        // var result =
+        var resultInch = this.$findCrimpSpec(w, x, y, z)
+
+        var resLabel = (this.theAppIsMetric ? ' cm' : '"')
+
+        this.calcInput.result = ((result).toFixed(3) + resLabel)
+        this.calcInput.resultFrac = (makeFraction(resultInch, 64) + '"')
         this.calcInput.resultMetric = (((result) * 25.4).toFixed(3) + 'mm')
-
-        // ((calcInput.result) * 25.4).toFixed(3)
-        // (calcInput.result).toFixed(3)
       },
       addMeasurement (arr) {
         var newMeas = null
@@ -133,12 +139,22 @@
           moveToStep = thisStep - 1
           this.currentStep = moveToStep
         }
-      },
-      addToHistory () {
-
       }
     },
     computed: {
+      theAppIsMetric () {
+        var appMetricUnits = this.$ls.get('appMetricUnits')
+        return JSON.parse(appMetricUnits)
+      },
+      metricConvertCmIn () {
+        var appMetricUnits = this.$ls.get('appMetricUnits')
+        var theBool = JSON.parse(appMetricUnits)
+        if (theBool) {
+          return 'cm'
+        } else {
+          return 'in'
+        }
+      },
       setCompFac () {
         var theCompFac
         if (this.calcInput.comp.box === null && this.calcInput.comp.sel === null) {
@@ -192,7 +208,6 @@
   .sirp-divider {
     width: 95%;
     text-align: center;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
     line-height: 0px;
     margin: 20px 0 30px;
   }
@@ -200,20 +215,29 @@
   .sirp-divider span {
     font-size: 16px;
     text-transform: uppercase;
-    color: rgba(0, 0, 0, 0.6);
     font-weight: 700;
     padding:0 10px;
   }
 
-  .theme--dark {
-    .sirp-divider span {
-      background: #303030;
+  .theme--light {
+    .sirp-divider {
+      border-bottom: 2px solid rgba(0, 0, 0, 0.12) !important;
+
+      span {
+        background: #fafafa !important;
+        color: #757575 !important;
+      }
     }
   }
 
-  .theme--light {
-    .sirp-divider span {
-      background: #fafafa;
+  .theme--dark {
+    .sirp-divider {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.12) !important;
+
+      span {
+        background: #303030 !important;
+        color: #757575;
+      }
     }
   }
 

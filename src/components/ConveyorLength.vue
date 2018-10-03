@@ -19,6 +19,8 @@
 
 <script>
   import cbLengthData from '../data/cbLength.json'
+  let convert = require('convert-units')
+
   export default {
     mounted () {
       this.$emit('toolbarExtended', false)
@@ -44,6 +46,28 @@
       }
     },
     computed: {
+      theAppIsMetric () {
+        var appMetricUnits = this.$ls.get('appMetricUnits')
+        return JSON.parse(appMetricUnits)
+      },
+      metricConvertCmIn () {
+        var appMetricUnits = this.$ls.get('appMetricUnits')
+        var theBool = JSON.parse(appMetricUnits)
+        if (theBool) {
+          return 'cm'
+        } else {
+          return 'in'
+        }
+      },
+      metricConvertMetFt () {
+        var appMetricUnits = this.$ls.get('appMetricUnits')
+        var theBool = JSON.parse(appMetricUnits)
+        if (theBool) {
+          return 'm'
+        } else {
+          return 'ft'
+        }
+      },
       firstStepNextDisabled () {
         var theBool
         if (this.calcInput.equalPulleys) {
@@ -63,9 +87,15 @@
       },
       doCalculation () {
         var D, d, C, result
-        var pOne = Number(this.calcInput.pully.one)
-        var pTwo = Number(this.calcInput.pully.two)
+        var v = this.metricConvertCmIn
+        var w = this.metricConvertMetFt
+        var pOne = convert(Number(this.calcInput.pully.one)).from(v).to('in')
+        var pTwo = convert(Number(this.calcInput.pully.two)).from(v).to('in')
         var pEq = Number(this.calcInput.equalPulleys)
+
+        var inpFtMet = convert(Number(this.calcInput.span.feet)).from(w).to('ft')
+        var inpInCm = convert(Number(this.calcInput.span.inches)).from(v).to('in')
+
         if (pEq) {
           D = pOne
           d = pOne
@@ -78,14 +108,18 @@
             d = pOne
           }
         }
-        C = Number(this.calcInput.span.feet) + (Number(this.calcInput.span.inches) / 12)
+
+        C = inpFtMet + (inpInCm / 12)
         result = ((Math.PI / 2) * (D + d)) + (Math.pow((D - d), 2) / (4 * C)) + (2 * C)
         var resultFt = (result - (result % 1))
         var resultDec = result % 1
         var resultIn = (12 * resultDec) - ((12 * resultDec) % 1)
-        // console.log(D + ' ' + d + ' ' + C)
-        // L = ((pi / 2) * (D + d)) + ((D - d)^2 / (4 * C)) + (2 * C)
-        return resultFt + '\' ' + resultIn + '"'
+
+        if (this.theAppIsMetric) {
+          return (convert(result).from('ft').to('m')).toFixed(3) + 'm'
+        } else {
+          return resultFt + '\' ' + resultIn + '"'
+        }
       },
       makeDesc () {
         var p1 = Number(this.calcInput.pully.one)
@@ -95,14 +129,14 @@
         var diamText
         var spanText
         if (this.calcInput.equalPulleys) {
-          diamText = 'Pulleys with diameter of ' + p1 + '" '
+          diamText = 'Pulleys with diameter of ' + p1 + (this.theAppIsMetric ? 'cm ' : '" ')
         } else {
-          diamText = 'Pulleys with diameters of ' + p1 + '" and ' + p2 + '"'
+          diamText = 'Pulleys with diameters of ' + p1 + (this.theAppIsMetric ? 'cm ' : '" ') + ' and ' + p2 + (this.theAppIsMetric ? 'cm ' : '"')
         }
         if (cI === null || cI === 0) {
-          spanText = 'with distance between pulleys of ' + cF + '\''
+          spanText = 'with distance between pulleys of ' + cF + (this.theAppIsMetric ? 'm' : '\'')
         } else {
-          spanText = 'with distance between pulleys of ' + cF + '\' ' + cI + '"'
+          spanText = 'with distance between pulleys of ' + cF + (this.theAppIsMetric ? 'm ' : '\' ') + cI + (this.theAppIsMetric ? 'cm' : '"')
         }
         return diamText + spanText
       }

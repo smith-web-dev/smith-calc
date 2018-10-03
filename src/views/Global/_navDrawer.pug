@@ -16,8 +16,8 @@ v-navigation-drawer(v-model='drawer' fixed clipped app)
           v-list-tile-title {{ n.text }}
     v-spacer
     v-list
-      v-list-tile(@click='toggleDarkMode()')
+      v-list-tile(@click='settingsDialog = !settingsDialog')
         v-list-tile-action
-          v-icon fas {{ isDark ? `far fa-moon` : `far fa-sun` }}
+          v-icon far fa-cogs
         v-list-tile-content
-          v-list-tile-title {{ isDark ? `Dark Mode` : `Light Mode` }}
+          v-list-tile-title Settings

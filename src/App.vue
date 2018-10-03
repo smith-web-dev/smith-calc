@@ -2,13 +2,15 @@
   v-app(:dark='isDark')
     include ./views/Global/_navDrawer.pug
     include ./views/Global/_toolbar.pug
+    include ./views/Global/_settingsBottomSheet.pug
     v-content
-      //- span {{ $route }}
-      //- p {{ toolbarExtended }}
-      router-view(
-      @toolbarExtended='makeToolbarExtended'
-      @toolbarFab='setToolbarFab'
-      @childFunc='fabClicked')
+      v-container.pa-0.ma-0(fluid)
+        v-layout(row justify-center)
+          v-flex(xs12 md10 lg8 xl6)
+            router-view(
+            @toolbarExtended='makeToolbarExtended'
+            @toolbarFab='setToolbarFab'
+            @childFunc='fabClicked')
 </template>
 
 <script>
@@ -17,7 +19,9 @@
   export default {
     data () {
       return {
+        settingsDialog: false,
         isDark: false,
+        isMetric: false,
         drawer: false,
         navItems: navItems,
         cordova: Vue.cordova,
@@ -47,8 +51,29 @@
         appDarkMode = this.$ls.get('appDarkMode')
         this.isDark = JSON.parse(appDarkMode)
       }
+      var appMetricUnits = this.$ls.get('appMetricUnits')
+      // check if its in localstorage
+      if (appMetricUnits === null) {
+        this.$ls.set('appMetricUnits', false)
+        appMetricUnits = this.$ls.get('appMetricUnits')
+        this.isMetric = JSON.parse(appMetricUnits)
+      } else {
+        appMetricUnits = this.$ls.get('appMetricUnits')
+        this.isMetric = JSON.parse(appMetricUnits)
+      }
     },
     methods: {
+      toggleMetricUnits () {
+        var appMetricUnits = this.$ls.get('appMetricUnits')
+
+        if (JSON.parse(appMetricUnits) === false) {
+          this.$ls.set('appMetricUnits', JSON.stringify(true))
+          this.isMetric = true
+        } else {
+          this.$ls.set('appMetricUnits', JSON.stringify(false))
+          this.isMetric = false
+        }
+      },
       toggleDarkMode () {
         var appDarkMode = this.$ls.get('appDarkMode')
 
