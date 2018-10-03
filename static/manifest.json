@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://smith-irp.gitlab.io/calc/#/",
+  "start_url": "https://smith-irp.gitlab.io/calc",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#1A237E"
