@@ -30,10 +30,5 @@ v-card-text
           v-btn(icon ripple @click.native='doCopy(calcInput.resultMetric)')
             v-icon(color="grey lighten-1") file_copy
 //- Navigation buttons
-v-layout(row justify-center)
-  v-flex(xs12 sm10 md8)
-    v-btn(block color='accent', @click='resetAll()')
-      v-icon(left small) far fa-undo
-      | Start Over
-
+include ../Global/btns/_step-btn-reset-all.pug
 

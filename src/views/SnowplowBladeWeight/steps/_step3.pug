@@ -30,10 +30,8 @@ v-card-text
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)
     //- v-btn(@click='currentStep = 1')
-    v-btn(@click='moveStep(`b`)')
-      v-icon(left) navigate_before
-      | Back
+    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`b`)')
+      include ../../Global/btns/_step-btn-back-icon.pug
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn.primary(@click='moveStep(`f`)' :disabled='calcInput.quantity === 0 || calcInput.quantity === null ? true : false')
-      | Next
-      v-icon(right) navigate_next
+    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='calcInput.quantity === 0 || calcInput.quantity === null ? true : false')
+      include ../../Global/btns/_step-btn-next-icon.pug

@@ -30,6 +30,7 @@
 
 <script>
   import CrimpSpecData from '@/data/CrimpSpec.json'
+  import ColorProps from '@/data/colorProps.json'
   import * as math from 'mathjs'
   let convert = require('convert-units')
 
@@ -51,6 +52,7 @@
   export default {
     data () {
       return {
+        colorProps: ColorProps,
         currentStep: 0,
         snackbar: { display: false, text: null },
         steps: { compFactor: { warn: false, warnType: 'info' }, shankMeas: { disableAdd: false } },
@@ -150,6 +152,9 @@
       // }
     },
     computed: {
+      theAppIsDark () {
+        return JSON.parse(this.$ls.get('appDarkMode'))
+      },
       theAppIsMetric () {
         var appMetricUnits = this.$ls.get('appMetricUnits')
         return JSON.parse(appMetricUnits)

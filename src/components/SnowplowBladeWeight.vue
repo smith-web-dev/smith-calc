@@ -35,6 +35,7 @@
   // import * as moment from 'moment'
   import Vue from 'vue'
   import SnowplowData from '@/data/Snowplow.json'
+  import ColorProps from '@/data/colorProps.json'
   import moment from 'moment'
   import JsonExcel from 'vue-json-excel'
 
@@ -57,6 +58,7 @@
     },
     data () {
       return {
+        colorProps: ColorProps,
         currentShipments: null,
         delSelect: null,
         currentStep: 0,
@@ -211,6 +213,9 @@
       }
     },
     computed: {
+      theAppIsDark () {
+        return JSON.parse(this.$ls.get('appDarkMode'))
+      },
       bladeLengthToInches () {
         var foot = this.calcInput.length.feet
         var inch = this.calcInput.length.inches

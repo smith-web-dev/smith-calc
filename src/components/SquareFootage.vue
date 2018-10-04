@@ -4,6 +4,7 @@
 </template>
 
 <script>
+  import ColorProps from '@/data/colorProps.json'
   export default {
     mounted () {
       this.$emit('toolbarExtended', false)
@@ -11,7 +12,13 @@
     },
     data () {
       return {
+        colorProps: ColorProps,
         msg: 'SquareFootage'
+      }
+    },
+    computed: {
+      theAppIsDark () {
+        return JSON.parse(this.$ls.get('appDarkMode'))
       }
     }
   }

@@ -119,6 +119,9 @@
       }
     },
     computed: {
+      theAppIsDark () {
+        return JSON.parse(this.$ls.get('appDarkMode'))
+      },
       displayNavItems () {
         let theNavItems = this.navItems
         var result = theNavItems.filter(obj => {

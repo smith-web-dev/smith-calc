@@ -14,10 +14,8 @@ v-card-text
 //- Navigation buttons
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)
-    v-btn(@click='currentStep = 2')
-      v-icon(left) navigate_before
-      | Back
+    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 2')
+      include ../Global/btns/_step-btn-back-icon.pug
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn.primary(@click='moveStep(`f`)' :disabled='$noNullVals(calcInput.hoseWallMeas)')
-      | Next
-      v-icon(right) navigate_next
+    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='$noNullVals(calcInput.hoseWallMeas)')
+      include ../Global/btns/_step-btn-next-icon.pug

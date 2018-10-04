@@ -8,7 +8,7 @@ v-card-text
       strong
         | {{ steps.compFactor.warnType === 'warning' ? 'WARNING!' : 'DANGER!' }}
         em  {{ setWarning }}
-    v-select(box :items='calcData.hoseTypes' label='Select a type of hose' v-model='calcInput.comp.sel' @change='calcInput.comp.box = null' clearable)
+    v-select(:dark='theAppIsDark' box :items='calcData.hoseTypes' label='Select a type of hose' v-model='calcInput.comp.sel' @change='calcInput.comp.box = null' clearable)
     v-layout(row)
       v-spacer
       p.sirp-divider
@@ -19,7 +19,6 @@ v-card-text
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn.primary( @click='moveStep(`f`)' :disabled='!!setCompFac ? false : true')
-      | Next
-      v-icon(right) navigate_next
+    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='!!setCompFac ? false : true')
+      include ../Global/btns/_step-btn-next-icon.pug
 

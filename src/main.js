@@ -14,6 +14,7 @@ import App from './App'
 import router from './router'
 
 import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from '@/util/index.js'
+// import appIsDark from '@/mixins/appIsDark'
 
 Vue.config.productionTip = false
 VueClipboard.config.autoSetContainer = true // add this line
@@ -56,6 +57,23 @@ Vue.mixin({
   }
 })
 
+let theAppIsDark = {
+  computed: {
+    theAppIsDark () {
+      var appDarkMode = this.$ls.get('appDarkMode')
+      // check if its in localstorage
+      if (appDarkMode === null) {
+        this.$ls.set('appDarkMode', false)
+        appDarkMode = this.$ls.get('appDarkMode')
+        return JSON.parse(appDarkMode)
+      } else {
+        appDarkMode = this.$ls.get('appDarkMode')
+        return JSON.parse(appDarkMode)
+      }
+    }
+  }
+}
+
 // this.$Vuetify.icons.dropdown = 'fas fa-star'
 
 /* eslint-disable no-new */
@@ -64,6 +82,7 @@ new Vue({
   router,
   template: '<App/>',
   components: { App },
+  mixins: [ theAppIsDark ],
   head: {
     meta: [
       {

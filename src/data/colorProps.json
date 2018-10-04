@@ -1,0 +1,14 @@
+{
+  "btns": {
+    "stepNav": {
+      "light": {
+        "bg": "white",
+        "fg": "primary"
+      },
+      "dark": {
+        "bg": "grey darken-3",
+        "fg": "accent"
+      }
+    }
+  }
+}

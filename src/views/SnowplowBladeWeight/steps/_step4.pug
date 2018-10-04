@@ -33,11 +33,11 @@ v-card-text
 //- Navigation buttons
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)
-    v-btn(@click='resetAll()')
+    v-btn(round @click='resetAll()')
       v-icon(left small) far fa-undo
       | Start Over
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn(color='accent' @click.native='addToShipment()')
+    v-btn(round color='accent' @click.native='addToShipment()')
       | Add to shipment
       v-icon(right small) far fa-plus
 

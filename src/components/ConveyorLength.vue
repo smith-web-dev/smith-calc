@@ -19,6 +19,7 @@
 
 <script>
   import cbLengthData from '../data/cbLength.json'
+  import ColorProps from '@/data/colorProps.json'
   let convert = require('convert-units')
 
   export default {
@@ -28,6 +29,7 @@
     },
     data () {
       return {
+        colorProps: ColorProps,
         currentStep: 0,
         snackbar: { display: false, text: null },
         msg: 'ConveyorLength',
@@ -46,6 +48,9 @@
       }
     },
     computed: {
+      theAppIsDark () {
+        return JSON.parse(this.$ls.get('appDarkMode'))
+      },
       theAppIsMetric () {
         var appMetricUnits = this.$ls.get('appMetricUnits')
         return JSON.parse(appMetricUnits)

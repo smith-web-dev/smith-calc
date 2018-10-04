@@ -14,10 +14,8 @@ v-card-text
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    //- v-btn.primary( @click='moveStep(`f`)' :disabled='!!setCompFac ? false : true')
-    v-btn.primary(@click='moveStep(`f`)' :disabled='firstStepNextDisabled')
-      | Next
-      v-icon(right) navigate_next
+    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='firstStepNextDisabled')
+      include ../Global/btns/_step-btn-next-icon.pug
 
 
 

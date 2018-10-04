@@ -25,6 +25,7 @@
 
 <script>
   import ConveyorBeltData from '../data/ConveyorBeltWeight.json'
+  import ColorProps from '@/data/colorProps.json'
 
   export default {
     mounted () {
@@ -34,6 +35,7 @@
     data () {
       return {
         currentStep: 0,
+        colorProps: ColorProps,
         snackbar: { text: null, display: false },
         beltTypes: ConveyorBeltData.beltTypes,
         beltData: {
@@ -85,6 +87,9 @@
       }
     },
     computed: {
+      theAppIsDark () {
+        return JSON.parse(this.$ls.get('appDarkMode'))
+      },
       beltDescription () {
         var b = this.calcInput.belt.text
         var w = this.setWidth + '"'

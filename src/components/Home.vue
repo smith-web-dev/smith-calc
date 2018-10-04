@@ -12,13 +12,20 @@
 
 <script>
   import navItems from '../data/MainNavItems.json'
+  import ColorProps from '@/data/colorProps.json'
   export default {
     mounted () {
       this.$emit('toolbarExtended', false)
     },
     data () {
       return {
+        colorProps: ColorProps,
         navItems: navItems
+      }
+    },
+    computed: {
+      theAppIsDark () {
+        return JSON.parse(this.$ls.get('appDarkMode'))
       }
     }
   }
