@@ -9,7 +9,7 @@ v-navigation-drawer(v-model='drawer' fixed clipped app)
             v-list-tile-title SmithCalc
             v-list-tile-sub-title v1.0.0
     v-list
-      v-list-tile(v-for='(n, i) in navItems' :key='i' :to='n.path')
+      v-list-tile(v-for='(n, i) in displayNavItems' :key='i' :to='n.path')
         v-list-tile-action
           v-icon {{ n.icon }}
         v-list-tile-content

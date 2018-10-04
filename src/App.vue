@@ -117,6 +117,15 @@
         // Handle the back-button event on Android. By default it will exit the app.
         navigator.app.exitApp()
       }
+    },
+    computed: {
+      displayNavItems () {
+        let theNavItems = this.navItems
+        var result = theNavItems.filter(obj => {
+          return obj.display === true
+        })
+        return result
+      }
     }
   }
 </script>
