@@ -13,7 +13,7 @@ import theme from '@/data/theme.js'
 import App from './App'
 import router from './router'
 
-import { makeAverage, findCrimpSpec, noNullVals } from '@/util/index.js'
+import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from '@/util/index.js'
 
 Vue.config.productionTip = false
 VueClipboard.config.autoSetContainer = true // add this line
@@ -31,6 +31,7 @@ Vue.use(require('moment'))
 Vue.use(makeAverage)
 Vue.use(findCrimpSpec)
 Vue.use(noNullVals)
+Vue.use(arrayFilter)
 
 // add cordova.js only if serving the app through file://
 if (window.location.protocol === 'file:' || window.location.port === '3000') {

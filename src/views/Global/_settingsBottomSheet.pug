@@ -1,19 +1,27 @@
-v-dialog(v-model='settingsDialog' fullscreen hide-overlay transition='dialog-bottom-transition')
+v-dialog(v-model='settingsDialog' max-width='560px')
   v-card(:dark='isDark')
-    v-toolbar(dark color='primary')
+    v-card-title(primary-title)
+      div.title Settings
+    //- v-toolbar(dark color='primary')
       v-btn(icon dark @click.native='settingsDialog = false')
         v-icon close
 
       v-toolbar-title.font-weight-light Settings
       v-spacer
-    v-container.px-0(fluid)
+    v-container.px(fluid)
       v-list
         //- Dark Mode
         v-list-tile(@click='toggleDarkMode()')
-          v-list-tile-action
-            v-icon fas {{ isDark ? `fa-moon` : `fa-sun` }}
+
           v-list-tile-content
-            v-list-tile-title {{ isDark ? `Dark Mode` : `Light Mode` }}
+            v-list-tile-title Enable dark mode
+          v-list-tile-action
+            v-switch(v-model='isDark')
+        v-divider
+            //- v-icon fas {{ isDark ? `fa-moon` : `fa-sun` }}
+      v-layout(row justify-end)
+        v-btn(color='primary' @click='settingsDialog = false') Done
+
         //- Units
         //- v-list-tile(@click='toggleMetricUnits()')
           v-list-tile-action

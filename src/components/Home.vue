@@ -3,7 +3,7 @@
     v-layout.text-xs-center(justify-center align-center wrap)
       v-flex(xs12)
         p.headline.font-weight-light Select a calculator to get started
-      v-flex.home-calc-btn(shrink v-for='(n, i) in navItems' :key='i' xs6 md4)
+      v-flex.home-calc-btn(shrink v-for='(n, i) in $arrayFilter(navItems, `display`, true)' :key='i' xs6 md4)
         v-btn.v-btn--xlarge(:color='n.color' fab :to='n.path')
           v-icon(large) {{ n.icon }}
         br
@@ -28,5 +28,10 @@
   .home-calc-btn {
     max-width: 136px;
     height: 180px;
+  }
+
+  .v-menu__content,
+  .v-card {
+    border-radius: 8px !important;
   }
 </style>

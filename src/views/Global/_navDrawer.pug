@@ -8,16 +8,21 @@ v-navigation-drawer(v-model='drawer' fixed clipped app)
           v-list-tile-content
             v-list-tile-title SmithCalc
             v-list-tile-sub-title v1.0.0
+          v-list-action
+            v-menu(bottom left :dark='isDark')
+              v-btn(flat icon slot='activator' @click.prevent)
+                v-icon(size='22px') far fa-ellipsis-v
+              v-list()
+                v-list-tile(@click='settingsDialog = !settingsDialog')
+                  v-list-tile-title Settings
+                v-list-tile(@click='toggleDarkMode()')
+                  v-list-tile-title {{ isDark ? `Disable` : `Enable` }} dark mode
+                v-list-tile(href='mailto:cory.gantenbein@pm.me')
+                  v-list-tile-title() Send feedback
     v-list
-      v-list-tile(v-for='(n, i) in displayNavItems' :key='i' :to='n.path')
+      v-list-tile(v-for='(n, i) in $arrayFilter(navItems, `display`, true)' :key='i' :to='n.path' v-bind:active-class='isDark ? `accent--text grey darken-4` : `primary--text grey lighten-3`')
         v-list-tile-action
           v-icon {{ n.icon }}
         v-list-tile-content
           v-list-tile-title {{ n.text }}
-    v-spacer
-    v-list
-      v-list-tile(@click='settingsDialog = !settingsDialog')
-        v-list-tile-action
-          v-icon far fa-cogs
-        v-list-tile-content
-          v-list-tile-title Settings
+
