@@ -248,7 +248,11 @@
           result = sizes.filter(obj => {
             return obj.value === selectedSize
           })
-          sizeDisp = result[0].text
+          if (this.theAppIsMetric) {
+            sizeDisp = result[0].textMetric
+          } else {
+            sizeDisp = result[0].text
+          }
         } else {
           sizeDisp = null
         }
@@ -288,6 +292,10 @@
       shipmentWeight () {
         var shpmnt = this.shipment.items
         return shpmnt.sum('weight')
+      },
+      theAppIsMetric () {
+        var appMetricUnits = this.$ls.get('appMetricUnits')
+        return JSON.parse(appMetricUnits)
       }
     },
     mounted () {

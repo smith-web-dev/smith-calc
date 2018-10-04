@@ -18,6 +18,6 @@ v-layout(row justify-center)
       v-icon(left) navigate_before
       | Back
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn.primary(@click='doTheCalculation()' :disabled='$makeAverage(calcInput.hoseWallMeas) == 0 ? true : false')
+    v-btn.primary(@click='doTheCalculation()' :disabled='$noNullVals(calcInput.ferruleWallMeas)')
       | Next
       v-icon(right) navigate_next

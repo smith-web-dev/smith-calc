@@ -12,12 +12,14 @@ v-card-text
       v-flex(xs12 sm10 md8)
         v-btn(block color='accent' @click.native='addMeasurement(calcInput.shankMeas)' :disabled='calcInput.shankMeas.length < 6 ? false : true') Add A Measurement
 //- Navigation buttons
+v-layout(row)
+  v-btn(@click='noNullVals(calcInput.shankMeas)') yeah
 v-layout(row justify-center)
   v-flex(flex xs6 sm5 md4)
     v-btn(@click='currentStep = 1')
       v-icon(left) navigate_before
       | Back
   v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn.primary(@click='moveStep(`f`)' :disabled='$makeAverage(calcInput.shankMeas) == 0 ? true : false')
+    v-btn.primary(@click='moveStep(`f`)' :disabled='$noNullVals(calcInput.shankMeas)')
       | Next
       v-icon(right) navigate_next

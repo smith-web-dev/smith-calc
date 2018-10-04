@@ -2,31 +2,38 @@
   "bladeSizes": [
     {
       "value": 0.2,
-      "text": "1\" x 4\""
+      "text": "1\" x 4\"",
+      "textMetric": "2.54cm x 10.16cm"
     },
     {
       "value": 0.28,
-      "text": "1\" x 6\""
+      "text": "1\" x 6\"",
+      "textMetric": "2.54cm x 15.24cm"
     },
     {
       "value": 0.37,
-      "text": "1\" x 8\""
+      "text": "1\" x 8\"",
+      "textMetric": "2.54cm x 20.32cm"
     },
     {
       "value": 0.47,
-      "text": "1\" x 10\""
+      "text": "1\" x 10\"",
+      "textMetric": "2.54cm x 25.4cm"
     },
     {
       "value": 0.57,
-      "text": "1.5\" x 8\""
+      "text": "1.5\" x 8\"",
+      "textMetric": "3.81cm x 20.32cm"
     },
     {
       "value": 0.71,
-      "text": "1.5\" x 10\""
+      "text": "1.5\" x 10\"",
+      "textMetric": "3.81cm x 25.4cm"
     },
     {
       "value": 0.85,
-      "text": "1.5\" x 12\""
+      "text": "1.5\" x 12\"",
+      "textMetric": "3.81cm x 30.48cm"
     }
   ],
   "shipmentHeaders": [

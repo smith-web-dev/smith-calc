@@ -140,6 +140,14 @@
           this.currentStep = moveToStep
         }
       }
+      // noNullVals (arr) {
+      //   var lengthNoNull = arr.join(',').replace(/,/g, '').length
+      //   if (lengthNoNull !== arr.length) {
+      //     return true
+      //   } else {
+      //     return false
+      //   }
+      // }
     },
     computed: {
       theAppIsMetric () {
