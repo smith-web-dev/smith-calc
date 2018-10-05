@@ -1,24 +1,23 @@
-//- v-card.mb-5
-v-card-title.pb-0(primary-title style='display: block;')
-  .headline Enter snowplow blade length
-  div.grey--text.text--darken-1 You can enter feet, inches, or feet and inches
-v-card-text
-  v-container.pa-0(fluid)
-    v-layout(row)
-      v-spacer
-      v-flex(xs6)
-        v-text-field(type='number' label='Feet' box v-model='calcInput.length.feet' clearable)
-      v-spacer
-    v-layout(row)
-      v-spacer
-      v-flex(xs6)
-        v-text-field(type='number' label='Inches' box v-model='calcInput.length.inches' clearable)
-      v-spacer
-//- Navigation buttons
-v-layout(row justify-center)
-  v-flex(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`b`)')
-      include ../../Global/btns/_step-btn-back-icon.pug
-  v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' :disabled='calcInput.length.feet === null && calcInput.length.inches === null ? true : false' @click='moveStep(`f`)')
-      include ../../Global/btns/_step-btn-next-icon.pug
+extends ../../layouts/_stepper-step-main.pug
+
+block title
+  | Enter snowplow blade length
+block subtitle
+  | You can enter feet, inches, or feet and inches
+block card-body
+  v-layout(row)
+    v-spacer
+    v-flex(xs6)
+      v-text-field(type='number' label='Feet' box v-model='calcInput.length.feet' :color='theAppIsDark ? colorProps.btns.stepNav.dark.fg : colorProps.btns.stepNav.light.fg' clearable)
+    v-spacer
+  v-layout(row)
+    v-spacer
+    v-flex(xs6)
+      v-text-field(type='number' label='Inches' box v-model='calcInput.length.inches' :color='theAppIsDark ? colorProps.btns.stepNav.dark.fg : colorProps.btns.stepNav.light.fg' clearable)
+    v-spacer
+block nav-btns-left
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`b`)')
+    include ../../Global/btns/_step-btn-back-icon.pug
+block nav-btns-right
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' :disabled='stepNextDisabled' @click='moveStep(`f`)')
+    include ../../Global/btns/_step-btn-next-icon.pug

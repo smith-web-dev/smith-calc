@@ -1,43 +1,42 @@
 <template lang="pug">
-  v-container.pa-0(fluid)
-    include ../views/Global/_snackbar.pug
-    v-stepper.transparent.elevation-0(v-model='currentStep')
-      //- Steps
-      include ../views/ConveyorBeltWeight/_step0.pug
+  extends ../views/layouts/_calc-main.pug
 
-      v-stepper-items
-        //- Select snowplow material size
-        v-stepper-content.px-1.pt-1(step='1')
-          include ../views/ConveyorBeltWeight/_step1.pug
+  block stepper-steps
+    //- Steps
+    include ../views/ConveyorBeltWeight/_step0.pug
 
-        //- Enter snowplow blade length
-        v-stepper-content.px-1.pt-1(step='2')
-          include ../views/ConveyorBeltWeight/_step2.pug
+    v-stepper-items
+      //- Select snowplow material size
+      v-stepper-content.px-1.pt-1(step='1')
+        include ../views/ConveyorBeltWeight/_step1.pug
 
-        //- Enter quantity
-        v-stepper-content.px-1.pt-1(step='3')
-          include ../views/ConveyorBeltWeight/_step3.pug
+      //- Enter snowplow blade length
+      v-stepper-content.px-1.pt-1(step='2')
+        include ../views/ConveyorBeltWeight/_step2.pug
 
-        //- Results
-        v-stepper-content.px-1.pt-1(step='4')
-          include ../views/ConveyorBeltWeight/_step4.pug
+      //- Enter quantity
+      v-stepper-content.px-1.pt-1(step='3')
+        include ../views/ConveyorBeltWeight/_step3.pug
+
+      //- Results
+      v-stepper-content.px-1.pt-1(step='4')
+        include ../views/ConveyorBeltWeight/_step4.pug
 </template>
 
 <script>
   import ConveyorBeltData from '../data/ConveyorBeltWeight.json'
-  import ColorProps from '@/data/colorProps.json'
+  import { theAppIsDark } from '@/mixins/appIsDark.js'
+  import { globalCalc } from '@/mixins/globalCalc.js'
 
   export default {
-    mounted () {
-      this.$emit('toolbarExtended', false)
-      this.$emit('toolbarFab', { visible: false })
-    },
+    mixins: [
+      theAppIsDark,
+      globalCalc
+    ],
     data () {
       return {
-        currentStep: 0,
-        colorProps: ColorProps,
-        snackbar: { text: null, display: false },
         beltTypes: ConveyorBeltData.beltTypes,
+        defaultInputs: ConveyorBeltData.defaultInputs,
         beltData: {
           types: ConveyorBeltData.types,
           widths: ConveyorBeltData.widths
@@ -59,37 +58,9 @@
     methods: {
       doTheCalculation () {
         //
-      },
-      doCopy (theText) {
-        var compo = this
-        this.$copyText(theText).then(function (e) {
-          compo.snackbar.text = 'Copied [<em> ' + theText + ' </em>] to the clipboard'
-          compo.snackbar.display = true
-        }, function (e) {
-          alert('Can not copy')
-          console.log(e)
-        })
-      },
-      resetAll () {
-        this.currentStep = 1
-        this.calcInput = ConveyorBeltData.defaultInputs
-      },
-      moveStep (direction) {
-        var thisStep = parseInt(this.currentStep)
-        var moveToStep
-        if (direction === 'f') {
-          moveToStep = thisStep + 1
-          this.currentStep = moveToStep
-        } else if (direction === 'b') {
-          moveToStep = thisStep - 1
-          this.currentStep = moveToStep
-        }
       }
     },
     computed: {
-      theAppIsDark () {
-        return JSON.parse(this.$ls.get('appDarkMode'))
-      },
       beltDescription () {
         var b = this.calcInput.belt.text
         var w = this.setWidth + '"'

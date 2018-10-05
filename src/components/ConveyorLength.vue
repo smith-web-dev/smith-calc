@@ -1,37 +1,34 @@
 <template lang="pug">
-  v-container.pa-0(fluid)
-    include ../views/Global/_snackbar.pug
-    v-stepper.transparent.elevation-0(v-model='currentStep')
-      //- Steps
-      include ../views/ConveyorLength/_step0.pug
-      v-stepper-items
-        //- Compression factor
-        v-stepper-content.px-1.pt-1(step='1')
-          include ../views/ConveyorLength/_step1.pug
-        v-stepper-content.px-1.pt-1(step='2')
-          include ../views/ConveyorLength/_step2.pug
-        v-stepper-content.px-1.pt-1(step='3')
-          include ../views/ConveyorLength/_step3.pug
-    //- v-btn(@click='doCalculation(25, calcInput.equalPulleys, 12)') click
-    //- p {{ calcInput.equalPulleys }}
+  extends ../views/layouts/_calc-main.pug
+
+  block stepper-steps
+    //- Steps
+    include ../views/ConveyorLength/_step0.pug
+    v-stepper-items
+      //- Compression factor
+      v-stepper-content.px-1.pt-1(step='1')
+        include ../views/ConveyorLength/_step1.pug
+      v-stepper-content.px-1.pt-1(step='2')
+        include ../views/ConveyorLength/_step2.pug
+      v-stepper-content.px-1.pt-1(step='3')
+        include ../views/ConveyorLength/_step3.pug
 
 </template>
 
 <script>
   import cbLengthData from '../data/cbLength.json'
-  import ColorProps from '@/data/colorProps.json'
+  import { theAppIsDark } from '@/mixins/appIsDark.js'
+  import { globalCalc } from '@/mixins/globalCalc.js'
   let convert = require('convert-units')
 
   export default {
-    mounted () {
-      this.$emit('toolbarExtended', false)
-      this.$emit('toolbarFab', { visible: false })
-    },
+    mixins: [
+      theAppIsDark,
+      globalCalc
+    ],
     data () {
       return {
-        colorProps: ColorProps,
-        currentStep: 0,
-        snackbar: { display: false, text: null },
+        defaultInputs: cbLengthData.defaultInputs,
         msg: 'ConveyorLength',
         result: null,
         calcInput: {
@@ -48,9 +45,6 @@
       }
     },
     computed: {
-      theAppIsDark () {
-        return JSON.parse(this.$ls.get('appDarkMode'))
-      },
       theAppIsMetric () {
         var appMetricUnits = this.$ls.get('appMetricUnits')
         return JSON.parse(appMetricUnits)
@@ -147,33 +141,7 @@
       }
     },
     methods: {
-      doCopy (theText) {
-        var compo = this
-        this.$copyText(theText).then(function (e) {
-          compo.snackbar.text = 'Copied [<em> ' + theText + ' </em>] to the clipboard'
-          compo.snackbar.display = true
-        }, function (e) {
-          alert('Can not copy')
-          console.log(e)
-        })
-      },
-      resetAll () {
-        this.currentStep = 1
-        this.calcInput = cbLengthData.defaultInputs
-      },
-      moveStep (direction) {
-        // direction = 'f' => forward
-        // direction = 'b' => back
-        var thisStep = parseInt(this.currentStep)
-        var moveToStep
-        if (direction === 'f') {
-          moveToStep = thisStep + 1
-          this.currentStep = moveToStep
-        } else if (direction === 'b') {
-          moveToStep = thisStep - 1
-          this.currentStep = moveToStep
-        }
-      }
+      //
     }
   }
 </script>

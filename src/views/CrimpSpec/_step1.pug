@@ -1,24 +1,20 @@
-//- v-card.mb-5
-v-card-title.pb-0(primary-title style='display: block;')
-  .headline Determine the compression factor
-  div.grey--text.text--darken-1 Either select a type of hose or enter a custom compression factor
-v-card-text
-  v-container.pa-0(fluid)
-    v-alert.mb-3.sirp-alert-text(:value='steps.compFactor.warn' :type='steps.compFactor.warnType' transition="slide-y-transition")
-      strong
-        | {{ steps.compFactor.warnType === 'warning' ? 'WARNING!' : 'DANGER!' }}
-        em  {{ setWarning }}
-    v-select(:dark='theAppIsDark' box :items='calcData.hoseTypes' label='Select a type of hose' v-model='calcInput.comp.sel' @change='calcInput.comp.box = null' clearable)
-    v-layout(row)
-      v-spacer
-      p.sirp-divider
-        span or
-      v-spacer
-    v-text-field(type='number' hint='Enter as a full percentage, not a decimal' label='Enter a custom compression factor' box v-model='calcInput.comp.box' clearable suffix='%')
-//- Navigation buttons
-v-layout(row justify-center)
-  v-flex(flex xs6 sm5 md4)
-  v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='!!setCompFac ? false : true')
-      include ../Global/btns/_step-btn-next-icon.pug
-
+extends ../layouts/_stepper-step-main.pug
+block title
+  | Determine the compression factor
+block subtitle
+  | Either select a type of hose or enter a custom compression factor
+block card-body
+  v-alert.mb-3.sirp-alert-text(:value='steps.compFactor.warn' :type='steps.compFactor.warnType' transition="slide-y-transition")
+    strong
+      | {{ steps.compFactor.warnType === 'warning' ? 'WARNING!' : 'DANGER!' }}
+      em  {{ setWarning }}
+  v-select(:dark='theAppIsDark' box :items='calcData.hoseTypes' label='Select a type of hose' v-model='calcInput.comp.sel' @change='calcInput.comp.box = null' clearable)
+  v-layout(row)
+    v-spacer
+    p.sirp-divider
+      span or
+    v-spacer
+  v-text-field(type='number' hint='Enter as a full percentage, not a decimal' label='Enter a custom compression factor' box v-model='calcInput.comp.box' clearable suffix='%')
+block nav-btns-right
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='stepNextDisabled')
+    include ../Global/btns/_step-btn-next-icon.pug

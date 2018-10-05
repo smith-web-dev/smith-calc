@@ -1,21 +1,19 @@
-//- v-card.mb-5
-v-card-title.pb-0(primary-title style='display: block;')
-  .headline Determine the average OD of the fitting shank
-  div.grey--text.text--darken-1 Measure the shank's outside diameter in at least 3 places, always at the highest points of the serrations. Input in {{ theAppIsMetric ? `centimeters` : `inches` }}
-v-card-text
-  v-container.pa-0(fluid)
-    div(v-for='(f, i) in calcInput.shankMeas' :key='i')
-      v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i]' clearable :label='`Shank OD #` + (i + 1) + [theAppIsMetric ? ` (cm)` : ` (in)`]')
-        v-btn(flat icon color='error' slot='append-outer' v-show='(i + 1) > 3' style='top: -10px;' @click.native='removeMeas(calcInput.shankMeas, i)')
-          v-icon delete
-    v-layout(row justify-center)
-      v-flex(xs12 sm10 md8)
-        v-btn(block color='accent' @click.native='addMeasurement(calcInput.shankMeas)' :disabled='calcInput.shankMeas.length < 6 ? false : true') Add A Measurement
-//- Navigation buttons
-v-layout(row justify-center)
-  v-flex(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
-      include ../Global/btns/_step-btn-back-icon.pug
-  v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='$noNullVals(calcInput.shankMeas)')
-      include ../Global/btns/_step-btn-next-icon.pug
+extends ../layouts/_stepper-step-main.pug
+block title
+  | Determine the average OD of the fitting shank
+block subtitle
+  | Measure the shank's outside diameter in at least 3 places, always at the highest points of the serrations. Input in {{ theAppIsMetric ? `centimeters` : `inches` }}
+block card-body
+  div(v-for='(f, i) in calcInput.shankMeas' :key='i')
+    v-text-field(type='number' label='' box v-model='calcInput.shankMeas[i]' clearable :label='`Shank OD #` + (i + 1) + [theAppIsMetric ? ` (cm)` : ` (in)`]')
+      v-btn(flat icon color='error' slot='append-outer' v-show='(i + 1) > 3' style='top: -10px;' @click.native='removeMeas(calcInput.shankMeas, i)')
+        v-icon delete
+  v-layout(row justify-center)
+    v-flex(xs12 sm10 md8)
+      v-btn(block color='accent' @click.native='addMeasurement(calcInput.shankMeas)' :disabled='calcInput.shankMeas.length < 6 ? false : true') Add A Measurement
+block nav-btns-left
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
+    include ../Global/btns/_step-btn-back-icon.pug
+block nav-btns-right
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='stepNextDisabled')
+    include ../Global/btns/_step-btn-next-icon.pug

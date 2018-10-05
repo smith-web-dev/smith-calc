@@ -1,22 +1,15 @@
-v-card-title.pb-0(primary-title style='display: block;')
-  .headline Pulley diameters
-  div.grey--text.text--darken-1 Enter the diameters of the pulleys in {{ theAppIsMetric ? `centimeters` : `inches` }}.
-v-card-text
-  v-container.pa-0(fluid)
-    v-layout(row)
-      v-text-field(type='number' :label='calcInput.equalPulleys ? `Pulley diameters (` + metricConvertCmIn + `)` : `First pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.one' clearable)
-    v-layout(row)
-      v-text-field(type='number' v-show='!calcInput.equalPulleys' :label='`Second pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.two' clearable)
-    v-layout(row)
-      v-checkbox(label='Pulleys have equal diameters' v-model='calcInput.equalPulleys')
-
-//- Navigation buttons
-v-layout(row justify-center)
-  v-flex(flex xs6 sm5 md4)
-  v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='firstStepNextDisabled')
-      include ../Global/btns/_step-btn-next-icon.pug
-
-
-
-
+extends ../layouts/_stepper-step-main.pug
+block title
+  | Pulley diameters
+block subtitle
+  | Enter the diameters of the pulleys in {{ theAppIsMetric ? `centimeters` : `inches` }}.
+block card-body
+  v-layout(row)
+    v-text-field(type='number' :label='calcInput.equalPulleys ? `Pulley diameters (` + metricConvertCmIn + `)` : `First pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.one' clearable)
+  v-layout(row)
+    v-text-field(type='number' v-show='!calcInput.equalPulleys' :label='`Second pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.two' clearable)
+  v-layout(row)
+    v-checkbox(label='Pulleys have equal diameters' v-model='calcInput.equalPulleys')
+block nav-btns-right
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='firstStepNextDisabled')
+    include ../Global/btns/_step-btn-next-icon.pug

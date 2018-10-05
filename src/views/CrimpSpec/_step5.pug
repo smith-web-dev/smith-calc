@@ -1,34 +1,32 @@
-//- v-card.mb-5
-v-card-title.pb-0(primary-title style='display: block;')
-  .headline Results
-  //- div.grey--text.text--darken-1 Either select a type of hose or enter a custom compression factor
-v-card-text
-  v-container.pa-0(fluid)
-    v-list(three-line subheader)
-      //- Decimal Result
-      v-list-tile
-        v-list-tile-content
-          v-list-tile-title Decimal {{ theAppIsMetric ? `Centimeters` : `Inches` }}
-          v-list-tile-sub-title {{ calcInput.result }}
-        v-list-tile-action
-          v-btn(icon ripple @click.native='doCopy(calcInput.result)')
-            v-icon(color="grey lighten-1") file_copy
-      //- Fractional Result
-      v-list-tile
-        v-list-tile-content
-          v-list-tile-title Fractional Inches
-          v-list-tile-sub-title {{ calcInput.resultFrac }}
-        v-list-tile-action
-          v-btn(icon ripple @click.native='doCopy(calcInput.resultFrac)')
-            v-icon(color="grey lighten-1") file_copy
-      //- Metric Result
-      v-list-tile
-        v-list-tile-content
-          v-list-tile-title Millimeters
-          v-list-tile-sub-title {{ calcInput.resultMetric }}
-        v-list-tile-action
-          v-btn(icon ripple @click.native='doCopy(calcInput.resultMetric)')
-            v-icon(color="grey lighten-1") file_copy
-//- Navigation buttons
-include ../Global/btns/_step-btn-reset-all.pug
+extends ../layouts/_stepper-step-main.pug
+block title
+  | Results
+block card-body
+  v-list(three-line subheader)
+    //- Decimal Result
+    v-list-tile
+      v-list-tile-content
+        v-list-tile-title Decimal {{ theAppIsMetric ? `Centimeters` : `Inches` }}
+        v-list-tile-sub-title {{ calcInput.result }}
+      v-list-tile-action
+        v-btn(icon ripple @click.native='doCopy(calcInput.result)')
+          v-icon(color="grey lighten-1") file_copy
+    //- Fractional Result
+    v-list-tile
+      v-list-tile-content
+        v-list-tile-title Fractional Inches
+        v-list-tile-sub-title {{ calcInput.resultFrac }}
+      v-list-tile-action
+        v-btn(icon ripple @click.native='doCopy(calcInput.resultFrac)')
+          v-icon(color="grey lighten-1") file_copy
+    //- Metric Result
+    v-list-tile
+      v-list-tile-content
+        v-list-tile-title Millimeters
+        v-list-tile-sub-title {{ calcInput.resultMetric }}
+      v-list-tile-action
+        v-btn(icon ripple @click.native='doCopy(calcInput.resultMetric)')
+          v-icon(color="grey lighten-1") file_copy
+block nav-btns-block
+  include ../Global/btns/_step-btn-reset-all.pug
 

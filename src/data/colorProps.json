@@ -10,5 +10,11 @@
         "fg": "accent"
       }
     }
+  },
+  "text": {
+    "subtitle": {
+      "light": "grey--text text--darken-1",
+      "dark": "grey--text"
+    }
   }
 }

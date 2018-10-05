@@ -1,4 +1,4 @@
-v-toolbar.primary(fixed clipped-left app dark flat :extended='toolbarExtended')
+v-toolbar.primary(fixed clipped-left app dark :extended='toolbarExtended')
   v-btn(flat icon @click.stop='drawer = !drawer')
     v-icon(size='19px') far fa-bars
   v-toolbar-title.align-center
@@ -7,7 +7,6 @@ v-toolbar.primary(fixed clipped-left app dark flat :extended='toolbarExtended')
       span.font-weight-regular {{ $route.name == 'Home' ? '' : ' // ' }}
     span.subheading.font-weight-medium {{ $route.name == 'Home' ? '' : $route.name }}
   v-spacer
-  //- v-toolbar-title(slot='extension') Title
   v-fab-transition
     v-btn(
       v-show='toolbarFab.visible === true'

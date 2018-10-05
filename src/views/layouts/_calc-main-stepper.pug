@@ -1,0 +1,18 @@
+v-container.px-0.pb-0(fluid)
+  //- Template includes block
+  block template-includes
+  v-snackbar(v-model='snackbar.display' :timeout='3250' top)
+    span(v-html='snackbar.text')
+    v-btn(icon color='accent' flat @click='snackbar.display = false')
+      v-icon() far fa-times
+  v-stepper.transparent.elevation-0(v-model='currentStep')
+    v-layout(row)
+      v-flex.pl-4.pr-2(align-self-center style='flex-grow: 0')
+        block btn-back
+      v-flex()
+        block stepper-header
+      v-flex.pl-2.pr-4(align-self-center style='flex-grow: 0')
+        block btn-next
+
+    //- Stepper steps block
+    block stepper-steps

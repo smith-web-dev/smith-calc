@@ -1,22 +1,21 @@
-v-card-title.pb-0(primary-title style='display: block;')
-  .headline Determine belt width
-  div.grey--text.text--darken-1 Either select a standard belt width or enter a custom width
-v-card-text
-  v-container.pa-0(fluid)
-    v-layout(row)
-      v-select.belt-types-select(box v-model='calcInput.width.sel' :items='beltData.widths' label='Select a width' clearable)
-    v-layout(row)
-      v-spacer
-      p.sirp-divider
-        span or
-      v-spacer
-    v-layout(row)
-      v-text-field(type='number' label='Enter a custom width' box v-model='calcInput.width.box' clearable)
-//- Navigation buttons
-v-layout(row justify-center)
-  v-flex(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
-      include ../Global/btns/_step-btn-back-icon.pug
-  v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='calcInput.width.sel === null && calcInput.width.box === null ? true : false')
-      include ../Global/btns/_step-btn-next-icon.pug
+extends ../layouts/_stepper-step-main.pug
+block title
+  | Determine belt width
+block subtitle
+  | Either select a standard belt width or enter a custom width
+block card-body
+  v-layout(row)
+    v-select.belt-types-select(box v-model='calcInput.width.sel' :items='beltData.widths' label='Select a width' clearable)
+  v-layout(row)
+    v-spacer
+    p.sirp-divider
+      span or
+    v-spacer
+  v-layout(row)
+    v-text-field(type='number' label='Enter a custom width' box v-model='calcInput.width.box' clearable)
+block nav-btns-left
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
+    include ../Global/btns/_step-btn-back-icon.pug
+block nav-btns-right
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='stepNextDisabled')
+    include ../Global/btns/_step-btn-next-icon.pug

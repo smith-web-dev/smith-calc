@@ -1,37 +1,36 @@
 <template lang="pug">
-  v-container.pa-0(fluid)
-    include ../views/Global/_snackbar.pug
-    //- p {{ calcInput }}
-    v-stepper.transparent.elevation-0(v-model='currentStep')
-      //- Steps
-      include ../views/CrimpSpec/_step0.pug
+  extends ../views/layouts/_calc-main.pug
 
-      v-stepper-items
-        //- Compression factor
-        v-stepper-content.px-1.pt-1(step='1')
-          include ../views/CrimpSpec/_step1.pug
+  block stepper-steps
+    include ../views/CrimpSpec/_step0.pug
+    p {{ stepNextDisabled }}
+    v-stepper-items
+      //- Compression factor
+      v-stepper-content.px-1.pt-1(step='1')
+        include ../views/CrimpSpec/_step1.pug
 
-        //- Shank OD
-        v-stepper-content.px-1.pt-1(step='2')
-          include ../views/CrimpSpec/_step2.pug
+      //- Shank OD
+      v-stepper-content.px-1.pt-1(step='2')
+        include ../views/CrimpSpec/_step2.pug
 
-        //- Hose Wall
-        v-stepper-content.px-1.pt-1(step='3')
-          include ../views/CrimpSpec/_step3.pug
+      //- Hose Wall
+      v-stepper-content.px-1.pt-1(step='3')
+        include ../views/CrimpSpec/_step3.pug
 
-        //- Ferrule Wall
-        v-stepper-content.px-1.pt-1(step='4')
-          include ../views/CrimpSpec/_step4.pug
+      //- Ferrule Wall
+      v-stepper-content.px-1.pt-1(step='4')
+        include ../views/CrimpSpec/_step4.pug
 
-        //- Result
-        v-stepper-content.px-1.pt-1(step='5')
-          include ../views/CrimpSpec/_step5.pug
+      //- Result
+      v-stepper-content.px-1.pt-1(step='5')
+        include ../views/CrimpSpec/_step5.pug
 </template>
 
 <script>
   import CrimpSpecData from '@/data/CrimpSpec.json'
-  import ColorProps from '@/data/colorProps.json'
   import * as math from 'mathjs'
+  import { theAppIsDark } from '@/mixins/appIsDark.js'
+  import { globalCalc } from '@/mixins/globalCalc.js'
   let convert = require('convert-units')
 
   function makeFraction (input, td) {
@@ -50,11 +49,13 @@
   }
 
   export default {
+    mixins: [
+      theAppIsDark,
+      globalCalc
+    ],
     data () {
       return {
-        colorProps: ColorProps,
-        currentStep: 0,
-        snackbar: { display: false, text: null },
+        defaultInputs: CrimpSpecData.defaultInputs,
         steps: { compFactor: { warn: false, warnType: 'info' }, shankMeas: { disableAdd: false } },
         calcData: { hoseTypes: CrimpSpecData.hoseTypes },
         calcInput: {
@@ -78,25 +79,7 @@
         ]
       }
     },
-    mounted () {
-      this.$emit('toolbarExtended', false)
-      this.$emit('toolbarFab', { visible: false })
-    },
     methods: {
-      doCopy (theText) {
-        var compo = this
-        this.$copyText(theText).then(function (e) {
-          compo.snackbar.text = 'Copied [<em> ' + theText + ' </em>] to the clipboard'
-          compo.snackbar.display = true
-        }, function (e) {
-          alert('Can not copy')
-          console.log(e)
-        })
-      },
-      resetAll () {
-        this.currentStep = 1
-        this.calcInput = CrimpSpecData.defaultInputs
-      },
       doTheCalculation () {
         this.currentStep = 5
 
@@ -128,37 +111,9 @@
         var measArray = arr
         measArray.splice(index, 1)
         arr = measArray
-      },
-      moveStep (direction) {
-        // direction = 'f' => forward
-        // direction = 'b' => back
-        var thisStep = parseInt(this.currentStep)
-        var moveToStep
-        if (direction === 'f') {
-          moveToStep = thisStep + 1
-          this.currentStep = moveToStep
-        } else if (direction === 'b') {
-          moveToStep = thisStep - 1
-          this.currentStep = moveToStep
-        }
       }
-      // noNullVals (arr) {
-      //   var lengthNoNull = arr.join(',').replace(/,/g, '').length
-      //   if (lengthNoNull !== arr.length) {
-      //     return true
-      //   } else {
-      //     return false
-      //   }
-      // }
     },
     computed: {
-      theAppIsDark () {
-        return JSON.parse(this.$ls.get('appDarkMode'))
-      },
-      theAppIsMetric () {
-        var appMetricUnits = this.$ls.get('appMetricUnits')
-        return JSON.parse(appMetricUnits)
-      },
       metricConvertCmIn () {
         var appMetricUnits = this.$ls.get('appMetricUnits')
         var theBool = JSON.parse(appMetricUnits)

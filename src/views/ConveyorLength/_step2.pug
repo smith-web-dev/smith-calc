@@ -1,24 +1,22 @@
-//- v-card.mb-5
-v-card-title.pb-0(primary-title style='display: block;')
-  .headline Determine span between pullies
-  div.grey--text.text--darken-1 Enter the distance in feet between the shaft centers
-v-card-text
-  v-container.pa-0(fluid)
-    v-layout(row)
-      v-spacer
-      v-flex(xs6)
-        v-text-field(type='number' :label='theAppIsMetric ? `Meters` : `Feet`' box v-model='calcInput.span.feet' clearable)
-      v-spacer
-    v-layout(row)
-      v-spacer
-      v-flex(xs6)
-        v-text-field(type='number' :label='theAppIsMetric ? `Centimeters` : `Inches`' box v-model='calcInput.span.inches' clearable)
-      v-spacer
-//- Navigation buttons
-v-layout(row justify-center)
-  v-flex(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
-      include ../Global/btns/_step-btn-back-icon.pug
-  v-flex.text-xs-right(flex xs6 sm5 md4)
-    v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='calcInput.span.feet === null && calcInput.span.inches === null ? true : false')
-      include ../Global/btns/_step-btn-next-icon.pug
+extends ../layouts/_stepper-step-main.pug
+block title
+  | Determine span between pullies
+block subtitle
+  | Enter the distance in feet between the shaft centers
+block card-body
+  v-layout(row)
+    v-spacer
+    v-flex(xs6)
+      v-text-field(type='number' :label='theAppIsMetric ? `Meters` : `Feet`' box v-model='calcInput.span.feet' clearable)
+    v-spacer
+  v-layout(row)
+    v-spacer
+    v-flex(xs6)
+      v-text-field(type='number' :label='theAppIsMetric ? `Centimeters` : `Inches`' box v-model='calcInput.span.inches' clearable)
+    v-spacer
+block nav-btns-left
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
+    include ../Global/btns/_step-btn-back-icon.pug
+block nav-btns-right
+  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='calcInput.span.feet === null && calcInput.span.inches === null ? true : false')
+    include ../Global/btns/_step-btn-next-icon.pug
