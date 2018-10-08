@@ -10,7 +10,7 @@ block card-body
         v-list-tile-sub-title {{ makeDesc }}
       v-list-tile-action
         v-btn(icon ripple @click.native='doCopy(makeDesc)')
-          v-icon(color="grey lighten-1") file_copy
+          include ../Global/btns/_result-step-copy-icon.pug
     //- Length
     v-list-tile
       v-list-tile-content
@@ -19,6 +19,6 @@ block card-body
         v-list-tile-sub-title {{ doCalculation }}
       v-list-tile-action
         v-btn(icon ripple @click.native='doCopy(doCalculation)')
-          v-icon(color="grey lighten-1") file_copy
+          include ../Global/btns/_result-step-copy-icon.pug
 block nav-btns-block
   include ../Global/btns/_step-btn-reset-all.pug

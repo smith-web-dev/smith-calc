@@ -14,7 +14,7 @@ v-list(three-line subheader)
         v-list-tile-sub-title.grey--text.text--darken-3 {{ l.quantity }} {{ l.quantity > 1 ? `pcs` : `pc` }}
         v-list-tile-sub-title {{ l.weight }} pounds
       v-list-tile-action
-        v-icon(color='error lighten-1' @click="deleteConfirmShow(l)") fas fa-trash-alt
+        v-icon(color='error lighten-1' @click='deleteConfirmShow(l)') fas fa-trash-alt
     v-divider
   v-list-tile()
     v-list-tile-content

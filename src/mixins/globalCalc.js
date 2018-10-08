@@ -5,9 +5,13 @@ export const globalCalc = {
     this.$emit('toolbarExtended', false)
     this.$emit('toolbarFab', { visible: false })
   },
+  created () {
+    this.isDark = JSON.parse(this.$ls.get('appDarkMode'))
+  },
   data () {
     return {
       colorProps: ColorProps,
+      isDark: Boolean,
       currentStep: 0,
       snackbar: { text: null, display: false }
     }
@@ -37,9 +41,24 @@ export const globalCalc = {
     resetAll (defaults) {
       this.currentStep = 1
       this.calcInput = defaults
+    },
+    toggleDarkMode () {
+      var appDarkMode = this.$ls.get('appDarkMode')
+
+      if (JSON.parse(appDarkMode) === false) {
+        this.$ls.set('appDarkMode', JSON.stringify(true))
+        this.isDark = true
+      } else {
+        this.$ls.set('appDarkMode', JSON.stringify(false))
+        this.isDark = false
+      }
+      this.$forceUpdate()
     }
   },
   computed: {
+    theAppIsDark () {
+      return JSON.parse(this.$ls.get('appDarkMode'))
+    },
     theAppIsMetric () {
       var appMetricUnits = this.$ls.get('appMetricUnits')
       return JSON.parse(appMetricUnits)
@@ -119,15 +138,27 @@ export const globalCalc = {
       //
       //
       if (this.$route.name === 'Conveyor Length') {
-        //
+        switch (this.currentStep) {
+          case 0:
+          case 1:
+          default:
+            if (this.calcInput.equalPulleys) {
+              toReturn = this.calcInput.pully.one === null
+            } else {
+              toReturn = this.calcInput.pully.one === null || this.calcInput.pully.two === null
+            }
+            break
+          case 2:
+            toReturn = this.calcInput.span.feet === null && this.calcInput.span.inches === null
+        }
       }
       return toReturn
     },
     darkToggleBgColor () {
-      return this.theAppIsDark ? this.colorProps.btns.stepNav.dark.bg : this.colorProps.btns.stepNav.light.bg
+      return this.isDark ? 'grey darken-3' : 'white'
     },
     darkToggleFgColor () {
-      return this.theAppIsDark ? this.colorProps.btns.stepNav.dark.fg : this.colorProps.btns.stepNav.light.fg
+      return this.isDark ? 'accent' : 'primary'
     }
   }
 }

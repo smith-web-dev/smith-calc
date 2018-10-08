@@ -10,7 +10,7 @@ block card-body
         v-list-tile-sub-title {{ calcInput.result }}
       v-list-tile-action
         v-btn(icon ripple @click.native='doCopy(calcInput.result)')
-          v-icon(color="grey lighten-1") file_copy
+          include ../Global/btns/_result-step-copy-icon.pug
     //- Fractional Result
     v-list-tile
       v-list-tile-content
@@ -18,7 +18,7 @@ block card-body
         v-list-tile-sub-title {{ calcInput.resultFrac }}
       v-list-tile-action
         v-btn(icon ripple @click.native='doCopy(calcInput.resultFrac)')
-          v-icon(color="grey lighten-1") file_copy
+          include ../Global/btns/_result-step-copy-icon.pug
     //- Metric Result
     v-list-tile
       v-list-tile-content
@@ -26,7 +26,7 @@ block card-body
         v-list-tile-sub-title {{ calcInput.resultMetric }}
       v-list-tile-action
         v-btn(icon ripple @click.native='doCopy(calcInput.resultMetric)')
-          v-icon(color="grey lighten-1") file_copy
+          include ../Global/btns/_result-step-copy-icon.pug
 block nav-btns-block
   include ../Global/btns/_step-btn-reset-all.pug
 

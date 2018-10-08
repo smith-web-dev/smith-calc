@@ -88,8 +88,8 @@
         var D, d, C, result
         var v = this.metricConvertCmIn
         var w = this.metricConvertMetFt
-        var pOne = convert(Number(this.calcInput.pully.one)).from(v).to('in')
-        var pTwo = convert(Number(this.calcInput.pully.two)).from(v).to('in')
+        var pOne = (convert(Number(this.calcInput.pully.one)).from(v).to('in') / 12)
+        var pTwo = (convert(Number(this.calcInput.pully.two)).from(v).to('in') / 12)
         var pEq = Number(this.calcInput.equalPulleys)
 
         var inpFtMet = convert(Number(this.calcInput.span.feet)).from(w).to('ft')
@@ -130,7 +130,7 @@
         if (this.calcInput.equalPulleys) {
           diamText = 'Pulleys with diameter of ' + p1 + (this.theAppIsMetric ? 'cm ' : '" ')
         } else {
-          diamText = 'Pulleys with diameters of ' + p1 + (this.theAppIsMetric ? 'cm ' : '" ') + ' and ' + p2 + (this.theAppIsMetric ? 'cm ' : '"')
+          diamText = 'Pulleys with diameters of ' + p1 + (this.theAppIsMetric ? 'cm ' : '" ') + ' and ' + p2 + (this.theAppIsMetric ? 'cm ' : '" ')
         }
         if (cI === null || cI === 0) {
           spanText = 'with distance between pulleys of ' + cF + (this.theAppIsMetric ? 'm' : '\'')

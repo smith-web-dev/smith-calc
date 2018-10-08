@@ -5,11 +5,10 @@ block subtitle
   | Enter the diameters of the pulleys in {{ theAppIsMetric ? `centimeters` : `inches` }}.
 block card-body
   v-layout(row)
-    v-text-field(type='number' :label='calcInput.equalPulleys ? `Pulley diameters (` + metricConvertCmIn + `)` : `First pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.one' clearable)
+    v-text-field(color='accent' type='number' :label='calcInput.equalPulleys ? `Pulley diameters (` + metricConvertCmIn + `)` : `First pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.one' clearable)
   v-layout(row)
-    v-text-field(type='number' v-show='!calcInput.equalPulleys' :label='`Second pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.two' clearable)
+    v-text-field(color='accent' type='number' v-show='!calcInput.equalPulleys' :label='`Second pulley diameter (` + metricConvertCmIn + `)`' box v-model='calcInput.pully.two' clearable)
   v-layout(row)
     v-checkbox(label='Pulleys have equal diameters' v-model='calcInput.equalPulleys')
 block nav-btns-right
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='firstStepNextDisabled')
-    include ../Global/btns/_step-btn-next-icon.pug
+  include ../Global/btns/_step-btn-next.pug

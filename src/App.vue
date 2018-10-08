@@ -16,11 +16,12 @@
 <script>
   import Vue from 'vue'
   import navItems from './data/MainNavItems.json'
+  import { globalCalc } from '@/mixins/globalCalc.js'
   export default {
+    mixins: [ globalCalc ],
     data () {
       return {
         settingsDialog: false,
-        isDark: false,
         isMetric: false,
         drawer: false,
         navItems: navItems,
@@ -72,17 +73,6 @@
         } else {
           this.$ls.set('appMetricUnits', JSON.stringify(false))
           this.isMetric = false
-        }
-      },
-      toggleDarkMode () {
-        var appDarkMode = this.$ls.get('appDarkMode')
-
-        if (JSON.parse(appDarkMode) === false) {
-          this.$ls.set('appDarkMode', JSON.stringify(true))
-          this.isDark = true
-        } else {
-          this.$ls.set('appDarkMode', JSON.stringify(false))
-          this.isDark = false
         }
       },
       fabClicked (func) {

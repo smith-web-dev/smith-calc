@@ -8,16 +8,14 @@ block card-body
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(type='number' label='Feet' box v-model='calcInput.length.feet' :color='theAppIsDark ? colorProps.btns.stepNav.dark.fg : colorProps.btns.stepNav.light.fg' clearable)
+      v-text-field(type='number' label='Feet' box v-model='calcInput.length.feet' color='accent' clearable)
     v-spacer
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(type='number' label='Inches' box v-model='calcInput.length.inches' :color='theAppIsDark ? colorProps.btns.stepNav.dark.fg : colorProps.btns.stepNav.light.fg' clearable)
+      v-text-field(type='number' label='Inches' box v-model='calcInput.length.inches' color='accent' clearable)
     v-spacer
 block nav-btns-left
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`b`)')
-    include ../../Global/btns/_step-btn-back-icon.pug
+  include ../../Global/btns/_step-btn-back.pug
 block nav-btns-right
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' :disabled='stepNextDisabled' @click='moveStep(`f`)')
-    include ../../Global/btns/_step-btn-next-icon.pug
+  include ../../Global/btns/_step-btn-next.pug

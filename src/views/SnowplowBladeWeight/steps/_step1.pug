@@ -2,7 +2,7 @@ extends ../../layouts/_stepper-step-main.pug
 block title
   | Select Material Size
 block card-body
-  v-select(:dark='theAppIsDark' box :items='bladeSizes' label='Select a material size' v-model='calcInput.size' clearable :color='darkToggleFgColor')
+  v-select(color='accent' :dark='theAppIsDark' box :items='bladeSizes' label='Select a material size' v-model='calcInput.size' clearable)
 block nav-btns-right
-  v-btn(fab small :color='darkToggleBgColor' :disabled='stepNextDisabled' @click='moveStep(`f`)')
-    include ../../Global/btns/_step-btn-next-icon.pug
+  include ../../Global/btns/_step-btn-next.pug
+

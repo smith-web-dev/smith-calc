@@ -16,12 +16,10 @@ block card-body
         label='Quantity'
         box
         v-model='calcInput.quantity'
-        :color='theAppIsDark ? colorProps.btns.stepNav.dark.fg : colorProps.btns.stepNav.light.fg'
+        color='accent'
         clearable)
     v-spacer
 block nav-btns-left
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`b`)')
-    include ../../Global/btns/_step-btn-back-icon.pug
+  include ../../Global/btns/_step-btn-back.pug
 block nav-btns-right
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='stepNextDisabled')
-    include ../../Global/btns/_step-btn-next-icon.pug
+  include ../../Global/btns/_step-btn-next.pug

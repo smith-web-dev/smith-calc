@@ -7,16 +7,14 @@ block card-body
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(type='number' :label='theAppIsMetric ? `Meters` : `Feet`' box v-model='calcInput.span.feet' clearable)
+      v-text-field(color='accent' type='number' :label='theAppIsMetric ? `Meters` : `Feet`' box v-model='calcInput.span.feet' clearable)
     v-spacer
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(type='number' :label='theAppIsMetric ? `Centimeters` : `Inches`' box v-model='calcInput.span.inches' clearable)
+      v-text-field(color='accent' type='number' :label='theAppIsMetric ? `Centimeters` : `Inches`' box v-model='calcInput.span.inches' clearable)
     v-spacer
 block nav-btns-left
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
-    include ../Global/btns/_step-btn-back-icon.pug
+  include ../Global/btns/_step-btn-back.pug
 block nav-btns-right
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='calcInput.span.feet === null && calcInput.span.inches === null ? true : false')
-    include ../Global/btns/_step-btn-next-icon.pug
+  include ../Global/btns/_step-btn-next.pug

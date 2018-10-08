@@ -5,15 +5,13 @@ block subtitle
   | Measure the wall of the hose in at least 3 places
 block card-body
   div(v-for='(f, i) in calcInput.hoseWallMeas' :key='i')
-    v-text-field(type='number' label='' box v-model='calcInput.hoseWallMeas[i]' clearable :label='`Hose wall thickness #` + (i + 1) + [theAppIsMetric ? ` (cm)` : ` (in)`]')
+    v-text-field(color='accent' type='number' label='' box v-model='calcInput.hoseWallMeas[i]' clearable :label='`Hose wall thickness #` + (i + 1) + [theAppIsMetric ? ` (cm)` : ` (in)`]')
       v-btn(flat icon color='error' slot='append-outer' v-show='(i + 1) > 3' style='top: -10px;' @click.native='removeMeas(calcInput.hoseWallMeas, i)')
         v-icon delete
   v-layout(row justify-center)
     v-flex(xs12 sm10 md8)
       v-btn(block color='accent' @click.native='addMeasurement(calcInput.hoseWallMeas)' :disabled='calcInput.hoseWallMeas.length < 6 ? false : true') Add A Measurement
 block nav-btns-left
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 2')
-    include ../Global/btns/_step-btn-back-icon.pug
+  include ../Global/btns/_step-btn-back.pug
 block nav-btns-right
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='stepNextDisabled')
-    include ../Global/btns/_step-btn-next-icon.pug
+  include ../Global/btns/_step-btn-next.pug

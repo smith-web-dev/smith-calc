@@ -3,7 +3,6 @@
 
   block stepper-steps
     include ../views/CrimpSpec/_step0.pug
-    p {{ stepNextDisabled }}
     v-stepper-items
       //- Compression factor
       v-stepper-content.px-1.pt-1(step='1')
@@ -29,7 +28,6 @@
 <script>
   import CrimpSpecData from '@/data/CrimpSpec.json'
   import * as math from 'mathjs'
-  import { theAppIsDark } from '@/mixins/appIsDark.js'
   import { globalCalc } from '@/mixins/globalCalc.js'
   let convert = require('convert-units')
 
@@ -50,7 +48,6 @@
 
   export default {
     mixins: [
-      theAppIsDark,
       globalCalc
     ],
     data () {

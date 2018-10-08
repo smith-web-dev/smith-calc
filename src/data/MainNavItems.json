@@ -11,7 +11,7 @@
     "text": "Conveyor Length",
     "path": "/cb-length",
     "color": "accent darken-1",
-    "display": false
+    "display": true
   },
   {
     "icon": "fas fa-th-large",

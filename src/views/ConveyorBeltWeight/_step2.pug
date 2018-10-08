@@ -14,8 +14,6 @@ block card-body
   v-layout(row)
     v-text-field(type='number' label='Enter a custom width' box v-model='calcInput.width.box' clearable)
 block nav-btns-left
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='currentStep = 1')
-    include ../Global/btns/_step-btn-back-icon.pug
+  include ../Global/btns/_step-btn-back.pug
 block nav-btns-right
-  v-btn(fab small :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg' @click='moveStep(`f`)' :disabled='stepNextDisabled')
-    include ../Global/btns/_step-btn-next-icon.pug
+  include ../Global/btns/_step-btn-next.pug

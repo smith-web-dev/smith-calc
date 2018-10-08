@@ -5,12 +5,6 @@ block subtitle
   | Select a type of belt
 block card-body
   v-layout(row)
-    v-select.belt-types-select(:dark='theAppIsDark' box v-model='calcInput.belt' :items="beltData.types" return-object label="Select a type of belt" clearable)
+    v-select.belt-types-select(color='accent' :dark='theAppIsDark' box v-model='calcInput.belt' :items='beltData.types' return-object label='Select a type of belt' clearable)
 block nav-btns-right
-  v-btn(
-    fab
-    small
-    :color='theAppIsDark ? colorProps.btns.stepNav.dark.bg : colorProps.btns.stepNav.light.bg'
-    @click='moveStep(`f`)'
-    :disabled='stepNextDisabled')
-    include ../Global/btns/_step-btn-next-icon.pug
+  include ../Global/btns/_step-btn-next.pug

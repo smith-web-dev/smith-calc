@@ -14,7 +14,7 @@ import App from './App'
 import router from './router'
 
 import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from '@/util/index.js'
-import { theAppIsDark } from '@/mixins/appIsDark.js'
+// import { theAppIsDark } from '@/mixins/appIsDark.js'
 // import appIsDark from '@/mixins/appIsDark'
 
 Vue.config.productionTip = false
@@ -66,7 +66,7 @@ new Vue({
   router,
   template: '<App/>',
   components: { App },
-  mixins: [ theAppIsDark ],
+  // mixins: [ theAppIsDark ],
   head: {
     meta: [
       {
