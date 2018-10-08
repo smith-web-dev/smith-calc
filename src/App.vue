@@ -3,6 +3,7 @@
     include ./views/Global/_navDrawer.pug
     include ./views/Global/_toolbar.pug
     include ./views/Global/_settingsBottomSheet.pug
+    include ./views/Global/_clearDataDialog.pug
     v-content
       v-container.pa-0.ma-0(fluid)
         v-layout(row justify-center)
@@ -22,6 +23,7 @@
     data () {
       return {
         settingsDialog: false,
+        clearDataDialog: false,
         isMetric: false,
         drawer: false,
         navItems: navItems,
@@ -64,6 +66,13 @@
       }
     },
     methods: {
+      clearAllTheThings () {
+        this.$ls.remove('appMetricUnits')
+        this.$ls.remove('appDarkMode')
+        this.$ls.remove('shipments')
+        // this.settingsDialog = false
+        this.clearDataDialog = false
+      },
       toggleMetricUnits () {
         var appMetricUnits = this.$ls.get('appMetricUnits')
 
@@ -109,6 +118,13 @@
       }
     },
     computed: {
+      localDataCheck () {
+        if (this.$ls.get('appMetricUnits') === null && this.$ls.get('appDarkMode') === null && this.$ls.get('shipments') === null) {
+          return true
+        } else {
+          return false
+        }
+      },
       theAppIsDark () {
         return JSON.parse(this.$ls.get('appDarkMode'))
       },

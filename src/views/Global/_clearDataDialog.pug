@@ -1,0 +1,10 @@
+v-dialog(v-model='clearDataDialog' max-width='300px')
+  v-card(:dark='isDark')
+    v-card-title(primary-title)
+      div.subheading Clear all app data?
+    v-card-text
+      div This will clear all preferences and data stored in the app, and can not be undone. Do you want to continue?
+    v-card-actions
+      v-layout(row justify-right)
+      v-btn(flat @click='clearAllTheThings()') Yes
+      v-btn(flat @click='clearDataDialog = !clearDataDialog') No

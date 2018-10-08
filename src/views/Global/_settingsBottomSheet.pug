@@ -6,20 +6,13 @@ v-dialog(v-model='settingsDialog' max-width='560px')
       v-list
         //- Dark Mode
         v-list-tile(@click='toggleDarkMode()')
-
           v-list-tile-content
             v-list-tile-title Enable dark mode
           v-list-tile-action
             v-switch(v-model='isDark')
         v-divider
-            //- v-icon fas {{ isDark ? `fa-moon` : `fa-sun` }}
+        v-list-tile(@click='clearDataDialog = !clearDataDialog' :disabled='localDataCheck')
+          v-list-tile-title Clear all app data
+        v-divider
       v-layout(row justify-end)
         v-btn(color='primary' @click='settingsDialog = false') Done
-
-        //- Units
-        //- v-list-tile(@click='toggleMetricUnits()')
-          v-list-tile-action
-            v-icon fas fa-ruler-combined
-          v-list-tile-content
-            v-list-tile-title {{ isMetric ? `Metric Units` : `Imperial Units` }}
-            v-list-tile-sub-title {{ isMetric ? `(mm, cm, m)` : `(in, ft)` }}
