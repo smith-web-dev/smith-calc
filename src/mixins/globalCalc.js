@@ -7,11 +7,14 @@ export const globalCalc = {
   },
   created () {
     this.isDark = JSON.parse(this.$ls.get('appDarkMode'))
+    this.decimalRounding = Number(this.$ls.get('appDecimalRounding'))
   },
   data () {
     return {
       colorProps: ColorProps,
       isDark: Boolean,
+      decimalRounding: Number,
+      decimalItems: [0, 1, 2, 3, 4, 5, 6, 7, 8],
       currentStep: 0,
       snackbar: { text: null, display: false }
     }
@@ -53,6 +56,10 @@ export const globalCalc = {
         this.isDark = false
       }
       this.$forceUpdate()
+    },
+    changeDecimalRounding () {
+      var newNum = this.decimalRounding
+      this.$ls.set('appDecimalRounding', newNum)
     }
   },
   computed: {
@@ -154,11 +161,14 @@ export const globalCalc = {
       }
       return toReturn
     },
-    darkToggleBgColor () {
-      return this.isDark ? 'grey darken-3' : 'white'
-    },
-    darkToggleFgColor () {
-      return this.isDark ? 'accent' : 'primary'
+    decPlaSuffix () {
+      if (this.decimalRounding === 0) {
+        return 'places'
+      } else if (this.decimalRounding === 1) {
+        return 'place'
+      } else {
+        return 'places'
+      }
     }
   }
 }

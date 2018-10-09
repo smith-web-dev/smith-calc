@@ -18,10 +18,14 @@
   import Vue from 'vue'
   import navItems from './data/MainNavItems.json'
   import { globalCalc } from '@/mixins/globalCalc.js'
+
+  var pjson = require('../package.json')
+
   export default {
     mixins: [ globalCalc ],
     data () {
       return {
+        currentVersion: null,
         settingsDialog: false,
         clearDataDialog: false,
         isMetric: false,
@@ -40,6 +44,10 @@
       }
     },
     created () {
+      // console.log(pjson.version)
+      this.currentVersion = pjson.version
+      this.$ls.set('SmithCalcVersion', this.currentVersion)
+
       var self = this
       this.cordova.on('deviceready', () => {
         self.onDeviceReady()
@@ -54,36 +62,62 @@
         appDarkMode = this.$ls.get('appDarkMode')
         this.isDark = JSON.parse(appDarkMode)
       }
-      var appMetricUnits = this.$ls.get('appMetricUnits')
+
+      var appDecimalRounding = this.$ls.get('appDecimalRounding')
       // check if its in localstorage
-      if (appMetricUnits === null) {
-        this.$ls.set('appMetricUnits', false)
-        appMetricUnits = this.$ls.get('appMetricUnits')
-        this.isMetric = JSON.parse(appMetricUnits)
+      if (appDecimalRounding === null) {
+        this.$ls.set('appDecimalRounding', 3)
+        appDecimalRounding = this.$ls.get('appDecimalRounding')
+        this.decimalRounding = JSON.parse(appDecimalRounding)
       } else {
-        appMetricUnits = this.$ls.get('appMetricUnits')
-        this.isMetric = JSON.parse(appMetricUnits)
+        appDecimalRounding = this.$ls.get('appDecimalRounding')
+        this.decimalRounding = JSON.parse(appDecimalRounding)
       }
+
+      var cbWeightUserBelts = this.$ls.get('cbWeightUserBelts')
+      let blankUserBelts = []
+      // check if its in localstorage
+      if (cbWeightUserBelts === null) {
+        this.$ls.set('cbWeightUserBelts', JSON.stringify(blankUserBelts))
+        cbWeightUserBelts = this.$ls.get('cbWeightUserBelts')
+        this.cbWeightUserBelts = JSON.parse(cbWeightUserBelts)
+      } else {
+        cbWeightUserBelts = this.$ls.get('cbWeightUserBelts')
+        this.cbWeightUserBelts = JSON.parse(cbWeightUserBelts)
+      }
+
+      // var appMetricUnits = this.$ls.get('appMetricUnits')
+      // // check if its in localstorage
+      // if (appMetricUnits === null) {
+      //   this.$ls.set('appMetricUnits', false)
+      //   appMetricUnits = this.$ls.get('appMetricUnits')
+      //   this.isMetric = JSON.parse(appMetricUnits)
+      // } else {
+      //   appMetricUnits = this.$ls.get('appMetricUnits')
+      //   this.isMetric = JSON.parse(appMetricUnits)
+      // }
     },
     methods: {
       clearAllTheThings () {
         this.$ls.remove('appMetricUnits')
         this.$ls.remove('appDarkMode')
         this.$ls.remove('shipments')
+        this.$ls.remove('appDecimalRounding')
+        this.$ls.set('appDecimalRounding', 3)
         // this.settingsDialog = false
         this.clearDataDialog = false
       },
-      toggleMetricUnits () {
-        var appMetricUnits = this.$ls.get('appMetricUnits')
+      // toggleMetricUnits () {
+      //   var appMetricUnits = this.$ls.get('appMetricUnits')
 
-        if (JSON.parse(appMetricUnits) === false) {
-          this.$ls.set('appMetricUnits', JSON.stringify(true))
-          this.isMetric = true
-        } else {
-          this.$ls.set('appMetricUnits', JSON.stringify(false))
-          this.isMetric = false
-        }
-      },
+      //   if (JSON.parse(appMetricUnits) === false) {
+      //     this.$ls.set('appMetricUnits', JSON.stringify(true))
+      //     this.isMetric = true
+      //   } else {
+      //     this.$ls.set('appMetricUnits', JSON.stringify(false))
+      //     this.isMetric = false
+      //   }
+      // },
       fabClicked (func) {
         this.childFunc = func
       },
@@ -139,7 +173,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
 	body {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
@@ -153,6 +187,10 @@
   .v-btn--xlarge {
     height: 120px;
     width: 120px;
+  }
+
+  #navDrawerLogo {
+    color: unset !important;
   }
 </style>
 

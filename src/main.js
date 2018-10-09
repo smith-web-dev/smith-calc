@@ -20,7 +20,13 @@ import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from '@/util/inde
 Vue.config.productionTip = false
 VueClipboard.config.autoSetContainer = true // add this line
 
-Vue.use(Vuetify, { theme: theme })
+Vue.use(Vuetify, {
+  theme: theme,
+  iconfont: 'fa',
+  icons: {
+    // complete: 'fal fa-check'
+  }
+})
 Vue.use(VueCordova)
 Vue.use(VueHead)
 Vue.use(VueClipboard)
@@ -43,6 +49,8 @@ if (window.location.protocol === 'file:' || window.location.port === '3000') {
   document.body.appendChild(cordovaScript)
 }
 
+// this.$vuetify.icons.complete = 'far fa-star'
+
 // Mixins
 Vue.mixin({
   methods: {
@@ -57,8 +65,6 @@ Vue.mixin({
     }
   }
 })
-
-// this.$Vuetify.icons.dropdown = 'fas fa-star'
 
 /* eslint-disable no-new */
 new Vue({

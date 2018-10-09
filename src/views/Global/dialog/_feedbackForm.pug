@@ -1,0 +1,9 @@
+v-form(@submit='submitForm()')
+  v-text-field(type='text' v-model='feedback.name' placeholder='name' name='name')
+  v-text-field(type='email' v-model='feedback.email' placeholder='email' name='email')
+  v-text-field(type='text' v-model='feedback.note' placeholder='note' name='note')
+  input(type='hidden' v-model='feedback.date' name='date')
+  input(type='hidden' v-model='feedback.version' name='version')
+  input(type='hidden' v-model='feedback.shipments' name='shipments')
+  input(type='hidden' v-model='feedback.dark' name='dark')
+  v-btn(flat type='submit') submit

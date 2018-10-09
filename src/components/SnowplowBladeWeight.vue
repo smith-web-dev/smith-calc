@@ -45,7 +45,7 @@
       var newNum = Number(this[i][prop])
       total += newNum
     }
-    return total.toFixed(3)
+    return total.toFixed(this.decimalRounding)
   }
 
   export default {
@@ -187,7 +187,7 @@
       pcWeight () {
         var len = this.bladeLengthToInches
         var sze = this.calcInput.size
-        return ((len * sze).toFixed(3))
+        return ((len * sze).toFixed(this.decimalRounding))
       },
       extWeight () {
         var len = this.bladeLengthToInches
@@ -197,7 +197,7 @@
           qty = 1
         }
 
-        return ((len * sze * qty).toFixed(3))
+        return ((len * sze * qty).toFixed(this.decimalRounding))
       },
       shipmentWeight () {
         var shpmnt = this.shipment.items

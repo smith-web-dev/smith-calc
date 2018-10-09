@@ -95,9 +95,9 @@
 
         var resLabel = (this.theAppIsMetric ? ' cm' : '"')
 
-        this.calcInput.result = ((result).toFixed(3) + resLabel)
+        this.calcInput.result = ((result).toFixed(this.decimalRounding) + resLabel)
         this.calcInput.resultFrac = (makeFraction(resultInch, 64) + '"')
-        this.calcInput.resultMetric = (((result) * 25.4).toFixed(3) + 'mm')
+        this.calcInput.resultMetric = (((result) * 25.4).toFixed(this.decimalRounding) + 'mm')
       },
       addMeasurement (arr) {
         var newMeas = null

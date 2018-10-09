@@ -5,6 +5,11 @@ block subtitle
   | Select a type of belt
 block card-body
   v-layout(row)
-    v-select.belt-types-select(color='accent' :dark='theAppIsDark' box v-model='calcInput.belt' :items='beltData.types' return-object label='Select a type of belt' clearable)
+    v-select.belt-types-select(color='accent' :dark='theAppIsDark' box v-model='calcInput.belt' :items='beltTypesWithUser' return-object label='Select a type of belt' clearable)
+      v-list-tile(slot="prepend-item" ripple @click="addCustomBeltDialog = !addCustomBeltDialog")
+        v-list-tile-action
+          v-icon(size='18px') far fa-plus
+        v-list-tile-title Add custom belt
+      v-divider(slot="prepend-item" class="mt-2")
 block nav-btns-right
   include ../Global/btns/_step-btn-next.pug

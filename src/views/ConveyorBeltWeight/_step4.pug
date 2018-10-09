@@ -25,7 +25,7 @@ block card-body
         v-list-tile-title Weight per foot
         v-list-tile-sub-title {{ (calcInput.belt.value * setWidth) }} pounds
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy(((calcInput.belt.value * setWidth).toFixed(3) + ` pounds`))')
+        v-btn(icon ripple @click.native='doCopy(((calcInput.belt.value * setWidth).toFixed(decimalRounding) + ` pounds`))')
           include ../Global/btns/_result-step-copy-icon.pug
 block nav-btns-block
   include ../Global/btns/_step-btn-reset-all.pug

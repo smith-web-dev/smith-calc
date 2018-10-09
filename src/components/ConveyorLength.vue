@@ -115,7 +115,7 @@
         var resultIn = (12 * resultDec) - ((12 * resultDec) % 1)
 
         if (this.theAppIsMetric) {
-          return (convert(result).from('ft').to('m')).toFixed(3) + 'm'
+          return (convert(result).from('ft').to('m')).toFixed(this.decimalRounding) + 'm'
         } else {
           return resultFt + '\' ' + resultIn + '"'
         }

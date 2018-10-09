@@ -4,6 +4,12 @@ v-dialog(v-model='settingsDialog' max-width='560px')
       div.title Settings
     v-container.px(fluid)
       v-list
+        //- Decimal Rounding
+        v-list-tile()
+          v-list-tile-content
+            v-list-tile-title Decimal Rounding
+          v-list-tile-action
+            v-select(:suffix='decPlaSuffix' v-model='decimalRounding' hide-details color='accent' :items="decimalItems" style='width: 100px' @change='changeDecimalRounding()')
         //- Dark Mode
         v-list-tile(@click='toggleDarkMode()')
           v-list-tile-content
@@ -12,7 +18,8 @@ v-dialog(v-model='settingsDialog' max-width='560px')
             v-switch(v-model='isDark')
         v-divider
         v-list-tile(@click='clearDataDialog = !clearDataDialog' :disabled='localDataCheck')
-          v-list-tile-title Clear all app data
+          v-list-tile-content
+            v-list-tile-title Clear all app data
         v-divider
       v-layout(row justify-end)
         v-btn(color='primary' @click='settingsDialog = false') Done

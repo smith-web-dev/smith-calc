@@ -1,0 +1,12 @@
+v-dialog(v-model='addCustomBeltDialog')
+  v-card
+    v-card-title.headline Add custom belt
+    v-card-text
+      v-text-field(type='text' label='Category' hint='PVC, Rubber, etc' v-model='newBelt.cat')
+      v-text-field(type='text' label='Category' hint='Plies, covers, tensile strength, etc' v-model='newBelt.text')
+      v-text-field(type='number' label='Weight PIW' hint='Weight of a 1" x 1\' piece' v-model='newBelt.value')
+    v-card-actions
+      v-spacer
+
+      v-btn(color='primary darken-1' flat='flat' @click='addCustomBeltDialog = false') Nevermind
+      v-btn(flat @click='addUserBelt()') Add
