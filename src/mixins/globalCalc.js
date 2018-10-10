@@ -4,6 +4,8 @@ export const globalCalc = {
   mounted () {
     this.$emit('toolbarExtended', false)
     this.$emit('toolbarFab', { visible: false })
+    this.isDark = JSON.parse(this.$ls.get('appDarkMode'))
+    this.decimalRounding = Number(this.$ls.get('appDecimalRounding'))
   },
   created () {
     this.isDark = JSON.parse(this.$ls.get('appDarkMode'))
@@ -11,6 +13,8 @@ export const globalCalc = {
   },
   data () {
     return {
+      // fieldColor: 'accent',
+      btnColor: 'accent',
       colorProps: ColorProps,
       isDark: Boolean,
       decimalRounding: Number,
@@ -63,6 +67,13 @@ export const globalCalc = {
     }
   },
   computed: {
+    fieldColor () {
+      if (this.isDark) {
+        return 'accent'
+      } else {
+        return 'primary'
+      }
+    },
     theAppIsDark () {
       return JSON.parse(this.$ls.get('appDarkMode'))
     },

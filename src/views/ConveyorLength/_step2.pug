@@ -8,12 +8,12 @@ block card-body
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(color='accent' type='number' :label='theAppIsMetric ? `Meters` : `Feet`' box v-model='calcInput.span.feet' clearable)
+      v-text-field(:color='fieldColor' type='number' :label='theAppIsMetric ? `Meters` : `Feet`' box v-model='calcInput.span.feet' clearable)
     v-spacer
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(color='accent' type='number' :label='theAppIsMetric ? `Centimeters` : `Inches`' box v-model='calcInput.span.inches' clearable)
+      v-text-field(:color='fieldColor' type='number' :label='theAppIsMetric ? `Centimeters` : `Inches`' box v-model='calcInput.span.inches' clearable)
     v-spacer
 block nav-btns-left
   +stepBtnBack(click='moveStep(`b`)')

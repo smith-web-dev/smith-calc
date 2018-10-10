@@ -12,12 +12,12 @@ v-dialog(
         icon)
         v-icon(small) fas fa-times
     v-card-text.pb-0
-      v-text-field(color='accent' label='Tap here to add a note to this shipment' v-model='saveShipmentNote.text')
+      v-text-field(:color='fieldColor' label='Tap here to add a note to this shipment' v-model='saveShipmentNote.text')
     v-divider
     v-card-actions
       v-spacer
       v-btn(
-        color='accent'
+        :color='btnColor'
         @click='saveShipment()'
         flat)
         | {{ saveShipmentNote.text === null ? `Don't add a Note` : `Save` }}

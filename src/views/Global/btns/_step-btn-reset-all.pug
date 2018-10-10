@@ -1,5 +1,5 @@
 v-layout(row justify-center)
   v-flex(xs12 sm10 md8)
-    v-btn(round block color='accent' @click='resetAll(defaultInputs)')
+    v-btn(round block :color='btnColor' @click='resetAll(defaultInputs)')
       v-icon(left small) far fa-undo
       | Start Over

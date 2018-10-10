@@ -3,21 +3,21 @@ v-dialog(v-model='addCustomBeltDialog')
     v-card-title.headline Add custom belt
     v-card-text
       v-text-field(
-        color='accent'
+        :color='fieldColor'
         box
         type='text'
         label='Category'
         hint='PVC, Rubber, etc'
         v-model='newBelt.cat')
       v-text-field(
-        color='accent'
+        :color='fieldColor'
         box
         type='text'
         label='Type'
         hint='Plies, covers, tensile strength, etc'
         v-model='newBelt.text')
       v-text-field(
-        color='accent'
+        :color='fieldColor'
         box
         type='number'
         label='Weight PIW'

@@ -4,14 +4,14 @@ v-fab-transition
     bottom
     right
     v-model='shipment.btn'
-    color='accent'
+    :color='fieldColor'
     dark
     fab
     @click='shipment.dialog = true')
     v-icon local_shipping
 
   //- v-btn(
-    color='accent'
+    :color='fieldColor'
     dark
     absolute
     bottom
@@ -23,12 +23,12 @@ v-fab-transition
 
 //- v-fab-transition
 //-   v-speed-dial(v-model='shipment.btn' fixed bottom right transition='scale-transition')
-//-     v-btn(slot='activator' v-model='shipment.btn' color='accent' dark fab)
+//-     v-btn(slot='activator' v-model='shipment.btn' :color='fieldColor' dark fab)
 //-       v-icon local_shipping
 //-       v-icon close
 //-     v-btn(fab dark small color='info' @click.native='shipment.info = true')
 //-       v-icon info
-//-     v-btn(v-show='shipment.items.length !== 0' fab dark small color='accent' @click='saveShipmentMemoPopup()')
+//-     v-btn(v-show='shipment.items.length !== 0' fab dark small :color='fieldColor' @click='saveShipmentMemoPopup()')
 //-       v-icon save
 //-     v-btn(fab dark small color='success' @click='shipment.dialog = true')
 //-       v-icon visibility

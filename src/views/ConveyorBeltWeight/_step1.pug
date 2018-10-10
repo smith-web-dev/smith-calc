@@ -7,7 +7,7 @@ block subtitle
 block card-body
   v-layout(row)
     v-select(
-      color='accent'
+      :color='fieldColor'
       :dark='theAppIsDark'
       box
       v-model='calcInput.belt'
@@ -20,7 +20,7 @@ block card-body
           v-list-tile-content
             v-list-tile-title {{ item.text }}
           v-list-tile-action(v-if='item.user')
-            v-btn(flat icon @click.prevent='deleteBeltDialog = !deleteBeltDialog')
+            v-btn(flat icon @click.prevent='delSelect = item, deleteBeltDialog = !deleteBeltDialog')
               v-icon(size='18px' color='error') fas fa-minus-circle
       v-list-tile(
         slot='prepend-item'

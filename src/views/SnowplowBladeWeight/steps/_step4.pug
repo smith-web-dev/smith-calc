@@ -34,6 +34,6 @@ block nav-btns-left
     v-icon(left small) far fa-undo
     | Start Over
 block nav-btns-right
-  v-btn(round color='accent' @click.native='addToShipment()')
+  v-btn(round :color='btnColor' @click.native='addToShipment()')
     | Add to shipment
     v-icon(right small) far fa-plus

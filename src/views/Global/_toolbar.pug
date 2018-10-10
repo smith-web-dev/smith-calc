@@ -10,7 +10,7 @@ v-toolbar.primary(fixed clipped-left app dark :extended='toolbarExtended')
   v-fab-transition
     v-btn(
       v-show='toolbarFab.visible === true'
-      color='accent'
+      :color='btnColor'
       dark
       absolute
       bottom

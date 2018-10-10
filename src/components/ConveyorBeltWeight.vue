@@ -131,9 +131,7 @@
     computed: {
       beltTypesWithUser () {
         if (this.userBelts.length > 1) {
-          // console.log('concat')
           return this.userBelts.concat(ConveyorBeltData.types)
-          // return ConveyorBeltData.types.concat(this.userBelts)
         } else {
           return ConveyorBeltData.types
         }
@@ -159,6 +157,12 @@
         var l = this.beltLengthToFeet
 
         return ((b * w) * l).toFixed(this.decimalRounding)
+      },
+      perFootWeight () {
+        // (calcInput.belt.value * setWidth).toFixed(decimalRounding)
+        let v = this.calcInput.value
+        let w = this.setWidth
+        return (Number(v * w)).toFixed(this.decimalRounding)
       },
       beltLengthToFeet () {
         var foot = this.calcInput.length.feet

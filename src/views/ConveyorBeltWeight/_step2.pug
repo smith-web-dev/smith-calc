@@ -6,14 +6,26 @@ block subtitle
   | Either select a standard belt width or enter a custom width
 block card-body
   v-layout(row)
-    v-select(box v-model='calcInput.width.sel' :items='beltData.widths' label='Select a width' clearable)
+    v-select(
+      box
+      :color='fieldColor'
+      v-model='calcInput.width.sel'
+      :items='beltData.widths'
+      label='Select a width'
+      clearable)
   v-layout(row)
     v-spacer
     p.sirp-divider
       span or
     v-spacer
   v-layout(row)
-    v-text-field(type='number' label='Enter a custom width' box v-model='calcInput.width.box' clearable)
+    v-text-field(
+      type='number'
+      :color='fieldColor'
+      label='Enter a custom width'
+      box
+      v-model='calcInput.width.box'
+      clearable)
 block nav-btns-left
   +stepBtnBack(click='moveStep(`b`)')
 block nav-btns-right
