@@ -1,4 +1,5 @@
 extends ../layouts/_stepper-step-main.pug
+include ../mixins/_index.pug
 block title
   | Pulley diameters
 block subtitle
@@ -11,4 +12,4 @@ block card-body
   v-layout(row)
     v-checkbox(label='Pulleys have equal diameters' v-model='calcInput.equalPulleys')
 block nav-btns-right
-  include ../Global/btns/_step-btn-next.pug
+  +stepBtnNext(click='moveStep(`f`)')

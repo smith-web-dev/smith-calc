@@ -1,4 +1,5 @@
 extends ../layouts/_stepper-step-main.pug
+include ../mixins/_index.pug
 block title
   | Determine the compression factor
 block subtitle
@@ -16,4 +17,4 @@ block card-body
     v-spacer
   v-text-field(color='accent' type='number' hint='Enter as a full percentage, not a decimal' label='Enter a custom compression factor' box v-model='calcInput.comp.box' clearable suffix='%')
 block nav-btns-right
-  include ../Global/btns/_step-btn-next.pug
+  +stepBtnNext(click='moveStep(`f`)')

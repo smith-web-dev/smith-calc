@@ -9,7 +9,15 @@ v-dialog(v-model='settingsDialog' max-width='560px')
           v-list-tile-content
             v-list-tile-title Decimal Rounding
           v-list-tile-action
-            v-select(:suffix='decPlaSuffix' v-model='decimalRounding' hide-details color='accent' :items="decimalItems" style='width: 100px' @change='changeDecimalRounding()')
+            v-select(
+              :suffix='decPlaSuffix'
+              v-model='decimalRounding'
+              hide-details
+              color='accent'
+              :items='decimalItems'
+              style='width: 100px'
+              @change='changeDecimalRounding()')
+        v-divider
         //- Dark Mode
         v-list-tile(@click='toggleDarkMode()')
           v-list-tile-content
@@ -17,6 +25,7 @@ v-dialog(v-model='settingsDialog' max-width='560px')
           v-list-tile-action
             v-switch(v-model='isDark')
         v-divider
+        //- Clear Data
         v-list-tile(@click='clearDataDialog = !clearDataDialog' :disabled='localDataCheck')
           v-list-tile-content
             v-list-tile-title Clear all app data

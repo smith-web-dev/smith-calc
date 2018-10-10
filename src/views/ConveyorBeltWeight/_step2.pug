@@ -1,11 +1,12 @@
 extends ../layouts/_stepper-step-main.pug
+include ../mixins/_index.pug
 block title
   | Determine belt width
 block subtitle
   | Either select a standard belt width or enter a custom width
 block card-body
   v-layout(row)
-    v-select.belt-types-select(box v-model='calcInput.width.sel' :items='beltData.widths' label='Select a width' clearable)
+    v-select(box v-model='calcInput.width.sel' :items='beltData.widths' label='Select a width' clearable)
   v-layout(row)
     v-spacer
     p.sirp-divider
@@ -14,6 +15,6 @@ block card-body
   v-layout(row)
     v-text-field(type='number' label='Enter a custom width' box v-model='calcInput.width.box' clearable)
 block nav-btns-left
-  include ../Global/btns/_step-btn-back.pug
+  +stepBtnBack(click='moveStep(`b`)')
 block nav-btns-right
-  include ../Global/btns/_step-btn-next.pug
+  +stepBtnNext(click='moveStep(`f`)')

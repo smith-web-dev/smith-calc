@@ -1,8 +1,16 @@
 extends ../../layouts/_stepper-step-main.pug
+include ../../mixins/_index.pug
 block title
   | Select Material Size
 block card-body
-  v-select(color='accent' :dark='theAppIsDark' box :items='bladeSizes' label='Select a material size' v-model='calcInput.size' clearable)
+  v-select(
+    box
+    clearable
+    color='accent'
+    :dark='theAppIsDark'
+    :items='bladeSizes'
+    label='Select a material size'
+    v-model='calcInput.size')
 block nav-btns-right
   include ../../Global/btns/_step-btn-next.pug
 

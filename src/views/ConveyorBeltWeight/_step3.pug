@@ -1,4 +1,5 @@
 extends ../layouts/_stepper-step-main.pug
+include ../mixins/_index.pug
 block title
   | Enter the length of the belt
 block subtitle
@@ -15,6 +16,6 @@ block card-body
       v-text-field(color='accent' type='number' label='Inches' box v-model='calcInput.length.inches' clearable)
     v-spacer
 block nav-btns-left
-  include ../Global/btns/_step-btn-back.pug
+  +stepBtnBack(click='moveStep(`b`)')
 block nav-btns-right
-  include ../Global/btns/_step-btn-next.pug
+  +stepBtnNext(click='moveStep(`f`)')

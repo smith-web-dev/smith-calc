@@ -3,7 +3,7 @@
 
   block template-includes
     include ../views/ConveyorBeltWeight/_addCustomBeltDialog.pug
-    p {{ userBelts }}
+    //- p {{ userBelts }}
   block stepper-steps
     //- Steps
     include ../views/ConveyorBeltWeight/_step0.pug
@@ -96,6 +96,14 @@
       }
     },
     methods: {
+      removeUserBelt (item) {
+        let theArray = this.userBelts
+        let index = theArray.indexOf(item)
+        theArray.splice(index, 1)
+        console.log(index)
+        this.userBelts = theArray
+        this.$ls.set('cbWeightUserBelts', JSON.stringify(this.userBelts))
+      },
       addUserBelt () {
         if (this.userBelts.length === 0) {
           this.userBelts.push(userBeltsHeader)
@@ -103,7 +111,8 @@
         let theText = this.newBelt.cat + ' - ' + this.newBelt.text
         let theNewBelt = {
           text: theText,
-          value: Number(this.newBelt.value)
+          value: Number(this.newBelt.value),
+          user: true
         }
         this.userBelts.push(theNewBelt)
         this.$ls.set('cbWeightUserBelts', JSON.stringify(this.userBelts))
@@ -116,7 +125,7 @@
     computed: {
       beltTypesWithUser () {
         if (this.userBelts.length > 1) {
-          console.log('concat')
+          // console.log('concat')
           return this.userBelts.concat(ConveyorBeltData.types)
           // return ConveyorBeltData.types.concat(this.userBelts)
         } else {
@@ -169,3 +178,31 @@
     }
   }
 </script>
+
+<style lang="scss">
+  .v-input--is-focused {
+    &:before {
+      border: none !important;
+    }
+  }
+
+  .v-input__slot {
+    border-radius: 28px !important;
+    padding: 0 28px !important;
+
+    &:before,
+    &:after {
+      border: none !important;
+    }
+  }
+
+  .v-list__tile--active {
+    border-top-left-radius: 24px !important;
+    border-bottom-left-radius: 24px !important;
+    margin-left: 8px !important;
+  }
+
+  .user-belt-select-item {
+    width: 100% !important;
+  }
+</style>

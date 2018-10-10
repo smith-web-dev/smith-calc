@@ -1,4 +1,5 @@
 extends ../layouts/_stepper-step-main.pug
+include ../mixins/_index.pug
 block title
   | Determine the average thickness of the hose wall
 block subtitle
@@ -12,6 +13,6 @@ block card-body
     v-flex(xs12 sm10 md8)
       v-btn(block color='accent' @click.native='addMeasurement(calcInput.hoseWallMeas)' :disabled='calcInput.hoseWallMeas.length < 6 ? false : true') Add A Measurement
 block nav-btns-left
-  include ../Global/btns/_step-btn-back.pug
+  +stepBtnBack(click='moveStep(`b`)')
 block nav-btns-right
-  include ../Global/btns/_step-btn-next.pug
+  +stepBtnNext(click='moveStep(`f`)')

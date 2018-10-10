@@ -1,0 +1,9 @@
+mixin stepBtnNext
+  v-btn(fab small :disabled='stepNextDisabled' @click!=attributes.click)
+    v-icon(color='accent') far fa-arrow-right
+
+mixin stepBtnBack
+  v-btn(fab small @click!=attributes.click)
+    v-icon(color='accent') far fa-arrow-left
+
+//- +link('/foo', 'foo')(class="btn")

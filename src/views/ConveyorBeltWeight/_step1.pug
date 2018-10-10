@@ -1,15 +1,34 @@
 extends ../layouts/_stepper-step-main.pug
+include ../mixins/_index.pug
 block title
   | Select belt type
 block subtitle
   | Select a type of belt
 block card-body
   v-layout(row)
-    v-select.belt-types-select(color='accent' :dark='theAppIsDark' box v-model='calcInput.belt' :items='beltTypesWithUser' return-object label='Select a type of belt' clearable)
-      v-list-tile(slot="prepend-item" ripple @click="addCustomBeltDialog = !addCustomBeltDialog")
+    v-select(
+      color='accent'
+      :dark='theAppIsDark'
+      box
+      v-model='calcInput.belt'
+      :items='beltTypesWithUser'
+      return-object
+      label='Select a type of belt'
+      clearable)
+      template(slot='item' slot-scope='{ item, index }')
+        v-list-tile.user-belt-select-item(ripple)
+          v-list-tile-content
+            v-list-tile-title {{ item.text }}
+          v-list-tile-action(v-if='item.user')
+            v-btn(flat icon @click.prevent='removeUserBelt(item)')
+              v-icon(size='18px' color='error') fas fa-minus-circle
+      v-list-tile(
+        slot='prepend-item'
+        ripple
+        @click='addCustomBeltDialog = !addCustomBeltDialog')
         v-list-tile-action
           v-icon(size='18px') far fa-plus
         v-list-tile-title Add custom belt
-      v-divider(slot="prepend-item" class="mt-2")
+      v-divider.mt-2(slot='prepend-item')
 block nav-btns-right
-  include ../Global/btns/_step-btn-next.pug
+  +stepBtnNext(click='moveStep(`f`)')
