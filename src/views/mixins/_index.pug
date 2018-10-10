@@ -7,3 +7,15 @@ mixin stepBtnBack
     v-icon(color='accent') far fa-arrow-left
 
 //- +link('/foo', 'foo')(class="btn")
+
+mixin genericDialog(title, text)
+  v-dialog(v-model!=attributes.model max-width!=attributes.width)
+    v-card(:dark='isDark')
+      v-card-title(primary-title)
+        div.subheading= title
+      v-card-text
+        div= text
+      v-card-actions
+        v-layout(row justify-right)
+        v-btn(flat @click!=attributes.yclick) Yes
+        v-btn(flat @click!=attributes.nclick) No

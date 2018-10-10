@@ -1,8 +1,10 @@
 <template lang="pug">
   extends ../views/layouts/_calc-main.pug
+  include ../views/mixins/_index.pug
 
   block template-includes
     include ../views/ConveyorBeltWeight/_addCustomBeltDialog.pug
+    +genericDialog('Delete custom belt type?',  'This action can not be undone')(model='deleteBeltDialog' width='300px' yclick='removeUserBelt(delSelect)' nclick='deleteBeltDialog = false')
     //- p {{ userBelts }}
   block stepper-steps
     //- Steps
@@ -62,6 +64,8 @@
     },
     data () {
       return {
+        deleteBeltDialog: false,
+        delSelect: null,
         beltTypes: ConveyorBeltData.beltTypes,
         defaultInputs: ConveyorBeltData.defaultInputs,
         addCustomBeltDialog: false,
@@ -102,6 +106,8 @@
         theArray.splice(index, 1)
         console.log(index)
         this.userBelts = theArray
+        this.delSelect = null
+        this.deleteBeltDialog = false
         this.$ls.set('cbWeightUserBelts', JSON.stringify(this.userBelts))
       },
       addUserBelt () {
