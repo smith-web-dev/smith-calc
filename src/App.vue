@@ -1,9 +1,12 @@
 <template lang="pug">
   v-app(:dark='isDark')
+    include ./views/mixins/_index.pug
     include ./views/Global/_navDrawer.pug
     include ./views/Global/_toolbar.pug
     include ./views/Global/_settingsBottomSheet.pug
-    include ./views/Global/_clearDataDialog.pug
+
+    +genericDialog('Clear all app data?',  'This will clear all preferences and data stored in the app, and can not be undone. Do you want to continue?')(model='clearDataDialog' width='300px' yclick='clearAllTheThings()' nclick='clearDataDialog = false')
+
     v-content
       v-container.pa-0.ma-0(fluid)
         v-layout(row justify-center)
@@ -19,7 +22,7 @@
   import navItems from './data/MainNavItems.json'
   import { globalCalc } from '@/mixins/globalCalc.js'
 
-  var pjson = require('../package.json')
+  let pjson = require('../package.json')
 
   export default {
     mixins: [ globalCalc ],
@@ -103,6 +106,7 @@
         this.$ls.remove('appDarkMode')
         this.$ls.remove('shipments')
         this.$ls.remove('appDecimalRounding')
+        this.$ls.remove('cbWeightUserBelts')
         this.$ls.set('appDecimalRounding', 3)
         // this.settingsDialog = false
         this.clearDataDialog = false
