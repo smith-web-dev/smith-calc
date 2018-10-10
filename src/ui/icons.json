@@ -1,0 +1,7 @@
+{
+  "prev": "far fa-arrow-left",
+  "next": "far fa-arrow-right",
+  "checkboxOn": "far fa-check-square",
+  "checkboxOff": "far fa-square",
+  "checkboxIndeterminate": "far fa-minus-square"
+}

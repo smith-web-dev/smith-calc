@@ -17,6 +17,8 @@ v-navigation-drawer(v-model='drawer' fixed clipped app)
                   v-list-tile-title Settings
                 v-list-tile(@click='toggleDarkMode()')
                   v-list-tile-title {{ isDark ? `Disable` : `Enable` }} dark mode
+                v-list-tile(target='_blank' href='https://gitlab.com/smith-irp/calc/wikis/home')
+                  v-list-tile-title() Wiki
                 v-list-tile(href='mailto:cory.gantenbein@pm.me?subject=SmithCalc Feedback')
                   v-list-tile-title() Send feedback
     v-list

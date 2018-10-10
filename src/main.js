@@ -8,7 +8,8 @@ import VueHead from 'vue-head'
 import VueLocalStorage from 'vue-localstorage'
 import Vue2Filters from 'vue2-filters'
 import VueClipboard from 'vue-clipboard2'
-import theme from '@/data/theme.js'
+import theme from '@/ui/theme.js'
+import icons from '@/ui/icons.json'
 
 import App from './App'
 import router from './router'
@@ -22,10 +23,7 @@ VueClipboard.config.autoSetContainer = true // add this line
 
 Vue.use(Vuetify, {
   theme: theme,
-  iconfont: 'fa',
-  icons: {
-    // complete: 'fal fa-check'
-  }
+  icons: icons
 })
 Vue.use(VueCordova)
 Vue.use(VueHead)

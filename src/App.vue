@@ -196,6 +196,14 @@
   #navDrawerLogo {
     color: unset !important;
   }
+
+  // .theme--dark.v-list .v-list__tile--link:hover,
+  // .theme--dark.v-list .v-list__tile--highlighted,
+  // .theme--dark.v-list .v-list__group__header:hover {
+  //     border-top-left-radius: 24px;
+  //     border-bottom-left-radius: 24px;
+  //     margin-left: 8px;
+  // }
 </style>
 
 <style scoped>
