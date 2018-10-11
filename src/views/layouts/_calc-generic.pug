@@ -1,0 +1,8 @@
+v-container.px-0.pb-0(fluid)
+  //- Template includes block
+  block template-includes
+  v-snackbar(v-model='snackbar.display' :timeout='3250' top)
+    span(v-html='snackbar.text')
+    v-btn(icon :color='btnColor' flat @click='snackbar.display = false')
+      v-icon() far fa-times
+  block content

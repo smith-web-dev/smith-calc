@@ -177,35 +177,6 @@
   }
 </script>
 
-<style lang="scss">
-	body {
-    padding-top: constant(safe-area-inset-top);
-    padding-top: env(safe-area-inset-top);
-	}
-
-  .footer{ /* Apply this to v-bottom-nav if necessary. */
-    margin-bottom: constant(safe-area-inset-bottom);
-    margin-bottom: env(safe-area-inset-bottom);
-  }
-
-  .v-btn--xlarge {
-    height: 120px;
-    width: 120px;
-  }
-
-  #navDrawerLogo {
-    color: unset !important;
-  }
-
-  // .theme--dark.v-list .v-list__tile--link:hover,
-  // .theme--dark.v-list .v-list__tile--highlighted,
-  // .theme--dark.v-list .v-list__group__header:hover {
-  //     border-top-left-radius: 24px;
-  //     border-bottom-left-radius: 24px;
-  //     margin-left: 8px;
-  // }
-</style>
-
 <style scoped>
   .v-avatar img {
     border-radius: unset !important;

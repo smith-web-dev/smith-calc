@@ -18,7 +18,7 @@
     "text": "Square Footage",
     "path": "/sqft",
     "color": "accent lighten-2",
-    "display": false
+    "display": true
   },
   {
     "icon": "fas fa-weight",

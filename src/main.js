@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
+import '@/ui/styles/main.sass'
 import VueCordova from 'vue-cordova'
 import VueHead from 'vue-head'
 import VueLocalStorage from 'vue-localstorage'

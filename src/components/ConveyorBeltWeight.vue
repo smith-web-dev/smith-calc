@@ -189,30 +189,3 @@
   }
 </script>
 
-<style lang="scss">
-  .v-input--is-focused {
-    &:before {
-      border: none !important;
-    }
-  }
-
-  .v-input__slot {
-    border-radius: 28px !important;
-    padding: 0 28px !important;
-
-    &:before,
-    &:after {
-      border: none !important;
-    }
-  }
-
-  .v-list__tile--active {
-    border-top-left-radius: 24px !important;
-    border-bottom-left-radius: 24px !important;
-    margin-left: 8px !important;
-  }
-
-  .user-belt-select-item {
-    width: 100% !important;
-  }
-</style>

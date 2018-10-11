@@ -52,19 +52,3 @@
     }
   }
 </script>
-
-<style>
-  .home-calc-btn {
-    max-width: 136px;
-    height: 180px;
-  }
-
-  .v-menu__content,
-  .v-card {
-    border-radius: 8px !important;
-  }
-
-  .hide-this {
-    /*display: none !important;*/
-  }
-</style>
