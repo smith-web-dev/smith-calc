@@ -52,28 +52,29 @@
               label='Inches')
         v-layout(row)
           v-container.pa-0(fluid)
-            v-list(three-line subheader v-if='result !== 0')
-              v-list-tile
-                v-list-tile-content
-                  v-list-tile-title Description
-                  v-list-tile-sub-title {{ displayDescription }}
-                v-list-tile-action
-                  v-btn(icon ripple @click.native='doCopy(displayDescription)')
-                    include ../views/Global/btns/_result-step-copy-icon.pug
-              v-list-tile
-                v-list-tile-content
-                  v-list-tile-title Square Footage
-                  v-list-tile-sub-title {{ resultDisplay }}
-                v-list-tile-action
-                  v-btn(icon ripple @click.native='doCopy(resultWithLabel)')
-                    include ../views/Global/btns/_result-step-copy-icon.pug
-              v-list-tile
-                v-list-tile-content
-                  v-list-tile-title Square Inches
-                  v-list-tile-sub-title {{ resultDisplayInches }}
-                v-list-tile-action
-                  v-btn(icon ripple @click.native='doCopy(resultInchesWithLabel)')
-                    include ../views/Global/btns/_result-step-copy-icon.pug
+            v-slide-y-reverse-transition
+              v-list(three-line subheader v-if='result !== 0')
+                v-list-tile
+                  v-list-tile-content
+                    v-list-tile-title Description
+                    v-list-tile-sub-title {{ displayDescription }}
+                  v-list-tile-action
+                    v-btn(icon ripple @click.native='doCopy(displayDescription)')
+                      include ../views/Global/btns/_result-step-copy-icon.pug
+                v-list-tile
+                  v-list-tile-content
+                    v-list-tile-title Square Footage
+                    v-list-tile-sub-title {{ resultDisplay }}
+                  v-list-tile-action
+                    v-btn(icon ripple @click.native='doCopy(resultWithLabel)')
+                      include ../views/Global/btns/_result-step-copy-icon.pug
+                v-list-tile
+                  v-list-tile-content
+                    v-list-tile-title Square Inches
+                    v-list-tile-sub-title {{ resultDisplayInches }}
+                  v-list-tile-action
+                    v-btn(icon ripple @click.native='doCopy(resultInchesWithLabel)')
+                      include ../views/Global/btns/_result-step-copy-icon.pug
 
 
 

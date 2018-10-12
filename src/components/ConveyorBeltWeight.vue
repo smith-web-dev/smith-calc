@@ -45,21 +45,8 @@
       theAppIsDark,
       globalCalc
     ],
-    created () {
-
-    },
     mounted () {
       let ubelts = JSON.parse(this.$ls.get('cbWeightUserBelts'))
-      // let newArr = []
-      console.log(ubelts)
-      // if (ubelts.length > 0 && ubelts.length < 2) {
-      // newArr = newArr.concat(userBeltsHeader)
-      // newArr = newArr.concat(ubelts)
-      // ubelts = userBeltsHeader.concat(ubelts)
-      // ubelts = ubelts.concat(userBeltsHeader)
-      // console.log(ubelts)
-      // this.userBelts = newArr
-      // } else {
       this.userBelts = ubelts
     },
     data () {
@@ -104,7 +91,6 @@
         let theArray = this.userBelts
         let index = theArray.indexOf(item)
         theArray.splice(index, 1)
-        console.log(index)
         this.userBelts = theArray
         this.delSelect = null
         this.deleteBeltDialog = false

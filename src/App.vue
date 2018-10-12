@@ -11,10 +11,11 @@
       v-container.pa-0.ma-0(fluid)
         v-layout(row justify-center)
           v-flex(xs12 md10 lg8 xl6)
-            router-view(
-            @toolbarExtended='makeToolbarExtended'
-            @toolbarFab='setToolbarFab'
-            @childFunc='fabClicked')
+            v-slide-y-transition(hide-on-leave)
+              router-view(
+              @toolbarExtended='makeToolbarExtended'
+              @toolbarFab='setToolbarFab'
+              @childFunc='fabClicked')
 </template>
 
 <script>
@@ -47,7 +48,6 @@
       }
     },
     created () {
-      // console.log(pjson.version)
       this.currentVersion = pjson.version
       this.$ls.set('SmithCalcVersion', this.currentVersion)
 
@@ -88,17 +88,6 @@
         cbWeightUserBelts = this.$ls.get('cbWeightUserBelts')
         this.cbWeightUserBelts = JSON.parse(cbWeightUserBelts)
       }
-
-      // var appMetricUnits = this.$ls.get('appMetricUnits')
-      // // check if its in localstorage
-      // if (appMetricUnits === null) {
-      //   this.$ls.set('appMetricUnits', false)
-      //   appMetricUnits = this.$ls.get('appMetricUnits')
-      //   this.isMetric = JSON.parse(appMetricUnits)
-      // } else {
-      //   appMetricUnits = this.$ls.get('appMetricUnits')
-      //   this.isMetric = JSON.parse(appMetricUnits)
-      // }
     },
     methods: {
       clearAllTheThings () {
@@ -108,20 +97,8 @@
         this.$ls.remove('appDecimalRounding')
         this.$ls.remove('cbWeightUserBelts')
         this.$ls.set('appDecimalRounding', 3)
-        // this.settingsDialog = false
         this.clearDataDialog = false
       },
-      // toggleMetricUnits () {
-      //   var appMetricUnits = this.$ls.get('appMetricUnits')
-
-      //   if (JSON.parse(appMetricUnits) === false) {
-      //     this.$ls.set('appMetricUnits', JSON.stringify(true))
-      //     this.isMetric = true
-      //   } else {
-      //     this.$ls.set('appMetricUnits', JSON.stringify(false))
-      //     this.isMetric = false
-      //   }
-      // },
       fabClicked (func) {
         this.childFunc = func
       },
