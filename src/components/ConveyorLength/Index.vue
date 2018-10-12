@@ -1,22 +1,8 @@
-<template lang="pug">
-  extends ../views/layouts/_calc-main.pug
-
-  block stepper-steps
-    //- Steps
-    include ../views/ConveyorLength/_step0.pug
-    v-stepper-items
-      //- Compression factor
-      v-stepper-content.px-1.pt-1(step='1')
-        include ../views/ConveyorLength/_step1.pug
-      v-stepper-content.px-1.pt-1(step='2')
-        include ../views/ConveyorLength/_step2.pug
-      v-stepper-content.px-1.pt-1(step='3')
-        include ../views/ConveyorLength/_step3.pug
-
+<template lang="pug" src="./template/index.pug">
 </template>
 
 <script>
-  import cbLengthData from '../data/cbLength.json'
+  import cbLengthData from '@/data/cbLength.json'
   import { theAppIsDark } from '@/mixins/appIsDark.js'
   import { globalCalc } from '@/mixins/globalCalc.js'
   let convert = require('convert-units')

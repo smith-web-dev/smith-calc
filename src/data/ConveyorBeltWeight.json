@@ -222,6 +222,12 @@
       "feet": null,
       "inches": null
     }
-  }
+  },
+  "userBeltsHeader": {
+      "text": "User",
+      "disabled": true,
+      "prepend-icon": "fas fa-angle-right",
+      "item-avatar": "fas fa-angle-right"
+    }
 }
 

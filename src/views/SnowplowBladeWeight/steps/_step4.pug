@@ -10,8 +10,7 @@ block card-body
         v-list-tile-title Description
         v-list-tile-sub-title {{ descDisp }}
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy(descDisp)')
-          include ../../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy(descDisp)')
     //- Weight per piece
     v-list-tile
       v-list-tile-content
@@ -19,16 +18,14 @@ block card-body
         v-list-tile-title Weight per piece
         v-list-tile-sub-title {{ pcWeight }} pounds
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy((pcWeight + ` pounds`))')
-          include ../../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy((pcWeight + ` pounds`))')
     //- Extended weight
     v-list-tile
       v-list-tile-content
         v-list-tile-title Extended quantity weight
         v-list-tile-sub-title {{ extWeight }} pounds
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy((extWeight + ` pounds`))')
-          include ../../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy((extWeight + ` pounds`))')
 block nav-btns-left
   v-btn(round @click='resetAll(defaultInputs)')
     v-icon(left small) far fa-undo

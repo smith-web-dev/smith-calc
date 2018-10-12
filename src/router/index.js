@@ -3,9 +3,9 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 
 import RollLength from '@/components/RollLength'
-import ConveyorLength from '@/components/ConveyorLength'
+import ConveyorLength from '@/components/ConveyorLength/Index.vue'
 import SquareFootage from '@/components/SquareFootage'
-import ConveyorBeltWeight from '@/components/ConveyorBeltWeight'
+import ConveyorBeltWeight from '@/components/ConveyorBeltWeight/Index.vue'
 import SnowplowBladeWeight from '@/components/SnowplowBladeWeight'
 import CrimpSpec from '@/components/CrimpSpec'
 

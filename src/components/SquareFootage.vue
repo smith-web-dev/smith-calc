@@ -1,5 +1,6 @@
 <template lang="pug">
   extends ../views/layouts/_calc-generic.pug
+  include ../views/mixins/_index.pug
   block content
     v-card-title.pb-0(primary-title style='display: block;')
       .headline
@@ -59,25 +60,19 @@
                     v-list-tile-title Description
                     v-list-tile-sub-title {{ displayDescription }}
                   v-list-tile-action
-                    v-btn(icon ripple @click.native='doCopy(displayDescription)')
-                      include ../views/Global/btns/_result-step-copy-icon.pug
+                    +copyBtn(click='doCopy(displayDescription)')
                 v-list-tile
                   v-list-tile-content
                     v-list-tile-title Square Footage
                     v-list-tile-sub-title {{ resultDisplay }}
                   v-list-tile-action
-                    v-btn(icon ripple @click.native='doCopy(resultWithLabel)')
-                      include ../views/Global/btns/_result-step-copy-icon.pug
+                    +copyBtn(click='doCopy(resultWithLabel)')
                 v-list-tile
                   v-list-tile-content
                     v-list-tile-title Square Inches
                     v-list-tile-sub-title {{ resultDisplayInches }}
                   v-list-tile-action
-                    v-btn(icon ripple @click.native='doCopy(resultInchesWithLabel)')
-                      include ../views/Global/btns/_result-step-copy-icon.pug
-
-
-
+                    +copyBtn(click='doCopy(resultInchesWithLabel)')
 </template>
 
 <script>

@@ -1,44 +1,10 @@
-<template lang="pug">
-  extends ../views/layouts/_calc-main.pug
-  include ../views/mixins/_index.pug
-
-  block template-includes
-    include ../views/ConveyorBeltWeight/_addCustomBeltDialog.pug
-    +genericDialog('Delete custom belt type?',  'This action can not be undone')(model='deleteBeltDialog' width='300px' yclick='removeUserBelt(delSelect)' nclick='deleteBeltDialog = false')
-    //- p {{ userBelts }}
-  block stepper-steps
-    //- Steps
-    include ../views/ConveyorBeltWeight/_step0.pug
-
-    v-stepper-items
-      //- Select snowplow material size
-      v-stepper-content.px-1.pt-1(step='1')
-        include ../views/ConveyorBeltWeight/_step1.pug
-
-      //- Enter snowplow blade length
-      v-stepper-content.px-1.pt-1(step='2')
-        include ../views/ConveyorBeltWeight/_step2.pug
-
-      //- Enter quantity
-      v-stepper-content.px-1.pt-1(step='3')
-        include ../views/ConveyorBeltWeight/_step3.pug
-
-      //- Results
-      v-stepper-content.px-1.pt-1(step='4')
-        include ../views/ConveyorBeltWeight/_step4.pug
+<template lang="pug" src="./template/index.pug">
 </template>
 
 <script>
-  import ConveyorBeltData from '../data/ConveyorBeltWeight.json'
+  import ConveyorBeltData from '@/data/ConveyorBeltWeight.json'
   import { theAppIsDark } from '@/mixins/appIsDark.js'
   import { globalCalc } from '@/mixins/globalCalc.js'
-
-  let userBeltsHeader = {
-    'text': 'User',
-    'disabled': true,
-    'prepend-icon': 'fas fa-angle-right',
-    'item-avatar': 'fas fa-angle-right'
-  }
 
   export default {
     mixins: [
@@ -61,7 +27,7 @@
           widths: ConveyorBeltData.widths
         },
         userBelts: [
-          userBeltsHeader,
+          ConveyorBeltData.userBeltsHeader,
           {
             text: 'User - Some belt',
             value: 0.666
@@ -98,7 +64,7 @@
       },
       addUserBelt () {
         if (this.userBelts.length === 0) {
-          this.userBelts.push(userBeltsHeader)
+          this.userBelts.push(ConveyorBeltData.userBeltsHeader)
         }
         let theText = this.newBelt.cat + ' - ' + this.newBelt.text
         let theNewBelt = {
@@ -146,9 +112,9 @@
       },
       perFootWeight () {
         // (calcInput.belt.value * setWidth).toFixed(decimalRounding)
-        let v = this.calcInput.value
+        let v = this.calcInput.belt.value
         let w = this.setWidth
-        return (Number(v * w)).toFixed(this.decimalRounding)
+        return (v * w).toFixed(this.decimalRounding)
       },
       beltLengthToFeet () {
         var foot = this.calcInput.length.feet

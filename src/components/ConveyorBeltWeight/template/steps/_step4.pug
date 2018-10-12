@@ -1,4 +1,5 @@
-extends ../layouts/_stepper-step-main.pug
+extends ../../../../views/layouts/_stepper-step-main.pug
+include ../../../../views/mixins/_index.pug
 block title
   | Results
 block card-body
@@ -9,23 +10,20 @@ block card-body
         v-list-tile-title Description
         v-list-tile-sub-title {{ beltDescription }}
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy(beltDescription)')
-          include ../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy(beltDescription)')
     //- Weight per piece
     v-list-tile
       v-list-tile-content
         v-list-tile-title Belt weight
         v-list-tile-sub-title {{ beltWeight }} pounds
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy((beltWeight + ` pounds`))')
-          include ../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy((beltWeight + ` pounds`))')
     //- Extended weight
     v-list-tile
       v-list-tile-content
         v-list-tile-title Weight per foot
-        v-list-tile-sub-title {{ (calcInput.belt.value * setWidth) }} pounds
+        v-list-tile-sub-title {{ perFootWeight }} pounds
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy(perFootWeight + ` pounds`)')
-          include ../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy((perFootWeight + ` pounds`))')
 block nav-btns-block
-  include ../Global/btns/_step-btn-reset-all.pug
+  include ../../../../views/Global/btns/_step-btn-reset-all.pug

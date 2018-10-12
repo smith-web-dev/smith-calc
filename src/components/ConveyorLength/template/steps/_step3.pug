@@ -1,4 +1,4 @@
-extends ../layouts/_stepper-step-main.pug
+extends ../../../../views/layouts/_stepper-step-main.pug
 block title
   | Results
 block card-body
@@ -9,8 +9,7 @@ block card-body
         v-list-tile-title Description
         v-list-tile-sub-title {{ makeDesc }}
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy(makeDesc)')
-          include ../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy(makeDesc)')
     //- Length
     v-list-tile
       v-list-tile-content
@@ -18,7 +17,6 @@ block card-body
         v-list-tile-title Conveyor Length
         v-list-tile-sub-title {{ doCalculation }}
       v-list-tile-action
-        v-btn(icon ripple @click.native='doCopy(doCalculation)')
-          include ../Global/btns/_result-step-copy-icon.pug
+        +copyBtn(click='doCopy(doCalculation)')
 block nav-btns-block
-  include ../Global/btns/_step-btn-reset-all.pug
+  include ../../../../views/Global/btns/_step-btn-reset-all.pug

@@ -19,3 +19,7 @@ mixin genericDialog(title, text)
         v-layout(row justify-right)
         v-btn(flat @click!=attributes.yclick) Yes
         v-btn(flat @click!=attributes.nclick) No
+
+mixin copyBtn()
+  v-btn(icon ripple @click.native!=attributes.click)
+    v-icon(color='grey lighten-1') fas fa-copy
