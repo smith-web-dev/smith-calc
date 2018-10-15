@@ -1,37 +1,11 @@
-<template lang="pug">
-  extends ../views/layouts/_calc-main.pug
-
-  block template-includes
-    include ../views/SnowplowBladeWeight/shipment/_shipmentAddNotesDialog.pug
-    include ../views/SnowplowBladeWeight/shipment/_shipmentBottomSheet.pug
-    include ../views/SnowplowBladeWeight/shipment/_shipmentInfoBottomSheet.pug
-    include ../views/SnowplowBladeWeight/shipment/_confirmClearDeleteDialog.pug
-  block stepper-steps
-    //- Steps
-    include ../views/SnowplowBladeWeight/steps/_step0.pug
-    v-stepper-items
-      //- Select snowplow material size
-      v-stepper-content.px-1.pt-1(step='1')
-        include ../views/SnowplowBladeWeight/steps/_step1.pug
-
-      //- Enter snowplow blade length
-      v-stepper-content.px-1.pt-1(step='2')
-        include ../views/SnowplowBladeWeight/steps/_step2.pug
-
-      //- Enter quantity
-      v-stepper-content.px-1.pt-1(step='3')
-        include ../views/SnowplowBladeWeight/steps/_step3.pug
-
-      //- Results
-      v-stepper-content.px-1.pt-1(step='4')
-        include ../views/SnowplowBladeWeight/steps/_step4.pug
+<template lang="pug" src="./template/index.pug">
 </template>
 
 <script>
   import Vue from 'vue'
-  import SnowplowData from '@/data/Snowplow.json'
   import moment from 'moment'
   import JsonExcel from 'vue-json-excel'
+  import SnowplowData from '@/data/Snowplow.json'
   import { theAppIsDark } from '@/mixins/appIsDark.js'
   import { globalCalc } from '@/mixins/globalCalc.js'
   import { snowShipment } from '@/mixins/snowplowCalc/shipment.js'

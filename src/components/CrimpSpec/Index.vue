@@ -1,28 +1,4 @@
-<template lang="pug">
-  extends ../views/layouts/_calc-main.pug
-
-  block stepper-steps
-    include ../views/CrimpSpec/_step0.pug
-    v-stepper-items
-      //- Compression factor
-      v-stepper-content.px-1.pt-1(step='1')
-        include ../views/CrimpSpec/_step1.pug
-
-      //- Shank OD
-      v-stepper-content.px-1.pt-1(step='2')
-        include ../views/CrimpSpec/_step2.pug
-
-      //- Hose Wall
-      v-stepper-content.px-1.pt-1(step='3')
-        include ../views/CrimpSpec/_step3.pug
-
-      //- Ferrule Wall
-      v-stepper-content.px-1.pt-1(step='4')
-        include ../views/CrimpSpec/_step4.pug
-
-      //- Result
-      v-stepper-content.px-1.pt-1(step='5')
-        include ../views/CrimpSpec/_step5.pug
+<template lang="pug" src="./template/index.pug">
 </template>
 
 <script>
@@ -42,7 +18,6 @@
     var frac = math.fraction(dec)
     nume = Math.round(((td * frac.n) / frac.d))
 
-    // return (whole + '-' + nume + '⁄' + td)
     return (whole + '-' + nume + '/' + td)
   }
 

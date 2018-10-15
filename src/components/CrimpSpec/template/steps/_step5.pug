@@ -1,4 +1,4 @@
-extends ../layouts/_stepper-step-main.pug
+extends ../../../../views/layouts/_stepper-step-main.pug
 block title
   | Results
 block card-body
@@ -25,5 +25,5 @@ block card-body
       v-list-tile-action
         +copyBtn(click='doCopy(calcInput.resultMetric)')
 block nav-btns-block
-  include ../Global/btns/_step-btn-reset-all.pug
+  include ../../../../views/Global/btns/_step-btn-reset-all.pug
 
