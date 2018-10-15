@@ -23,3 +23,22 @@ mixin genericDialog(title, text)
 mixin copyBtn()
   v-btn(icon ripple @click.native!=attributes.click)
     v-icon(color='grey lighten-1') fas fa-copy
+
+mixin resetAllBtn()
+  v-layout(
+    row
+    justify-center)
+    v-flex(
+      xs12
+      sm10
+      md8)
+      v-btn(
+        round
+        block
+        :color='btnColor'
+        @click='resetAll(defaultInputs)')
+        v-icon(
+          left
+          small)
+          | far fa-undo
+        | Start Over

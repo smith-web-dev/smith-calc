@@ -19,16 +19,23 @@ v-dialog(v-model='settingsDialog' max-width='560px')
               @change='changeDecimalRounding()')
         v-divider
         //- Dark Mode
-        v-list-tile(@click='toggleDarkMode()')
+        v-list-tile(
+          @click='toggleDarkMode()')
           v-list-tile-content
             v-list-tile-title Enable dark mode
           v-list-tile-action
-            v-switch(v-model='isDark')
+            v-switch(
+              v-model='isDark')
         v-divider
         //- Clear Data
-        v-list-tile(@click='clearDataDialog = !clearDataDialog' :disabled='localDataCheck')
+        v-list-tile(
+          @click='clearDataDialog = !clearDataDialog'
+          :disabled='localDataCheck')
           v-list-tile-content
             v-list-tile-title Clear all app data
         v-divider
       v-layout(row justify-end)
-        v-btn(color='primary' @click='settingsDialog = false') Done
+        v-btn(
+          color='primary'
+          @click='settingsDialog = false')
+          | Done

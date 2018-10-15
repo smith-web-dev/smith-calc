@@ -1,5 +1,4 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Enter the length of the belt
 block subtitle
@@ -8,14 +7,28 @@ block card-body
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(:color='fieldColor' type='number' label='Feet' box v-model='calcInput.length.feet' clearable)
+      v-text-field(
+        :color='fieldColor'
+        type='number'
+        label='Feet'
+        box
+        v-model='calcInput.length.feet'
+        clearable)
     v-spacer
   v-layout(row)
     v-spacer
     v-flex(xs6)
-      v-text-field(:color='fieldColor' type='number' label='Inches' box v-model='calcInput.length.inches' clearable)
+      v-text-field(
+        :color='fieldColor'
+        type='number'
+        label='Inches'
+        box
+        v-model='calcInput.length.inches'
+        clearable)
     v-spacer
 block nav-btns-left
-  +stepBtnBack(click='moveStep(`b`)')
+  +stepBtnBack(
+    click='moveStep(`b`)')
 block nav-btns-right
-  +stepBtnNext(click='moveStep(`f`)')
+  +stepBtnNext(
+    click='moveStep(`f`)')

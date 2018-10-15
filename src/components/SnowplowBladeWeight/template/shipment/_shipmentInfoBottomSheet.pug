@@ -1,20 +1,34 @@
-v-dialog(v-model='shipment.info' fullscreen hide-overlay transition='dialog-bottom-transition')
+v-dialog(
+  v-model='shipment.info'
+  fullscreen
+  hide-overlay
+  transition='dialog-bottom-transition')
   v-card
-    v-toolbar(dark color='primary')
-      v-btn(icon dark @click.native='shipment.info = false')
-        v-icon close
+    v-toolbar(
+      dark
+      color='primary')
+      v-btn(
+        icon
+        dark
+        @click.native='shipment.info = false')
+        v-icon
+          | close
+          //- TODO: swicth to FA icon
 
       v-toolbar-title
-        span.font-weight-light Shipment
-        span.font-weight-regular {{ ' // ' }}
-        span.subheading.font-weight-medium Info
+        span(
+          class='font-weight-light')
+          | Shipment
+        span(
+          class='font-weight-regular')
+          | {{ ' // ' }}
+        span(
+          class='subheading font-weight-medium')
+          | Info
       v-spacer
     v-container
-      v-layout(row)
-        v-flex(xs12)
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque unde aut voluptatem. Ducimus hic sunt officiis totam in blanditiis, quas neque, impedit id dicta aliquid nihil ipsam sit optio.
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque unde aut voluptatem. Ducimus hic sunt officiis totam in blanditiis, quas neque, impedit id dicta aliquid nihil ipsam sit optio.
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque unde aut voluptatem. Ducimus hic sunt officiis totam in blanditiis, quas neque, impedit id dicta aliquid nihil ipsam sit optio.
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque unde aut voluptatem. Ducimus hic sunt officiis totam in blanditiis, quas neque, impedit id dicta aliquid nihil ipsam sit optio.
-          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque unde aut voluptatem. Ducimus hic sunt officiis totam in blanditiis, quas neque, impedit id dicta aliquid nihil ipsam sit optio.
+      v-layout(
+        row)
+        v-flex(
+          xs12)
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad cumque unde aut voluptatem. Ducimus hic sunt officiis totam in blanditiis, quas neque, impedit id dicta aliquid nihil ipsam sit optio.

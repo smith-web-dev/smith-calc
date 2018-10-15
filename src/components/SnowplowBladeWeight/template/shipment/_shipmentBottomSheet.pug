@@ -1,12 +1,28 @@
-v-dialog(v-model='shipment.dialog' fullscreen hide-overlay transition='dialog-bottom-transition')
-  v-card(:dark='theAppIsDark')
-    v-toolbar(dark color='primary')
-      v-btn(icon dark @click.native='shipment.dialog = false')
-        v-icon close
+v-dialog(
+  v-model='shipment.dialog'
+  fullscreen
+  hide-overlay
+  transition='dialog-bottom-transition')
+  v-card(
+    :dark='theAppIsDark')
+    v-toolbar(
+      dark
+      color='primary')
+      v-btn(
+        icon
+        dark
+        @click.native='shipment.dialog = false')
+        v-icon
+          | close
+          //- TODO: switch to FA icon
 
-      v-toolbar-title.font-weight-light Shipment
+      v-toolbar-title(
+        class='font-weight-light')
+        | Shipment
       v-spacer
     include ./_shipmentToolbar.pug
-    v-container.px-0(fluid)
+    v-container(
+      class='px-0'
+      fluid)
       include ./shipmentBottomSheet/_currentShipment.pug
       include ./shipmentBottomSheet/_savedShipments.pug

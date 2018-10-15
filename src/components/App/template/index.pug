@@ -1,0 +1,33 @@
+v-app(
+  :dark='isDark')
+  include /mixins/_index.pug
+  include /app/_navDrawer.pug
+  include /app/_toolbar.pug
+  include /app/dialog/_settingsDialog.pug
+
+  +genericDialog(
+    'Clear all app data?',
+    'This will clear all preferences and data stored in the app, and can not be undone. Do you want to continue?')(
+    model='clearDataDialog'
+    width='300px'
+    yclick='clearAllTheThings()'
+    nclick='clearDataDialog = false')
+
+  v-content
+    v-container(
+      class='pa-0 ma-0'
+      fluid)
+      v-layout(
+        row
+        justify-center)
+        v-flex(
+          xs12
+          md10
+          lg8
+          xl6)
+          v-slide-y-transition(
+            hide-on-leave)
+            router-view(
+            @toolbarExtended='makeToolbarExtended'
+            @toolbarFab='setToolbarFab'
+            @childFunc='fabClicked')

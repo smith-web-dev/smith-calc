@@ -1,16 +1,18 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Results
 block card-body
-  v-list(three-line subheader)
+  v-list(
+    three-line
+    subheader)
     //- Part size x length
     v-list-tile
       v-list-tile-content
         v-list-tile-title Description
         v-list-tile-sub-title {{ descDisp }}
       v-list-tile-action
-        +copyBtn(click='doCopy(descDisp)')
+        +copyBtn(
+          click='doCopy(descDisp)')
     //- Weight per piece
     v-list-tile
       v-list-tile-content
@@ -18,19 +20,32 @@ block card-body
         v-list-tile-title Weight per piece
         v-list-tile-sub-title {{ pcWeight }} pounds
       v-list-tile-action
-        +copyBtn(click='doCopy((pcWeight + ` pounds`))')
+        +copyBtn(
+          click='doCopy((pcWeight + ` pounds`))')
     //- Extended weight
     v-list-tile
       v-list-tile-content
         v-list-tile-title Extended quantity weight
         v-list-tile-sub-title {{ extWeight }} pounds
       v-list-tile-action
-        +copyBtn(click='doCopy((extWeight + ` pounds`))')
+        +copyBtn(
+          click='doCopy((extWeight + ` pounds`))')
 block nav-btns-left
-  v-btn(round @click='resetAll(defaultInputs)')
-    v-icon(left small) far fa-undo
+  v-btn(
+    round
+    @click='resetAll(defaultInputs)')
+    v-icon(
+      left
+      small)
+      | far fa-undo
     | Start Over
 block nav-btns-right
-  v-btn(round :color='btnColor' @click.native='addToShipment()')
+  v-btn(
+    round
+    :color='btnColor'
+    @click.native='addToShipment()')
     | Add to shipment
-    v-icon(right small) far fa-plus
+    v-icon(
+      right
+      small)
+      | far fa-plus

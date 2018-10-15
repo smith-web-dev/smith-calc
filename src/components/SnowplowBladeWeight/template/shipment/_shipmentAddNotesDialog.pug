@@ -2,17 +2,27 @@ v-dialog(
   width='500'
   v-model='saveShipmentNote.dialog')
   v-card(:dark='theAppIsDark')
-    v-card-title.subheading
+    v-card-title(
+      class='subheading')
       | Shipment Note
-      span.font-weight-light.pl-1 (Optional)
+      span(
+        class='font-weight-light pl-1')
+        | (Optional)
       v-spacer
       v-btn(
         @click='saveShipmentNote.dialog = false'
         flat
         icon)
-        v-icon(small) fas fa-times
-    v-card-text.pb-0
-      v-text-field(box :color='fieldColor' label='Tap here to add a note to this shipment' v-model='saveShipmentNote.text')
+        v-icon(
+          small)
+          | fas fa-times
+    v-card-text(
+      class='pb-0')
+      v-text-field(
+        box
+        :color='fieldColor'
+        label='Tap here to add a note to this shipment'
+        v-model='saveShipmentNote.text')
     v-divider
     v-card-actions
       v-spacer

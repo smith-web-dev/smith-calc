@@ -1,5 +1,5 @@
-v-container.px-0.pb-0(fluid)
-  //- Template includes block
+extends _default.pug
+block content
   block template-includes
   v-snackbar(v-model='snackbar.display' :timeout='3250' top)
     span(v-html='snackbar.text')

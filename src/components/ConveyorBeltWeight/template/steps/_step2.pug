@@ -1,5 +1,4 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Determine belt width
 block subtitle
@@ -13,12 +12,14 @@ block card-body
       :items='beltData.widths'
       label='Select a width'
       clearable)
-  v-layout(row)
+  v-layout(
+    row)
     v-spacer
     p.sirp-divider
       span or
     v-spacer
-  v-layout(row)
+  v-layout(
+    row)
     v-text-field(
       type='number'
       :color='fieldColor'

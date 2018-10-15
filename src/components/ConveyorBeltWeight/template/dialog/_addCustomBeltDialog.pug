@@ -1,6 +1,10 @@
-v-dialog(v-model='addCustomBeltDialog')
-  v-card(:dark='isDark')
-    v-card-title.headline Add custom belt
+v-dialog(
+  v-model='addCustomBeltDialog')
+  v-card(
+    :dark='isDark')
+    v-card-title(
+      class='headline')
+      | Add custom belt
     v-card-text
       v-text-field(
         :color='fieldColor'
@@ -26,5 +30,11 @@ v-dialog(v-model='addCustomBeltDialog')
     v-card-actions
       v-spacer
 
-      v-btn(flat @click='addCustomBeltDialog = false') Nevermind
-      v-btn(flat @click='addUserBelt()') Add
+      v-btn(
+        flat
+        @click='addCustomBeltDialog = false')
+        | Nevermind
+      v-btn(
+        flat
+        @click='addUserBelt()')
+        | Add

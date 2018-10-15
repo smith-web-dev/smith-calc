@@ -1,12 +1,19 @@
 v-stepper-header.elevation-0
   //- Select CB type
-  v-stepper-step(:complete='currentStep > 1', step='1')
+  v-stepper-step(
+    :complete='currentStep > 1'
+    step='1')
   v-divider
   //- Enter/select width
-  v-stepper-step(:complete='currentStep > 2', step='2')
+  v-stepper-step(
+    :complete='currentStep > 2'
+    step='2')
   v-divider
   //- Enter Length
-  v-stepper-step(:complete='currentStep > 3', step='3')
+  v-stepper-step(
+    :complete='currentStep > 3'
+    step='3')
   v-divider
   //- Results
-  v-stepper-step(step='4')
+  v-stepper-step(
+    step='4')

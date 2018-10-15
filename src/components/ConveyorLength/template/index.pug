@@ -1,12 +1,18 @@
-extends ../../../views/layouts/_calc-main.pug
+extends /layouts/_calc-main.pug
 block stepper-steps
   //- Steps
   include ./steps/_step0.pug
   v-stepper-items
     //- Compression factor
-    v-stepper-content.px-1.pt-1(step='1')
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='1')
       include ./steps/_step1.pug
-    v-stepper-content.px-1.pt-1(step='2')
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='2')
       include ./steps/_step2.pug
-    v-stepper-content.px-1.pt-1(step='3')
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='3')
       include ./steps/_step3.pug

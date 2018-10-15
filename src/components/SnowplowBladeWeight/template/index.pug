@@ -1,4 +1,4 @@
-extends ../../../views/layouts/_calc-main.pug
+extends /layouts/_calc-main.pug
 
 block template-includes
   include ./shipment/_shipmentAddNotesDialog.pug
@@ -10,17 +10,25 @@ block stepper-steps
   include ./steps/_step0.pug
   v-stepper-items
     //- Select snowplow material size
-    v-stepper-content.px-1.pt-1(step='1')
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='1')
       include ./steps/_step1.pug
 
     //- Enter snowplow blade length
-    v-stepper-content.px-1.pt-1(step='2')
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='2')
       include ./steps/_step2.pug
 
     //- Enter quantity
-    v-stepper-content.px-1.pt-1(step='3')
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='3')
       include ./steps/_step3.pug
 
     //- Results
-    v-stepper-content.px-1.pt-1(step='4')
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='4')
       include ./steps/_step4.pug

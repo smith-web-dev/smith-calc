@@ -1,5 +1,4 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Select Material Size
 block card-body
@@ -12,5 +11,6 @@ block card-body
     label='Select a material size'
     v-model='calcInput.size')
 block nav-btns-right
-  +stepBtnNext(click='moveStep(`f`)')
+  +stepBtnNext(
+    click='moveStep(`f`)')
 

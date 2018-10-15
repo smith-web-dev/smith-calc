@@ -1,29 +1,33 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Results
 block card-body
-  v-list(three-line subheader)
+  v-list(
+    three-line
+    subheader)
     //- Part size x length
     v-list-tile
       v-list-tile-content
         v-list-tile-title Description
         v-list-tile-sub-title {{ beltDescription }}
       v-list-tile-action
-        +copyBtn(click='doCopy(beltDescription)')
+        +copyBtn(
+          click='doCopy(beltDescription)')
     //- Weight per piece
     v-list-tile
       v-list-tile-content
         v-list-tile-title Belt weight
         v-list-tile-sub-title {{ beltWeight }} pounds
       v-list-tile-action
-        +copyBtn(click='doCopy((beltWeight + ` pounds`))')
+        +copyBtn(
+          click='doCopy((beltWeight + ` pounds`))')
     //- Extended weight
     v-list-tile
       v-list-tile-content
         v-list-tile-title Weight per foot
         v-list-tile-sub-title {{ perFootWeight }} pounds
       v-list-tile-action
-        +copyBtn(click='doCopy((perFootWeight + ` pounds`))')
+        +copyBtn(
+          click='doCopy((perFootWeight + ` pounds`))')
 block nav-btns-block
-  include ../../../../views/Global/btns/_step-btn-reset-all.pug
+  +resetAllBtn

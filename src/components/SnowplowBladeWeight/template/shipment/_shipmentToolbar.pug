@@ -1,8 +1,19 @@
-v-toolbar(flat color='primary' dark)
+v-toolbar(
+  flat
+  color='primary'
+  dark)
   v-spacer
   //- v-btn(icon @click.native='shipment.info = true')
     v-icon fas fa-info-circle
-  v-btn(icon :disabled='shipment.items.length === 0' @click='saveShipmentMemoPopup()')
-    v-icon fas fa-save
-  v-btn(icon :disabled='shipment.items.length > 0 ? false : true' @click.native='confirmClearShipment()')
-    v-icon fas fa-trash-alt
+  v-btn(
+    icon
+    :disabled='shipment.items.length === 0'
+    @click='saveShipmentMemoPopup()')
+    v-icon
+      | fas fa-save
+  v-btn(
+    icon
+    :disabled='shipment.items.length > 0 ? false : true'
+    @click.native='confirmClearShipment()')
+    v-icon
+      | fas fa-trash-alt

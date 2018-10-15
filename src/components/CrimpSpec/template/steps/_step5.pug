@@ -1,29 +1,34 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Results
 block card-body
-  v-list(three-line subheader)
+  v-list(
+    three-line
+    subheader)
     //- Decimal Result
     v-list-tile
       v-list-tile-content
         v-list-tile-title Decimal {{ theAppIsMetric ? `Centimeters` : `Inches` }}
         v-list-tile-sub-title {{ calcInput.result }}
       v-list-tile-action
-        +copyBtn(click='doCopy(calcInput.result)')
+        +copyBtn(
+          click='doCopy(calcInput.result)')
     //- Fractional Result
     v-list-tile
       v-list-tile-content
         v-list-tile-title Fractional Inches
         v-list-tile-sub-title {{ calcInput.resultFrac }}
       v-list-tile-action
-        +copyBtn(click='doCopy(calcInput.resultFrac)')
+        +copyBtn(
+          click='doCopy(calcInput.resultFrac)')
     //- Metric Result
     v-list-tile
       v-list-tile-content
         v-list-tile-title Millimeters
         v-list-tile-sub-title {{ calcInput.resultMetric }}
       v-list-tile-action
-        +copyBtn(click='doCopy(calcInput.resultMetric)')
+        +copyBtn(
+          click='doCopy(calcInput.resultMetric)')
 block nav-btns-block
-  include ../../../../views/Global/btns/_step-btn-reset-all.pug
+  +resetAllBtn
 

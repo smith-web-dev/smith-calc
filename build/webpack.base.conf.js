@@ -21,10 +21,11 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.pug'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      'pug$': resolve('src/views')
     }
   },
   module: {
@@ -74,7 +75,10 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        loader: 'pug-plain-loader'
+        loader: 'pug-plain-loader',
+        options: {
+          basedir: path.resolve(__dirname, '../src/views')
+        }
       }
     ]
   },

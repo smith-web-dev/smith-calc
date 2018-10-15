@@ -1,21 +1,38 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Enter snowplow blade length
 block subtitle
   | You can enter feet, inches, or feet and inches
 block card-body
-  v-layout(row)
+  v-layout(
+    row)
     v-spacer
-    v-flex(xs6)
-      v-text-field(type='number' label='Feet' box v-model='calcInput.length.feet' :color='fieldColor' clearable)
+    v-flex(
+      xs6)
+      v-text-field(
+        type='number'
+        label='Feet'
+        box
+        v-model='calcInput.length.feet'
+        :color='fieldColor'
+        clearable)
     v-spacer
-  v-layout(row)
+  v-layout(
+    row)
     v-spacer
-    v-flex(xs6)
-      v-text-field(type='number' label='Inches' box v-model='calcInput.length.inches' :color='fieldColor' clearable)
+    v-flex(
+      xs6)
+      v-text-field(
+        type='number'
+        label='Inches'
+        box
+        v-model='calcInput.length.inches'
+        :color='fieldColor'
+        clearable)
     v-spacer
 block nav-btns-left
-  +stepBtnBack(click='moveStep(`b`)')
+  +stepBtnBack(
+    click='moveStep(`b`)')
 block nav-btns-right
-  +stepBtnNext(click='moveStep(`f`)')
+  +stepBtnNext(
+    click='moveStep(`f`)')

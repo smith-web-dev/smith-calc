@@ -1,13 +1,14 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Enter quantity
 block subtitle
   | Either enter or use the arrows to adjust the quantity of snowplow blades
 block card-body
-  v-layout(row)
+  v-layout(
+    row)
     v-spacer
-    v-flex.text-xs-center(xs6)
+    v-flex.text-xs-center(
+      xs6)
       v-text-field(
         append-outer-icon='fas fa-plus'
         @click:append-outer='qtyChange(1)'
@@ -21,6 +22,8 @@ block card-body
         clearable)
     v-spacer
 block nav-btns-left
-  +stepBtnBack(click='moveStep(`b`)')
+  +stepBtnBack(
+    click='moveStep(`b`)')
 block nav-btns-right
-  +stepBtnNext(click='moveStep(`f`)')
+  +stepBtnNext(
+    click='moveStep(`f`)')

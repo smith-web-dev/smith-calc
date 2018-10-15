@@ -1,20 +1,42 @@
-extends ../../../../views/layouts/_stepper-step-main.pug
-include ../../../../views/mixins/_index.pug
+extends /layouts/_stepper-step-main.pug
 block title
   | Determine the compression factor
 block subtitle
   | Either select a type of hose or enter a custom compression factor
 block card-body
-  v-alert.mb-3.sirp-alert-text(:value='steps.compFactor.warn' :type='steps.compFactor.warnType' transition='slide-y-transition')
+  v-alert(
+    class='mb-3 sirp-alert-text'
+    :value='steps.compFactor.warn'
+    :type='steps.compFactor.warnType'
+    transition='slide-y-transition')
     strong
       | {{ steps.compFactor.warnType === 'warning' ? 'WARNING!' : 'DANGER!' }}
       em  {{ setWarning }}
-  v-select(:color='fieldColor' :dark='theAppIsDark' box :items='calcData.hoseTypes' label='Select a type of hose' v-model='calcInput.comp.sel' @change='calcInput.comp.box = null' clearable)
-  v-layout(row)
+  v-select(
+    :color='fieldColor'
+    :dark='theAppIsDark'
+    box
+    :items='calcData.hoseTypes'
+    label='Select a type of hose'
+    v-model='calcInput.comp.sel'
+    @change='calcInput.comp.box = null'
+    clearable)
+  v-layout(
+    row)
     v-spacer
-    p.sirp-divider
+    p(
+      class='sirp-divider')
       span or
     v-spacer
-  v-text-field(:color='fieldColor' type='number' hint='Enter as a full percentage, not a decimal' label='Enter a custom compression factor' box v-model='calcInput.comp.box' clearable suffix='%')
+  v-text-field(
+    :color='fieldColor'
+    type='number'
+    hint='Enter as a full percentage, not a decimal'
+    label='Enter a custom compression factor'
+    box
+    v-model='calcInput.comp.box'
+    clearable
+    suffix='%')
 block nav-btns-right
-  +stepBtnNext(click='moveStep(`f`)')
+  +stepBtnNext(
+    click='moveStep(`f`)')

@@ -7,6 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../www/index.html'),
     assetsRoot: path.resolve(__dirname, '../www'),
     assetsSubDirectory: '',
+    pugBaseDirectory: '',
     assetsPublicPath: './',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
@@ -28,6 +29,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},
+    pugBaseDirectory: 'src/views',
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)
