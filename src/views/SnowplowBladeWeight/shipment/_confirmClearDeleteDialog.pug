@@ -6,8 +6,8 @@ v-dialog(v-model='alert.display' max-width='290')
     v-card-actions
       v-spacer
 
-      v-btn(color='primary darken-1' flat='flat' @click='alert.display = false, delSelect = null') Nevermind
+      v-btn(flat='flat' @click='alert.display = false, delSelect = null') Cancel
       //- Yes for deleting a single roll
-      v-btn(v-show='delSelect === null ? false : true' color='error darken-1' flat='flat' @click='deleteItemFromShipment(delSelect)') Delete
+      v-btn(v-show='delSelect === null ? false : true' flat='flat' @click='deleteItemFromShipment(delSelect)') Yes
       //- Yes for clearing shipment
-      v-btn(v-show='delSelect !== null ? false : true' color='error darken-1' flat='flat' @click='clearShipment()') Clear
+      v-btn(v-show='delSelect !== null ? false : true' flat='flat' @click='clearShipment()') Yes
