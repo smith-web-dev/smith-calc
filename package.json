@@ -55,6 +55,7 @@
     "web": "0.0.2"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.4.1",
     "autoprefixer": "^8.5.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
