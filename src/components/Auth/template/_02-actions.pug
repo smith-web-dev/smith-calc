@@ -1,0 +1,29 @@
+v-card-actions
+  v-spacer
+  v-btn(flat color='purple' @click='loggingIn = !loggingIn') {{ loggingIn ? words.signup : words.signin }}
+  v-btn(flat @click='loginButtons = !loginButtons')
+    | More Options
+    v-icon(right) {{ loginButtons ? 'fas fa-caret-up' : 'fas fa-caret-down' }}
+v-slide-y-transition
+  v-card-text(v-show='loginButtons')
+    +sirpDivider('{{ words.signin + ` with` }}')
+    v-layout(row justify-space-around)
+      //- Google
+      v-btn(icon color='red' dark :disabled='loading' :loading='loading' @click.prevent='onSigninGoogle')
+        v-icon(dark) fab fa-google
+        +loginLoaderBtn
+      //- Facebook
+      v-btn(icon color='primary' dark :disabled='loading' :loading='loading' @click.prevent='onSigninFacebook')
+        v-icon(dark) fab fa-facebook-f
+        +loginLoaderBtn
+      //- Github
+      v-btn(icon color='grey darken-4' dark :disabled='loading' :loading='loading' @click.prevent='onSigninGithub')
+        v-icon(dark) fab fa-github
+        +loginLoaderBtn
+    //-
+    v-layout.mt-3(row justify-center)
+      v-flex(xs10)
+        v-btn(round block :disabled='loading' :loading='loading' @click.prevent='onResetPassword')
+          | Reset Password By Email
+          v-icon(right dark) email
+          +loginLoaderBtn

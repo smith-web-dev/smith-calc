@@ -8,10 +8,7 @@ block content
   v-card-text
     v-container.pa-0(fluid)
       //- Width label
-      v-layout(row justify-center)
-        v-flex.text-xs-center(xs12)
-          p.sirp-divider
-            span Width
+      +sirpDivider('Width')
       //- width input
       v-layout.mb-4(row wrap justify-center)
         v-flex.text-xs-center(xs6)
@@ -29,10 +26,7 @@ block content
             :color='fieldColor'
             label='Inches')
       //- Length label
-      v-layout(row justify-center)
-        v-flex.text-xs-center(xs12)
-          p.sirp-divider
-            span Length
+      +sirpDivider('Length')
       //- length input
       v-layout.mb-4(row wrap justify-center)
         v-flex(xs6)

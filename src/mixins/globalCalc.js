@@ -15,8 +15,10 @@ export const globalCalc = {
     return {
       words: {
         signin: 'Sign In',
-        logout: 'Log Out'
+        logout: 'Log Out',
+        signup: 'Sign Up'
       },
+      drawer: false,
       btnColor: 'accent',
       dialogs: {
         loggedOut: false
@@ -27,10 +29,7 @@ export const globalCalc = {
       decimalItems: [0, 1, 2, 3, 4, 5, 6, 7, 8],
       currentStep: 0,
       snackbar: { text: null, display: false },
-      form: {
-        email: '',
-        pass: ''
-      }
+      form: { email: '', pass: '' }
     }
   },
   methods: {
@@ -75,6 +74,9 @@ export const globalCalc = {
       var newNum = this.decimalRounding
       this.$ls.set('appDecimalRounding', newNum)
     },
+    onSignup () {
+      this.$store.dispatch('signUserUp', {email: this.form.email, password: this.form.pass})
+    },
     onSignin () {
       this.$store.dispatch('signUserIn', {email: this.form.email, password: this.form.pass})
     },
@@ -100,7 +102,11 @@ export const globalCalc = {
       this.$store.dispatch('clearError')
     },
     onLogout () {
+      var compo = this
+      this.drawer = false
       this.$store.dispatch('logout')
+      compo.snackbar.text = 'Logged out'
+      compo.snackbar.display = true
       this.$router.push('/')
     }
   },

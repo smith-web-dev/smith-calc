@@ -6,8 +6,6 @@ mixin stepBtnBack
   v-btn(fab small @click!=attributes.click)
     v-icon(:color='btnColor') far fa-arrow-left
 
-//- +link('/foo', 'foo')(class="btn")
-
 mixin genericDialog(title, text)
   v-dialog(v-model!=attributes.model max-width!=attributes.width)
     v-card(:dark='isDark')
@@ -37,5 +35,12 @@ mixin resetAllBtn()
         v-icon(left small) far fa-undo
         | Start Over
 
-mixin showAlert(text, icon, color)
-  v-alert(value!=attributes.model type=color icon=icon transition='scale-transition')= text
+mixin loginLoaderBtn()
+  span.custom-loader(slot='loader')
+    v-icon(light) fas fa-spinner fa-spin
+
+mixin sirpDivider(text)
+  v-layout(row justify-center)
+    v-flex.text-xs-center(xs12)
+      p.sirp-divider
+        span= text

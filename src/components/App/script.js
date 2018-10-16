@@ -10,12 +10,10 @@ export default {
   mixins: [ globalCalc ],
   data () {
     return {
-      testAlert: true,
       currentVersion: null,
       settingsDialog: false,
       clearDataDialog: false,
       isMetric: false,
-      drawer: false,
       navItems: navItems,
       cordova: Vue.cordova,
       title: 'SmithCalc',

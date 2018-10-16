@@ -1,8 +1,5 @@
 extends _default.pug
 block content
   block template-includes
-  v-snackbar(v-model='snackbar.display' :timeout='3250' top)
-    span(v-html='snackbar.text')
-    v-btn(icon :color='btnColor' flat @click='snackbar.display = false')
-      v-icon() far fa-times
+  include /app/dialog/_snackbar.pug
   block content

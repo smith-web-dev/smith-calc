@@ -4,6 +4,10 @@ v-app(
   include /app/_navDrawer.pug
   include /app/_toolbar.pug
   include /app/dialog/_settingsDialog.pug
+  v-snackbar(multi-line v-model='snackbar.display' :timeout='3250' top)
+    span(v-html='snackbar.text')
+    v-btn(icon :color='btnColor' flat @click='snackbar.display = false')
+      v-icon() far fa-times
 
   +genericDialog(
     'Clear all app data?',
@@ -17,14 +21,11 @@ v-app(
     v-container(
       class='pa-0 ma-0'
       fluid)
-      v-layout(row)
-        v-flex(xs12)
-          v-alert(:value='dialogs.loggedOut' type='info' icon='fas fa-star' transition='scale-transition') This is some dumb text
-      v-layout(
-        row
-        justify-center)
-        v-flex(xs12)
-          p {{ user }}
+      //- v-layout(
+      //-   row
+      //-   justify-center)
+      //-   v-flex(xs12)
+      //-     p {{ user }}
       v-layout(
         row
         justify-center)

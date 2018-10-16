@@ -21,13 +21,7 @@ block card-body
     v-model='calcInput.comp.sel'
     @change='calcInput.comp.box = null'
     clearable)
-  v-layout(
-    row)
-    v-spacer
-    p(
-      class='sirp-divider')
-      span or
-    v-spacer
+  +sirpDivider('or')
   v-text-field(
     :color='fieldColor'
     type='number'

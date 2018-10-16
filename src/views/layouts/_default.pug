@@ -1,3 +1,5 @@
-include ../mixins/_index.pug
-v-container.px-0.pb-0(fluid)
-  block content
+div
+  include /app/dialog/_snackbar.pug
+  include ../mixins/_index.pug
+  v-container.px-0.pb-0(fluid)
+    block content

@@ -1,0 +1,41 @@
+v-form(@submit.prevent)
+  v-text-field#email(
+    box
+    prepend-inner-icon='person'
+    autocomplete='off'
+    label='Email'
+    type='text'
+    v-model='form.email')
+  v-text-field#password(
+    box
+    prepend-inner-icon='lock'
+    autocomplete='off'
+    label='Password'
+    type='password'
+    v-model='form.pass')
+  v-layout(row justify-center)
+    v-flex(xs12)
+      v-btn(
+        block
+        @click='onSignup()'
+        :color='btnColor'
+        :disabled='loading'
+        :loading='loading'
+        round
+        type='submit'
+        v-show='!loggingIn')
+        | {{ words.signup }}
+        v-icon(right small) far fa-user-plus
+        +loginLoaderBtn
+      v-btn(
+        block
+        @click='onSignin()'
+        :color='btnColor'
+        :disabled='loading'
+        :loading='loading'
+        round
+        type='submit'
+        v-show='loggingIn')
+        | {{ words.signin }}
+        v-icon(right small) far fa-sign-in
+        +loginLoaderBtn

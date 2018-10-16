@@ -130,30 +130,6 @@ export default {
           }
         )
     },
-    signUserInTwitter ({commit}) {
-      commit('setLoading', true)
-      commit('clearError')
-      firebase.auth().signInWithPopup(new firebase.auth.TwitterAuthProvider())
-        .then(
-          user => {
-            commit('setLoading', false)
-            const newUser = {
-              id: user.uid,
-              name: user.displayName,
-              email: user.email,
-              photoUrl: user.photoURL
-            }
-            commit('setUser', newUser)
-          }
-        )
-        .catch(
-          error => {
-            commit('setLoading', false)
-            commit('setError', error)
-            console.log(error)
-          }
-        )
-    },
     autoSignIn ({commit}, payload) {
       commit('setUser', {
         id: payload.uid,
