@@ -1,0 +1,14 @@
+v-subheader(v-show='user !== null') Logged in as:
+v-list-tile(
+  v-show='user !== null'
+  avatar
+  @click="")
+  v-list-tile-avatar(v-if='user !== null && user.photoUrl !== null')
+    img(:src='user !== null ? user.photoUrl : `http://placehold.it/40x40`')
+  v-list-tile-content
+    v-list-tile-title(v-if='user !== null && user.name !== null') {{ user !== null ? user.name : `Log in` }}
+    v-list-tile-title(v-else) {{ user !== null ? user.email : `Log in` }}
+    v-list-tile-sub-title(v-if='user !== null && user.name !== null') {{ user !== null ? user.email : `Log in` }}
+  v-list-tile-action
+    v-btn(icon flat @click='onLogout(), settingsDialog = false')
+      v-icon(size='18px') far fa-sign-out

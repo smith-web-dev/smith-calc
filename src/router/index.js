@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from 'CMP/Home/Index'
+import Auth from 'CMP/Auth/Index'
 
 import RollLength from 'CMP/RollLength/Index'
 import ConveyorLength from 'CMP/ConveyorLength/Index'
@@ -13,6 +14,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/auth',
+      name: 'Auth',
+      component: Auth
+    },
     {
       path: '/',
       name: 'Home',

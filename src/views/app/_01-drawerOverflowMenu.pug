@@ -1,0 +1,22 @@
+v-menu(bottom left :dark='theAppIsDark')
+  v-btn(flat icon slot='activator' @click.prevent)
+    v-icon(size='22px') far fa-ellipsis-v
+  v-list()
+    //- Settings
+    v-list-tile(@click='settingsDialog = !settingsDialog')
+      v-list-tile-title Settings
+    //- Dark mode
+    v-list-tile(@click='toggleDarkMode()')
+      v-list-tile-title {{ isDark ? `Disable` : `Enable` }} dark mode
+    //- Wiki
+    v-list-tile(target='_blank' href='https://gitlab.com/smith-irp/calc/wikis/home')
+      v-list-tile-title() Wiki
+    //- Feedback
+    v-list-tile(href='mailto:cory.gantenbein@pm.me?subject=SmithCalc Feedback')
+      v-list-tile-title() Send feedback
+    //- Divider
+    v-divider
+    v-list-tile(@click='onLogout()' v-if='user !== null')
+      v-list-tile-title() Signout
+    v-list-tile(v-else to='/auth')
+      v-list-tile-title() Sign in

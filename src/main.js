@@ -14,6 +14,7 @@ import icons from 'AUI/icons.json'
 
 import App from './App'
 import router from './router'
+import { store } from './store'
 
 import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from 'UTL/index.js'
 // import { theAppIsDark } from 'MXN/appIsDark.js'
@@ -51,24 +52,25 @@ if (window.location.protocol === 'file:' || window.location.port === '3000') {
 // this.$vuetify.icons.complete = 'far fa-star'
 
 // Mixins
-Vue.mixin({
-  methods: {
-    snowplowCalc (size, length, qty) {
-      return size * length * qty
-    }
-  },
-  computed: {
-    theAppIsMetric () {
-      var appMetricUnits = this.$ls.get('appMetricUnits')
-      return JSON.parse(appMetricUnits)
-    }
-  }
-})
+// Vue.mixin({
+//   methods: {
+//     snowplowCalc (size, length, qty) {
+//       return size * length * qty
+//     }
+//   },
+//   computed: {
+//     theAppIsMetric () {
+//       var appMetricUnits = this.$ls.get('appMetricUnits')
+//       return JSON.parse(appMetricUnits)
+//     }
+//   }
+// })
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App },
   // mixins: [ theAppIsDark ],

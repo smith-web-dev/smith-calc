@@ -28,17 +28,14 @@ mixin resetAllBtn()
   v-layout(
     row
     justify-center)
-    v-flex(
-      xs12
-      sm10
-      md8)
+    v-flex(xs12 sm10 md8)
       v-btn(
         round
         block
         :color='btnColor'
         @click='resetAll(defaultInputs)')
-        v-icon(
-          left
-          small)
-          | far fa-undo
+        v-icon(left small) far fa-undo
         | Start Over
+
+mixin showAlert(text, icon, color)
+  v-alert(value!=attributes.model type=color icon=icon transition='scale-transition')= text

@@ -13,14 +13,24 @@ export const globalCalc = {
   },
   data () {
     return {
-      // fieldColor: 'accent',
+      words: {
+        signin: 'Sign In',
+        logout: 'Log Out'
+      },
       btnColor: 'accent',
+      dialogs: {
+        loggedOut: false
+      },
       colorProps: ColorProps,
       isDark: Boolean,
       decimalRounding: Number,
       decimalItems: [0, 1, 2, 3, 4, 5, 6, 7, 8],
       currentStep: 0,
-      snackbar: { text: null, display: false }
+      snackbar: { text: null, display: false },
+      form: {
+        email: '',
+        pass: ''
+      }
     }
   },
   methods: {
@@ -64,9 +74,46 @@ export const globalCalc = {
     changeDecimalRounding () {
       var newNum = this.decimalRounding
       this.$ls.set('appDecimalRounding', newNum)
+    },
+    onSignin () {
+      this.$store.dispatch('signUserIn', {email: this.form.email, password: this.form.pass})
+    },
+    onSigninGoogle () {
+      this.$store.dispatch('signUserInGoogle')
+    },
+    onSigninFacebook () {
+      this.$store.dispatch('signUserInFacebook')
+    },
+    onSigninGithub () {
+      this.$store.dispatch('signUserInGithub')
+    },
+    onSigninTwitter () {
+      this.$store.dispatch('signUserInTwitter')
+    },
+    onResetPassword () {
+      if (this.form.email === '') {
+        return this.$store.dispatch('setError', {message: 'Email can not be blnak'})
+      }
+      this.$store.dispatch('resetPasswordWithEmail', {email: this.form.email})
+    },
+    onDismissed () {
+      this.$store.dispatch('clearError')
+    },
+    onLogout () {
+      this.$store.dispatch('logout')
+      this.$router.push('/')
     }
   },
   computed: {
+    user () {
+      return this.$store.getters.user
+    },
+    error () {
+      return this.$store.getters.error
+    },
+    loading () {
+      return this.$store.getters.loading
+    },
     fieldColor () {
       if (this.isDark) {
         return 'accent'
@@ -179,6 +226,13 @@ export const globalCalc = {
         return 'place'
       } else {
         return 'places'
+      }
+    }
+  },
+  watch: {
+    user (value) {
+      if (value !== null && value !== undefined) {
+        this.$router.push('/')
       }
     }
   }

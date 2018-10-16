@@ -1,6 +1,8 @@
 import Vue from 'vue'
+import firebase from 'firebase'
 import navItems from 'DATA/MainNavItems.json'
 import { globalCalc } from 'MXN/globalCalc.js'
+import firebaseConfig from 'DATA/firebase.json'
 
 let pjson = require('../../../package.json')
 
@@ -8,6 +10,7 @@ export default {
   mixins: [ globalCalc ],
   data () {
     return {
+      testAlert: true,
       currentVersion: null,
       settingsDialog: false,
       clearDataDialog: false,
@@ -27,6 +30,16 @@ export default {
     }
   },
   created () {
+    // Firebase
+    //
+    firebase.initializeApp(firebaseConfig)
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
+    //
+    //
     this.currentVersion = pjson.version
     this.$ls.set('SmithCalcVersion', this.currentVersion)
 

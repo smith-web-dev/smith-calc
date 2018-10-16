@@ -1,0 +1,5 @@
+v-list
+  v-list-tile(v-if='user !== null' @click='onLogout()')
+    v-list-tile-title() {{ words.signout }}
+  v-list-tile(v-else to='/auth')
+    v-list-tile-title() {{ words.login }}

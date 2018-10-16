@@ -1,0 +1,6 @@
+v-list
+  v-list-tile(v-for='(n, i) in $arrayFilter(navItems, `display`, true)' :key='i' :to='n.path' v-bind:active-class='isDark ? `accent--text grey darken-4` : `primary--text grey lighten-3`')
+    v-list-tile-action
+      v-icon {{ n.icon }}
+    v-list-tile-content
+      v-list-tile-title {{ n.text }}

@@ -17,6 +17,14 @@ v-app(
     v-container(
       class='pa-0 ma-0'
       fluid)
+      v-layout(row)
+        v-flex(xs12)
+          v-alert(:value='dialogs.loggedOut' type='info' icon='fas fa-star' transition='scale-transition') This is some dumb text
+      v-layout(
+        row
+        justify-center)
+        v-flex(xs12)
+          p {{ user }}
       v-layout(
         row
         justify-center)

@@ -1,0 +1,12 @@
+v-list-tile()
+  v-list-tile-content
+    v-list-tile-title Decimal Rounding
+  v-list-tile-action
+    v-select(
+      :suffix='decPlaSuffix'
+      v-model='decimalRounding'
+      hide-details
+      :color='fieldColor'
+      :items='decimalItems'
+      style='width: 100px'
+      @change='changeDecimalRounding()')

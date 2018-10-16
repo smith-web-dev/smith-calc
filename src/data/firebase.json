@@ -1,0 +1,8 @@
+{
+  "apiKey": "AIzaSyBxNeDTl25ynAxreOpg2swTA95WIIfzt_0",
+  "authDomain": "smithcalc.firebaseapp.com",
+  "databaseURL": "https://smithcalc.firebaseio.com",
+  "projectId": "smithcalc",
+  "storageBucket": "smithcalc.appspot.com",
+  "messagingSenderId": "1042153956677"
+}
