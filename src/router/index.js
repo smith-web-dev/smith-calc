@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home/Index'
+import Home from 'CMP/Home/Index'
 
-import RollLength from '@/components/RollLength/Index'
-import ConveyorLength from '@/components/ConveyorLength/Index'
-import SquareFootage from '@/components/SquareFootage/Index'
-import ConveyorBeltWeight from '@/components/ConveyorBeltWeight/Index'
-import SnowplowBladeWeight from '@/components/SnowplowBladeWeight/Index'
-import CrimpSpec from '@/components/CrimpSpec/Index'
+import RollLength from 'CMP/RollLength/Index'
+import ConveyorLength from 'CMP/ConveyorLength/Index'
+import SquareFootage from 'CMP/SquareFootage/Index'
+import ConveyorBeltWeight from 'CMP/ConveyorBeltWeight/Index'
+import SnowplowBladeWeight from 'CMP/SnowplowBladeWeight/Index'
+import CrimpSpec from 'CMP/CrimpSpec/Index'
 
 Vue.use(Router)
 

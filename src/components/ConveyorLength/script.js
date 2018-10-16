@@ -1,6 +1,6 @@
-import cbLengthData from '@/data/cbLength.json'
-import { theAppIsDark } from '@/mixins/appIsDark.js'
-import { globalCalc } from '@/mixins/globalCalc.js'
+import cbLengthData from 'DATA/cbLength.json'
+import { theAppIsDark } from 'MXN/appIsDark.js'
+import { globalCalc } from 'MXN/globalCalc.js'
 let convert = require('convert-units')
 
 export default {

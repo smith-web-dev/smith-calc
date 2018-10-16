@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import navItems from '@/data/MainNavItems.json'
-import { globalCalc } from '@/mixins/globalCalc.js'
+import navItems from 'DATA/MainNavItems.json'
+import { globalCalc } from 'MXN/globalCalc.js'
 
 let pjson = require('../../../package.json')
 

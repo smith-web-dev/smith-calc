@@ -1,5 +1,2 @@
-<template lang="pug">
-  div
-    p {{ msg }}
-</template>
+<template lang="pug" src="./template/index.pug"></template>
 <script src="./script.js"></script>

@@ -1,5 +1,5 @@
-import { theAppIsDark } from '@/mixins/appIsDark.js'
-import { globalCalc } from '@/mixins/globalCalc.js'
+import { theAppIsDark } from 'MXN/appIsDark.js'
+import { globalCalc } from 'MXN/globalCalc.js'
 
 export default {
   mixins: [

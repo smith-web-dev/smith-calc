@@ -3,21 +3,21 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
-import '@/ui/styles/main.sass'
+import 'AUI/styles/main.sass'
 import VueCordova from 'vue-cordova'
 import VueHead from 'vue-head'
 import VueLocalStorage from 'vue-localstorage'
 import Vue2Filters from 'vue2-filters'
 import VueClipboard from 'vue-clipboard2'
-import theme from '@/ui/theme.js'
-import icons from '@/ui/icons.json'
+import theme from 'AUI/theme.js'
+import icons from 'AUI/icons.json'
 
 import App from './App'
 import router from './router'
 
-import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from '@/util/index.js'
-// import { theAppIsDark } from '@/mixins/appIsDark.js'
-// import appIsDark from '@/mixins/appIsDark'
+import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from 'UTL/index.js'
+// import { theAppIsDark } from 'MXN/appIsDark.js'
+// import appIsDark from 'MXN/appIsDark'
 
 Vue.config.productionTip = false
 VueClipboard.config.autoSetContainer = true // add this line

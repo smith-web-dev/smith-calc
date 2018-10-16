@@ -1,6 +1,6 @@
-import ConveyorBeltData from '@/data/ConveyorBeltWeight.json'
-import { theAppIsDark } from '@/mixins/appIsDark.js'
-import { globalCalc } from '@/mixins/globalCalc.js'
+import ConveyorBeltData from 'DATA/ConveyorBeltWeight.json'
+import { theAppIsDark } from 'MXN/appIsDark.js'
+import { globalCalc } from 'MXN/globalCalc.js'
 
 export default {
   mixins: [

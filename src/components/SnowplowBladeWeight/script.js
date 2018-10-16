@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import moment from 'moment'
 import JsonExcel from 'vue-json-excel'
-import SnowplowData from '@/data/Snowplow.json'
-import { theAppIsDark } from '@/mixins/appIsDark.js'
-import { globalCalc } from '@/mixins/globalCalc.js'
-import { snowShipment } from '@/mixins/snowplowCalc/shipment.js'
+import SnowplowData from 'DATA/Snowplow.json'
+import { theAppIsDark } from 'MXN/appIsDark.js'
+import { globalCalc } from 'MXN/globalCalc.js'
+import { snowShipment } from 'MXN/snowplowCalc/shipment.js'
 
 Vue.component('downloadExcel', JsonExcel)
 

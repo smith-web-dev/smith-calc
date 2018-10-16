@@ -1,4 +1,4 @@
-import ColorProps from '@/data/colorProps.json'
+import ColorProps from 'DATA/colorProps.json'
 
 export const globalCalc = {
   mounted () {

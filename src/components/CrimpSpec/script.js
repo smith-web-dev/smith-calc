@@ -1,6 +1,6 @@
-import CrimpSpecData from '@/data/CrimpSpec.json'
+import CrimpSpecData from 'DATA/CrimpSpec.json'
 import * as math from 'mathjs'
-import { globalCalc } from '@/mixins/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc.js'
 let convert = require('convert-units')
 
 function makeFraction (input, td) {
