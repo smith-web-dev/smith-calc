@@ -16,12 +16,21 @@ export default {
       firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
         .then(
           user => {
+            let userPhoto
+            if (user.photoURL == null) {
+              console.log('no user photo')
+              userPhoto = 'https://randomuser.me/api/portraits/lego/1.jpg'
+            } else {
+              console.log('the user has a photo')
+              userPhoto = user.photoURL
+            }
             commit('setLoading', false)
+            console.log('userPhoto: ' + userPhoto)
             const newUser = {
               id: user.uid,
               name: user.displayName,
               email: user.email,
-              photoUrl: user.photoURL
+              photoUrl: userPhoto
             }
             commit('setUser', newUser)
           }
@@ -40,13 +49,23 @@ export default {
       firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then(
           user => {
+            let userPhoto
+            if (user.photoURL == null) {
+              console.log('no user photo')
+              userPhoto = 'https://randomuser.me/api/portraits/lego/1.jpg'
+            } else {
+              console.log('the user has a photo')
+              userPhoto = user.photoURL
+            }
             commit('setLoading', false)
+            console.log('userPhoto: ' + userPhoto)
             const newUser = {
               id: user.uid,
               name: user.displayName,
               email: user.email,
-              photoUrl: user.photoURL
+              photoUrl: userPhoto
             }
+            console.log(JSON.stringify(newUser))
             commit('setUser', newUser)
           }
         )

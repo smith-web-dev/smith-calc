@@ -1,0 +1,12 @@
+{
+  "defaultInputs": {
+    "width": {
+      "ft": null,
+      "in": null
+    },
+    "length": {
+      "ft": null,
+      "in": null
+    }
+  }
+}

@@ -1,15 +1,21 @@
-.v-input__joined--right
-  .v-input__control
-    .v-input__slot
-      border-top-left-radius: 0 !important
-      border-bottom-left-radius: 0 !important
+.sirp-profile-img-input
+  width: 0.1px
+  height: 0.1px
+  opacity: 0
+  overflow: hidden
+  position: absolute
+  z-index: -1
 
-.v-input__joined--left
-  .v-input__control
-    .v-input__slot
-      border-top-right-radius: 0 !important
-      border-bottom-right-radius: 0 !important
+.sirp-profile-img-input + label
+  font-size: 1.25em
+  font-weight: 700
+  color: white
+  background-color: black
+  display: inline-block
 
-.v-snack__wrapper
-  border-bottom-left-radius: $sirp-border-radius
-  border-bottom-right-radius: $sirp-border-radius
+.sirp-profile-img-input:focus + label,
+.sirp-profile-img-input + label:hover
+  background-color: red
+
+.sirp-profile-img-input + label
+  cursor: pointer

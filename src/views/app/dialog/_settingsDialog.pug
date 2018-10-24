@@ -1,8 +1,11 @@
-v-dialog(v-model='settingsDialog' max-width='560px')
+v-dialog(v-model='dialogs.settings' max-width='560px' persistent)
   v-card(:dark='isDark')
     v-card-title(primary-title)
       div.title Settings
     v-container.pt-0(fluid)
+      v-layout(row)
+        p {{ avatar === null ? `null` : avatar }}
+        p {{ saved }}
       v-list
         //- Profile Info
         include ./settings/_profileInfo.pug
@@ -18,5 +21,6 @@ v-dialog(v-model='settingsDialog' max-width='560px')
       v-layout(row justify-end)
         v-btn(
           color='primary'
-          @click='settingsDialog = false')
+          @click='closeSettings()'
+          :loading='saving')
           | Done

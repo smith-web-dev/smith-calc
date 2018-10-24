@@ -3,7 +3,7 @@ import moment from 'moment'
 import JsonExcel from 'vue-json-excel'
 import SnowplowData from 'DATA/Snowplow.json'
 import { theAppIsDark } from 'MXN/appIsDark.js'
-import { globalCalc } from 'MXN/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc'
 import { snowShipment } from 'MXN/snowplowCalc/shipment.js'
 
 Vue.component('downloadExcel', JsonExcel)

@@ -1,0 +1,26 @@
+extends /layouts/_stepper-step-main.pug
+block title
+  | Enter the width of the material
+//- block subtitle
+block card-body
+  v-layout.mb-4(row wrap justify-center)
+    v-flex.text-xs-center(xs6)
+      v-text-field.v-input__joined--left(
+        box
+        v-model='calcInput.width.ft'
+        type='number'
+        :color='fieldColor'
+        label='Feet')
+    v-flex.text-xs-center(xs6)
+      v-text-field.v-input__joined--right(
+        box
+        v-model='calcInput.width.in'
+        type='number'
+        :color='fieldColor'
+        label='Inches')
+//- block nav-btns-left
+  //- +stepBtnBack(
+    //- click='moveStep(`b`)')
+block nav-btns-right
+  +stepBtnNext(
+    click='moveStep(`f`)')

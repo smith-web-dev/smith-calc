@@ -1,0 +1,19 @@
+v-stepper-header.elevation-0
+  //- Roll OD
+  //- p {{ calcInput.rollOD === null ? `null` : calcInput.rollOD }}
+  v-stepper-step(
+    :complete='currentStep > 1'
+    step='1')
+  v-divider
+  //- Core OD
+  v-stepper-step(
+    :complete='currentStep > 2'
+    step='2')
+  v-divider
+  //- Material thickness
+  v-stepper-step(
+    :complete='currentStep > 3'
+    step='3')
+  v-divider
+  //- Results
+  v-stepper-step(step='4')

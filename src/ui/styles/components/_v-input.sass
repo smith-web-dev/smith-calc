@@ -1,11 +1,31 @@
+// Input modifications
+//
+// Focused input
 .v-input--is-focused
   &:before
     border: none !important
-
+//
+// Border radius, border, and padding
 .v-input__slot
-  border-radius: 28px !important
-  padding: 0 28px !important
+  border-radius: $sirp-input-border-radius
+  padding: 0 $sirp-input-border-radius
 
   &:before,
   &:after
     border: none !important
+
+// Joined inputs
+//
+// Right
+.v-input__joined--right
+  .v-input__control
+    .v-input__slot
+      border-top-left-radius: 0 !important
+      border-bottom-left-radius: 0 !important
+//
+// Left
+.v-input__joined--left
+  .v-input__control
+    .v-input__slot
+      border-top-right-radius: 0 !important
+      border-bottom-right-radius: 0 !important

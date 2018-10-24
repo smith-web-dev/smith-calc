@@ -1,0 +1,10 @@
+v-layout(row)
+  v-container.pa-0(fluid)
+    v-slide-y-reverse-transition
+      v-list(three-line subheader)
+        v-list-tile
+          v-list-tile-content
+            v-list-tile-title Description
+            v-list-tile-sub-title {{ result }}
+          v-list-tile-action
+            +copyBtn(click='doCopy(result)')

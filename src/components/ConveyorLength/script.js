@@ -1,6 +1,6 @@
 import cbLengthData from 'DATA/cbLength.json'
 import { theAppIsDark } from 'MXN/appIsDark.js'
-import { globalCalc } from 'MXN/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc'
 let convert = require('convert-units')
 
 export default {

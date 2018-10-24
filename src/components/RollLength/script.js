@@ -1,5 +1,6 @@
 import { theAppIsDark } from 'MXN/appIsDark.js'
-import { globalCalc } from 'MXN/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc'
+import RollLengthData from 'DATA/RollLength.json'
 
 export default {
   mixins: [
@@ -8,7 +9,7 @@ export default {
   ],
   data () {
     return {
-      defaultInputs: '',
+      defaultInputs: RollLengthData.defaultInputs,
       calcInput: {
         rollOD: null,
         coreOD: null,
@@ -22,16 +23,17 @@ export default {
       let coreRadiusSquared = Math.pow((Number(this.calcInput.coreOD) / 2), 2)
       let piTheNumber = Math.PI
       let calcThickness = Number(this.calcInput.thickness)
-      let theThickness
-      if (calcThickness === null) {
-        theThickness = 1
-      } else {
-        theThickness = calcThickness
-      }
-
-      let theResult = Number((((piTheNumber * (rollRadiusSquared - coreRadiusSquared)) / theThickness) / 12).toFixed(this.decimalRounding))
-      console.log(typeof theResult)
+      let theResult = Number((((piTheNumber * (rollRadiusSquared - coreRadiusSquared)) / calcThickness) / 12).toFixed(this.decimalRounding))
       return theResult
+    },
+    resultToInches () {
+      return (this.result * 12).toFixed(this.decimalRounding)
+    },
+    resultDesc () {
+      let rOD = this.calcInput.rollOD
+      let cOD = this.calcInput.coreOD
+      let thk = Number(this.calcInput.thickness) * 1
+      return 'Roll OD: ' + rOD + '", Core OD: ' + cOD + '", Thickness: ' + thk + '"'
     }
   }
 }

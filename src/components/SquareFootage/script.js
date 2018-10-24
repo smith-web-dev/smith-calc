@@ -1,5 +1,6 @@
 import { theAppIsDark } from 'MXN/appIsDark.js'
-import { globalCalc } from 'MXN/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc'
+import SqFtData from 'DATA/SquareFootage.json'
 
 export default {
   mixins: [
@@ -8,7 +9,7 @@ export default {
   ],
   data () {
     return {
-      defaultInputs: '',
+      defaultInputs: SqFtData.defaultInputs,
       msg: 'SquareFootage',
       calcInput: {
         width: {

@@ -1,0 +1,18 @@
+extends /layouts/_stepper-step-main.pug
+block title
+  | Outside diameter of the core
+block subtitle
+  | Enter the diameter of the core or center of the roll in inches
+block card-body
+  v-text-field(
+    box
+    v-model='calcInput.coreOD'
+    type='number'
+    :color='fieldColor'
+    label='Core O.D')
+block nav-btns-left
+  +stepBtnBack(
+    click='moveStep(`b`)')
+block nav-btns-right
+  +stepBtnNext(
+    click='moveStep(`f`)')

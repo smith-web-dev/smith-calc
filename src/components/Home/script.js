@@ -1,6 +1,6 @@
 import navItems from 'DATA/MainNavItems.json'
 import { theAppIsDark } from 'MXN/appIsDark.js'
-import { globalCalc } from 'MXN/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc'
 import moment from 'moment'
 
 export default {

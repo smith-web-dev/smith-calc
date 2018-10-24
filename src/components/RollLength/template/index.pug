@@ -1,51 +1,71 @@
-extends /layouts/_calc-generic.pug
-block content
-  v-card-title.pb-0(primary-title style='display: block;')
-    .headline
-      | Roll Length
-    //- div(:class='theAppIsDark ? colorProps.text.subtitle.dark : colorProps.text.subtitle.light')
-      block subtitle
-  v-card-text
-    v-container.pa-0(fluid)
-      //- roll OD input
-      v-layout.mb-4(row wrap justify-center)
-        v-flex.text-xs-center(xs12)
-          v-text-field(
-            box
-            v-model='calcInput.rollOD'
-            type='number'
-            :color='fieldColor'
-            label='Roll O.D.')
-          br
-          span (pi * ({{ calcInput.rollOD / 2 }}^2 - {{ calcInput.coreOD / 2 }}^2)) / {{ calcInput.thickness }}
-      //- core OD input
-      v-layout.mb-4(row wrap justify-center)
-        v-flex(xs12)
-          v-text-field(
-            box
-            v-model='calcInput.coreOD'
-            type='number'
-            :color='fieldColor'
-            label='Core O.D')
-      //- thickness input
-      v-layout.mb-4(row wrap justify-center)
-        v-flex(xs12)
-          v-text-field(
-            box
-            v-model='calcInput.thickness'
-            type='number'
-            :color='fieldColor'
-            label='Material Thickness')
-      v-layout(row)
-        v-container.pa-0(fluid)
-          v-slide-y-reverse-transition
-            v-list(three-line subheader)
-              v-list-tile
-                v-list-tile-content
-                  v-list-tile-title Description
-                  v-list-tile-sub-title {{ result }}
-                v-list-tile-action
-                  +copyBtn(click='doCopy(result)')
+extends /layouts/_calc-main.pug
+
+block stepper-steps
+  include ./steps/_step0.pug
+  v-stepper-items
+    //- Roll OD
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='1')
+      include ./steps/_step1.pug
+
+    //-
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='2')
+      include ./steps/_step2.pug
+
+    //- Hose Wall
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='3')
+      include ./steps/_step3.pug
+
+    //- Ferrule Wall
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='4')
+      include ./steps/_step4.pug
+
+//- extends /layouts/_calc-generic.pug
+//- block content
+//-   v-card-title.pb-0(primary-title style='display: block;')
+//-     .headline
+//-       | Roll Length
+//-     div(:class='theAppIsDark ? colorProps.text.subtitle.dark : colorProps.text.subtitle.light')
+//-       | Enter the outside diameter of the roll, the outside diameter of the core, and the thickness of the material in inches
+//-   v-card-text
+//-     v-container.pa-0(fluid)
+//-       //- roll OD input
+//-       v-layout.mb-4(row wrap justify-center)
+//-         v-flex.text-xs-center(xs12)
+//-           v-text-field(
+//-             box
+//-             v-model='calcInput.rollOD'
+//-             type='number'
+//-             :color='fieldColor'
+//-             label='Roll O.D.')
+//-           //- br
+//-           //- span (pi * ({{ calcInput.rollOD / 2 }}^2 - {{ calcInput.coreOD / 2 }}^2)) / {{ calcInput.thickness }}
+//-       //- core OD input
+//-       v-layout.mb-4(row wrap justify-center)
+//-         v-flex(xs12)
+//-           v-text-field(
+//-             box
+//-             v-model='calcInput.coreOD'
+//-             type='number'
+//-             :color='fieldColor'
+//-             label='Core O.D')
+//-       //- thickness input
+//-       v-layout.mb-4(row wrap justify-center)
+//-         v-flex(xs12)
+//-           v-text-field(
+//-             box
+//-             v-model='calcInput.thickness'
+//-             type='number'
+//-             :color='fieldColor'
+//-             label='Material Thickness')
+
               //- v-list-tile
               //-   v-list-tile-content
               //-     v-list-tile-title Square Footage

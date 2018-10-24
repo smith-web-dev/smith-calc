@@ -1,0 +1,19 @@
+extends /layouts/_stepper-step-main.pug
+block title
+  | Thickness of the material
+block subtitle
+  | Enter the thickness of the material in inches
+block card-body
+  v-text-field(
+    box
+    v-model='calcInput.thickness'
+    type='number'
+    :color='fieldColor'
+    label='Material Thickness'
+    clearable)
+block nav-btns-left
+  +stepBtnBack(
+    click='moveStep(`b`)')
+block nav-btns-right
+  +stepBtnNext(
+    click='moveStep(`f`)')

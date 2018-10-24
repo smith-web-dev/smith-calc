@@ -1,11 +1,11 @@
-import makeAverage from './makeAverage'
-import findCrimpSpec from './findCrimpSpec'
-import noNullVals from './noNullVals'
 import arrayFilter from './arrayFilter'
+import findCrimpSpec from './findCrimpSpec'
+import makeAverage from './makeAverage'
+import noNullVals from './noNullVals'
 
 export {
-  makeAverage,
+  arrayFilter,
   findCrimpSpec,
-  noNullVals,
-  arrayFilter
+  makeAverage,
+  noNullVals
 }

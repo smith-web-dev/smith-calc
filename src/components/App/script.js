@@ -1,17 +1,20 @@
 import Vue from 'vue'
 import firebase from 'firebase'
 import navItems from 'DATA/MainNavItems.json'
-import { globalCalc } from 'MXN/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc'
 import firebaseConfig from 'DATA/firebase.json'
+import FileUpload from '@/components/FileUpload/Index.vue'
 
 let pjson = require('../../../package.json')
 
 export default {
+  components: {
+    FileUpload: FileUpload
+  },
   mixins: [ globalCalc ],
   data () {
     return {
       currentVersion: null,
-      settingsDialog: false,
       clearDataDialog: false,
       isMetric: false,
       navItems: navItems,
@@ -25,6 +28,14 @@ export default {
       toolbarFabVisible: false,
       toolbarFabIcon: null,
       childFunc: Function
+    }
+  },
+  watch: {
+    avatar: {
+      handler: function () {
+        this.saved = false
+      },
+      deep: true
     }
   },
   created () {

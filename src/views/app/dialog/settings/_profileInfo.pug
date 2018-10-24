@@ -1,14 +1,36 @@
-v-subheader(v-show='user !== null') Logged in as:
+//- v-subheader(v-show='user !== null') Logged in as:
 v-list-tile(
+  class='mb-4'
   v-show='user !== null'
   avatar
   @click="")
-  v-list-tile-avatar(v-if='user !== null && user.photoUrl !== null')
-    img(:src='user !== null ? user.photoUrl : `http://placehold.it/40x40`')
+  v-list-tile-avatar
+    //- img(v-if='user !== null && user.photoUrl !== null' :src='user.photoUrl')
+    //- input.sirp-profile-img-input(v-else type='file' name="file" id="file")
+    <file-upload v-model="avatar" @change="uploadImage()">
+      <div slot="activator">
+        <v-avatar size="40px" v-ripple v-if="!avatar" class="grey lighten-3 mb-3">
+          <v-icon>far fa-plus</v-icon>
+        </v-avatar>
+        <v-avatar size="40px" v-ripple v-else class="mb-3">
+          <img :src="avatar.imageURL" alt="avatar">
+        </v-avatar>
+      </div>
+    </file-upload>
+    //- <v-slide-x-transition>
+    //-   <div v-if="avatar && saved == false">
+    //-     <v-btn class="primary" @click="uploadImage" :loading="saving">Save Avatar</v-btn>
+    //-   </div>
+    //- </v-slide-x-transition>
+    //- include /app/dialog/_bottom-sheet-dialog.pug
   v-list-tile-content
     v-list-tile-title(v-if='user !== null && user.name !== null') {{ user !== null ? user.name : `Log in` }}
     v-list-tile-title(v-else) {{ user !== null ? user.email : `Log in` }}
     v-list-tile-sub-title(v-if='user !== null && user.name !== null') {{ user !== null ? user.email : `Log in` }}
   v-list-tile-action
-    v-btn(icon flat @click='onLogout(), settingsDialog = false')
+    v-btn(icon flat @click='onLogout(), dialogs.settings = false')
       v-icon(size='18px') far fa-sign-out
+//- v-divider(
+  style='max-width: unset !important; margin-left: -16px; margin-right: -16px;'
+  class='mb-4'
+  v-show='user !== null')

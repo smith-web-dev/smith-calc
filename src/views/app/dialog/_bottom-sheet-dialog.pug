@@ -1,0 +1,18 @@
+v-bottom-sheet(v-model='dialogs.addPhotoBottomSheet' hide-overlay)
+  v-btn(v-if='user === null || user.photoUrl === null' @click='' slot='activator' color='purple' dark)
+    | Click me
+  //- v-list
+  //-   v-subheader Open in
+  //-   v-list-tile(@click='dialogs.addPhotoBottomSheet = false')
+  //-     v-list-tile-avatar
+  //-       v-avatar(size='32px' tile)
+  //-         img(src='http://placehold.it/40x40')
+  //-     v-list-tile-title Some text
+  v-container(fluid)
+    v-layout(row)
+      v-flex(xs6)
+        .text-xs-right
+          v-btn(round) A button
+      v-flex(xs6)
+        .text-xs-left
+          v-btn(round) A button

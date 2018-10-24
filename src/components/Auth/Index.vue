@@ -13,7 +13,7 @@
 <script>
   // import firebase from 'firebase'
   import { theAppIsDark } from 'MXN/appIsDark.js'
-  import { globalCalc } from 'MXN/globalCalc.js'
+  import { globalCalc } from 'MXN/globalCalc'
 
   export default {
     mixins: [

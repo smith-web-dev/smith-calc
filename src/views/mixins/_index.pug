@@ -1,6 +1,8 @@
 mixin stepBtnNext
   v-btn(fab small :disabled='stepNextDisabled' @click!=attributes.click)
     v-icon(:color='btnColor') far fa-arrow-right
+  //- v-btn(fab small @click!=attributes.click)
+    v-icon(:color='btnColor') far fa-arrow-right
 
 mixin stepBtnBack
   v-btn(fab small @click!=attributes.click)

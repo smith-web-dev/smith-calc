@@ -3,7 +3,7 @@ v-menu(bottom left :dark='theAppIsDark')
     v-icon(size='22px') far fa-ellipsis-v
   v-list()
     //- Settings
-    v-list-tile(@click='settingsDialog = !settingsDialog')
+    v-list-tile(@click='dialogs.settings = !dialogs.settings, drawer = false')
       v-list-tile-title Settings
     //- Dark mode
     v-list-tile(@click='toggleDarkMode()')
@@ -15,8 +15,8 @@ v-menu(bottom left :dark='theAppIsDark')
     v-list-tile(href='mailto:cory.gantenbein@pm.me?subject=SmithCalc Feedback')
       v-list-tile-title() Send feedback
     //- Divider
-    v-divider
-    v-list-tile(@click='onLogout()' v-if='user !== null')
+    //- v-divider
+    //- v-list-tile(@click='onLogout()' v-if='user !== null')
       v-list-tile-title() Signout
-    v-list-tile(v-else to='/auth')
+    //- v-list-tile(v-else to='/auth')
       v-list-tile-title() Sign in

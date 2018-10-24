@@ -1,0 +1,15 @@
+extends /layouts/_stepper-step-main.pug
+block title
+  | Outside diameter of the roll
+block subtitle
+  | Enter the OD of the roll in inches
+block card-body
+  v-text-field(
+    box
+    v-model='calcInput.rollOD'
+    type='number'
+    :color='fieldColor'
+    label='Roll O.D.')
+block nav-btns-right
+  +stepBtnNext(
+    click='moveStep(`f`)')

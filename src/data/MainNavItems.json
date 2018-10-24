@@ -4,7 +4,7 @@
     "text": "Roll Length",
     "path": "/roll-length",
     "color": "primary darken-1",
-    "display": false
+    "display": true
   },
   {
     "icon": "fas fa-ruler",

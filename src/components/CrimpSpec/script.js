@@ -1,6 +1,6 @@
 import CrimpSpecData from 'DATA/CrimpSpec.json'
 import * as math from 'mathjs'
-import { globalCalc } from 'MXN/globalCalc.js'
+import { globalCalc } from 'MXN/globalCalc'
 let convert = require('convert-units')
 
 function makeFraction (input, td) {
@@ -24,7 +24,10 @@ export default {
   data () {
     return {
       defaultInputs: CrimpSpecData.defaultInputs,
-      steps: { compFactor: { warn: false, warnType: 'info' }, shankMeas: { disableAdd: false } },
+      steps: {
+        compFactor: { warn: false, warnType: 'info' },
+        shankMeas: { disableAdd: false }
+      },
       calcData: { hoseTypes: CrimpSpecData.hoseTypes },
       calcInput: {
         comp: { sel: null, box: null },

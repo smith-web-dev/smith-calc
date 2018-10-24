@@ -1,0 +1,9 @@
+{
+  "defaultInputs": {
+    "calcInput": {
+      "rollOD": null,
+      "coreOD": null,
+      "thickness": null
+    }
+  }
+}
