@@ -4,8 +4,6 @@ v-dialog(v-model='dialogs.settings' max-width='560px' persistent)
       div.title Settings
     v-container.pt-0(fluid)
       v-layout(row)
-        p {{ avatar === null ? `null` : avatar }}
-        p {{ saved }}
       v-list
         //- Profile Info
         include ./settings/_profileInfo.pug
