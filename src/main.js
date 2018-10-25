@@ -2,47 +2,55 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.css'
-import 'AUI/styles/main.sass'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import 'roboto-fontface/css/roboto/roboto-fontface.css'
-import '@fortawesome/fontawesome-pro/css/all.css'
 import VueCordova from 'vue-cordova'
 import VueHead from 'vue-head'
 import VueLocalStorage from 'vue-localstorage'
 import Vue2Filters from 'vue2-filters'
 import VueClipboard from 'vue-clipboard2'
-import theme from 'AUI/theme.js'
-import icons from 'AUI/icons.json'
 
 import App from './App'
 import router from './router'
 import { store } from './store'
 
-import { makeAverage, findCrimpSpec, noNullVals, arrayFilter } from 'UTL/index.js'
-// import { theAppIsDark } from 'MXN/appIsDark.js'
-// import appIsDark from 'MXN/appIsDark'
+import theme from 'AUI/theme.js'
+import icons from 'AUI/icons.json'
+
+import 'vuetify/dist/vuetify.css'
+import 'AUI/styles/main.sass'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+import '@fortawesome/fontawesome-pro/css/all.css'
+
+import {
+  makeAverage,
+  findCrimpSpec,
+  noNullVals,
+  arrayFilter
+} from 'UTL/index.js'
 
 Vue.config.productionTip = false
-VueClipboard.config.autoSetContainer = true // add this line
+VueClipboard.config.autoSetContainer = true
 
 Vue.use(Vuetify, {
   theme: theme,
   icons: icons
 })
+Vue.use(VueLocalStorage, {
+  name: 'ls',
+  bind: true
+})
 Vue.use(VueCordova)
 Vue.use(VueHead)
 Vue.use(VueClipboard)
-Vue.use(VueLocalStorage, { name: 'ls', bind: true })
-Vue.use(require('vue-moment'))
 Vue.use(Vue2Filters)
-Vue.use(require('moment'))
 
-// Vue.use(makeAverage)
 Vue.use(makeAverage)
 Vue.use(findCrimpSpec)
 Vue.use(noNullVals)
 Vue.use(arrayFilter)
+
+Vue.use(require('vue-moment'))
+Vue.use(require('moment'))
 
 // add cordova.js only if serving the app through file://
 if (window.location.protocol === 'file:' || window.location.port === '3000') {
@@ -51,23 +59,6 @@ if (window.location.protocol === 'file:' || window.location.port === '3000') {
   cordovaScript.setAttribute('src', 'cordova.js')
   document.body.appendChild(cordovaScript)
 }
-
-// this.$vuetify.icons.complete = 'far fa-star'
-
-// Mixins
-// Vue.mixin({
-//   methods: {
-//     snowplowCalc (size, length, qty) {
-//       return size * length * qty
-//     }
-//   },
-//   computed: {
-//     theAppIsMetric () {
-//       var appMetricUnits = this.$ls.get('appMetricUnits')
-//       return JSON.parse(appMetricUnits)
-//     }
-//   }
-// })
 
 /* eslint-disable no-new */
 new Vue({
