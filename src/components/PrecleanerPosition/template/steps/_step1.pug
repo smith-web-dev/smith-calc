@@ -1,0 +1,10 @@
+extends /layouts/_stepper-step-main.pug
+block title
+  | Pulley diameter
+block subtitle
+  | Enter the pulley diameter including the lagging and belt
+block card-body
+  p the stuff
+block nav-btns-right
+  +stepBtnNext(
+    click='moveStep(`f`)')

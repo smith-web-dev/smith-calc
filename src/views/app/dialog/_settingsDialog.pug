@@ -4,18 +4,19 @@ v-dialog(v-model='dialogs.settings' max-width='560px' persistent)
       div.title Settings
     v-container.pt-0(fluid)
       v-layout(row)
-      v-list
+      v-list(two-line)
         //- Profile Info
-        //- include ./settings/_profileInfo.pug
-        v-subheader Preferences
+        include ./settings/_profileInfo.pug
+        v-subheader.accent--text Preferences
         include ./settings/_pref-decimalRounding.pug
-        v-divider
-        include ./settings/_pref-resetAll.pug
-        v-divider
+        //- include ./settings/_pref-changeUnits.pug
 
-        v-subheader Appearance
+        v-subheader.accent--text Appearance
         include ./settings/_appear-darkMode.pug
-        v-divider
+
+        v-subheader.accent--text User
+        include ./settings/_pref-resetAll.pug
+
       v-layout(row justify-end)
         v-btn(
           color='primary'

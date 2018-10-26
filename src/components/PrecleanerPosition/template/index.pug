@@ -1,0 +1,34 @@
+extends /layouts/_calc-main.pug
+
+block stepper-steps
+  include ./steps/_step0.pug
+  v-stepper-items
+    //- Pulley diameter + lagging + belt
+    v-stepper-content(
+      class='px-1 pt-1'
+      step='1')
+      include ./steps/_step1.pug
+
+    //- Shank OD
+    //- v-stepper-content(
+      class='px-1 pt-1'
+      step='2')
+      include ./steps/_step2.pug
+
+    //- Hose Wall
+    //- v-stepper-content(
+      class='px-1 pt-1'
+      step='3')
+      include ./steps/_step3.pug
+
+    //- Ferrule Wall
+    //- v-stepper-content(
+      class='px-1 pt-1'
+      step='4')
+      include ./steps/_step4.pug
+
+    //- Result
+    //- v-stepper-content(
+      class='px-1 pt-1'
+      step='5')
+      include ./steps/_step5.pug

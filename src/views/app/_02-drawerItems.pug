@@ -1,6 +1,14 @@
 v-list
-  v-list-tile(v-for='(n, i) in $arrayFilter(navItems, `display`, true)' :key='i' :to='n.path' v-bind:active-class='isDark ? `accent--text grey darken-4` : `primary--text grey lighten-3`')
-    v-list-tile-action
-      v-icon {{ n.icon }}
-    v-list-tile-content
-      v-list-tile-title {{ n.text }}
+  //- v-list-tile(v-for='(n, i) in $arrayFilter(navItems, `display`, true)' :key='i' :to='n.path' v-bind:active-class='isDark ? `accent--text grey darken-4` : `primary--text grey lighten-3`')
+  template(v-for='(n, i) in $arrayFilter(navItems, `display`, true)')
+    v-layout(v-if='n.heading' :key='i' row align-center)
+      v-flex(xs6)
+        v-subheader(v-if="n.heading") {{ n.heading }}
+      v-flex(xs6 class='text-xs-right')
+        //- v-btn(small flat) edit
+    v-divider.my-1(v-else-if='n.divider' :key='i')
+    v-list-tile(v-else :key='i' :to='n.path')
+      v-list-tile-action
+        v-icon {{ n.icon }}
+      v-list-tile-content
+        v-list-tile-title {{ n.text }}

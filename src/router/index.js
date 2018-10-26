@@ -9,6 +9,7 @@ import SquareFootage from 'CMP/SquareFootage/Index'
 import ConveyorBeltWeight from 'CMP/ConveyorBeltWeight/Index'
 import SnowplowBladeWeight from 'CMP/SnowplowBladeWeight/Index'
 import CrimpSpec from 'CMP/CrimpSpec/Index'
+import PrecleanerPosition from 'CMP/PrecleanerPosition/Index'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
       path: '/crimp',
       name: 'Crimp Spec',
       component: CrimpSpec
+    },
+    {
+      path: '/preclean-pos',
+      name: 'Precleaner Position',
+      component: PrecleanerPosition
     }
   ]
 })

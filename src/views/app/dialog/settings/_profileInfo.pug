@@ -1,6 +1,6 @@
 //- v-subheader(v-show='user !== null') Logged in as:
 v-list-tile(
-  class='mb-4'
+  class='mb-4 settings-view__profile-info'
   v-show='user !== null'
   avatar
   @click='')
@@ -9,10 +9,10 @@ v-list-tile(
     //- input.sirp-profile-img-input(v-else type='file' name="file" id="file")
     <file-upload v-model="avatar" @change="uploadImage()">
       <div slot="activator">
-        <v-avatar size="40px" v-ripple v-if="!avatar" class="grey lighten-3 mb-3">
+        <v-avatar size="40px" v-ripple v-if="!avatar" class="grey lighten-3">
           <v-icon>far fa-plus</v-icon>
         </v-avatar>
-        <v-avatar size="40px" v-ripple v-else class="mb-3">
+        <v-avatar size="40px" v-ripple v-else class="">
           <img :src="avatar.imageURL" alt="avatar">
         </v-avatar>
       </div>

@@ -1,0 +1,23 @@
+v-stepper-header.elevation-0
+  //- Pulley diameter + lagging + belt
+  v-stepper-step(
+    :complete='currentStep > 1'
+    step='1')
+  v-divider
+  //- Determine the average OD of the fitting shank
+  v-stepper-step(
+    :complete='currentStep > 2'
+    step='2')
+  v-divider
+  //- Measure the hose wall thickness
+  v-stepper-step(
+    :complete='currentStep > 3'
+    step='3')
+  v-divider
+  //- Measure the sleeve or ferrule wall
+  v-stepper-step(
+    :complete='currentStep > 4'
+    step='4')
+  v-divider
+  //- Results
+  v-stepper-step(step='5')

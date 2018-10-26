@@ -1,6 +1,7 @@
 v-list-tile()
   v-list-tile-content
     v-list-tile-title Decimal Rounding
+    v-list-tile-sub-title Round to {{ decimalRounding }} {{ decimalRounding > 1 || decimalRounding === 0 ? `places` : `place` }} app-wide
   v-list-tile-action
     v-select(
       :suffix='decPlaSuffix'
@@ -10,3 +11,4 @@ v-list-tile()
       :items='decimalItems'
       style='width: 100px'
       @change='changeDecimalRounding()')
+v-divider

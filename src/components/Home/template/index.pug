@@ -13,11 +13,12 @@ v-container(
     v-flex.home-calc-btn(
       shrink
       v-for='(n, i) in $arrayFilter(navItems, `display`, true)'
+      v-if='!n.divider && !n.heading'
       :key='i'
       xs6
       md4)
       v-btn.v-btn--xlarge(
-        :color='n.color'
+        color='accent'
         fab
         :to='n.path')
         v-icon.home-calc-btn--icon(
