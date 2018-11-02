@@ -21,8 +21,11 @@ mixin genericDialog(title, text)
         v-btn(flat @click!=attributes.nclick) No
 
 mixin copyBtn()
-  v-btn(icon ripple @click.native!=attributes.click)
-    v-icon(color='grey lighten-1') fas fa-copy
+  v-tooltip(bottom)
+    v-btn(icon ripple @click.native!=attributes.click slot='activator')
+      //- v-icon(color='grey lighten-1') fas fa-copy
+      v-icon(color='grey lighten-1') fas fa-clipboard
+    span Click to copy this result
 
 mixin resetAllBtn()
   v-layout(

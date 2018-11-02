@@ -12,8 +12,8 @@ import App from './App'
 import router from './router'
 import { store } from './store'
 
-import theme from 'AUI/theme.js'
-import icons from 'AUI/icons.json'
+import theme from 'AUI/theme'
+import icons from 'AUI/icons'
 
 import 'vuetify/dist/vuetify.css'
 import 'AUI/styles/main.sass'

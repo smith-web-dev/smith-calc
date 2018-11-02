@@ -1,6 +1,9 @@
 import ColorProps from 'DATA/colorProps.json'
+import navDrawerItems from 'DATA/NavDrawerItems.js'
 export function data () {
   return {
+    navDrawerItems: navDrawerItems,
+    // navDrawerExpanded: [true, true, true, true],
     words: {
       signin: 'Sign In',
       logout: 'Log Out',

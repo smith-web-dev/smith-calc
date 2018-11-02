@@ -1,4 +1,11 @@
 export default {
+  navDrawerExpanded () {
+    if (this.faveCalcs.length === 0) {
+      return [true, true, true, true]
+    } else {
+      return [true, false, false, false, false]
+    }
+  },
   user () {
     return this.$store.getters.user
   },

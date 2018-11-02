@@ -1,4 +1,18 @@
 export default {
+  addUserFaveCalc () {
+    // lsFaveCalcs = JSON.parse(this.$ls.get('userFaveCalcs'))
+    // this.faveCalcs = lsFaveCalcs
+    // let faveCalcArr = this.faveCalcs
+    console.log(this.matchedCalc)
+    // faveCalcArr.push(this.matchedCalc)
+
+    this.faveCalcs.push(this.matchedCalc)
+    console.log(this.faveCalcs)
+
+    // this.faveCalcs = faveCalcArr
+    this.clickedCalc = null
+    this.$ls.set('userFaveCalcs', JSON.stringify(this.faveCalcs))
+  },
   uploadImage () {
     this.saving = true
     setTimeout(() => this.savedAvatar(), 1000)

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import firebase from 'firebase'
 import navItems from 'DATA/MainNavItems.json'
+// import navDrawerItems from 'DATA/NavDrawerItems.json'
 import { globalCalc } from 'MXN/globalCalc'
 import firebaseConfig from 'DATA/firebase.json'
 import FileUpload from '@/components/FileUpload/Index.vue'
@@ -18,6 +19,7 @@ export default {
       clearDataDialog: false,
       isMetric: false,
       navItems: navItems,
+      panel: [],
       cordova: Vue.cordova,
       title: 'SmithCalc',
       toolbarExtended: false,
@@ -27,7 +29,8 @@ export default {
       },
       toolbarFabVisible: false,
       toolbarFabIcon: null,
-      childFunc: Function
+      childFunc: Function,
+      toolbarResetBtn: false
     }
   },
   watch: {
@@ -56,6 +59,10 @@ export default {
     this.cordova.on('deviceready', () => {
       self.onDeviceReady()
     })
+
+    // ---------------
+    // Dark mode check
+    // ---------------
     var appDarkMode = this.$ls.get('appDarkMode')
     // check if its in localstorage
     if (appDarkMode === null) {
@@ -65,6 +72,21 @@ export default {
     } else {
       appDarkMode = this.$ls.get('appDarkMode')
       this.isDark = JSON.parse(appDarkMode)
+    }
+
+    // --------------------
+    // Favorite calcs check
+    // --------------------
+    var userFaveCalcs = this.$ls.get('userFaveCalcs')
+    var blankCalcs = []
+    // check if its in localstorage
+    if (userFaveCalcs === null || userFaveCalcs === undefined) {
+      this.$ls.set('userFaveCalcs', JSON.stringify(blankCalcs))
+      userFaveCalcs = this.$ls.get('userFaveCalcs')
+      this.faveCalcs = JSON.parse(userFaveCalcs)
+    } else {
+      userFaveCalcs = this.$ls.get('userFaveCalcs')
+      this.faveCalcs = JSON.parse(userFaveCalcs)
     }
 
     var appDecimalRounding = this.$ls.get('appDecimalRounding')
