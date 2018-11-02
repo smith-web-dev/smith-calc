@@ -17,9 +17,9 @@ import icons from 'AUI/icons'
 
 import 'vuetify/dist/vuetify.css'
 import 'AUI/styles/main.sass'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import 'roboto-fontface/css/roboto/roboto-fontface.css'
-import '@fortawesome/fontawesome-pro/css/all.css'
+// import 'material-design-icons-iconfont/dist/material-design-icons.css'
+// import 'roboto-fontface/css/roboto/roboto-fontface.css'
+// import '@fortawesome/fontawesome-pro/css/all.css'
 
 import {
   makeAverage,
