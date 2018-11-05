@@ -6,13 +6,16 @@ v-dialog(v-model='dialogs.settings' max-width='560px' persistent)
       v-layout(row)
       v-list(two-line)
         //- Profile Info
-        include ./settings/_profileInfo.pug
+        //- include ./settings/_profileInfo.pug
         v-subheader.accent--text Preferences
         include ./settings/_pref-decimalRounding.pug
+        v-divider
         //- include ./settings/_pref-changeUnits.pug
+        //- v-divider
 
         v-subheader.accent--text Appearance
         include ./settings/_appear-darkMode.pug
+        v-divider
 
         v-subheader.accent--text User
         include ./settings/_pref-resetAll.pug
