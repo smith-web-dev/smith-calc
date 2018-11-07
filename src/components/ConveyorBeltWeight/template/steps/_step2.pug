@@ -2,7 +2,7 @@ extends /layouts/_stepper-step-main.pug
 block title
   | Determine belt width
 block subtitle
-  | Either select a standard belt width or enter a custom width
+  | Either select a standard belt width or enter a custom width in {{ units.length.sm.fullPl }}
 block card-body
   v-layout(row)
     v-select(
@@ -23,7 +23,7 @@ block card-body
     v-text-field(
       type='number'
       :color='fieldColor'
-      label='Enter a custom width'
+      :label='`Custom width in ` + units.length.sm.fullPl'
       box
       v-model='calcInput.width.box'
       clearable)

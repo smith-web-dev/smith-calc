@@ -18,7 +18,7 @@ block card-body
       v-list-tile-content
         //- v-list-tile-title(v-html='decToFrac')
         v-list-tile-title Conveyor Length
-        v-list-tile-sub-title {{ doCalculation }}
+        v-list-tile-sub-title {{ commaNum(doCalculation) }}
       v-list-tile-action
         +copyBtn(
           click='doCopy(doCalculation)')

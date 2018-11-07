@@ -2,7 +2,7 @@ extends /layouts/_stepper-step-main.pug
 block title
   | Enter snowplow blade length
 block subtitle
-  | You can enter feet, inches, or feet and inches
+  | You can enter {{ units.length.lg.fullPl }}, {{ units.length.sm.fullPl }}, or {{ units.length.lg.fullPl }} and {{ units.length.sm.fullPl }}
 block card-body
   v-layout(
     row)

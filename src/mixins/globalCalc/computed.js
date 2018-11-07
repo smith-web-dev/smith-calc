@@ -1,4 +1,12 @@
+import unitsData from 'DATA/units'
 export default {
+  units () {
+    if (this.isMetric) {
+      return unitsData.metric
+    } else {
+      return unitsData.imperial
+    }
+  },
   navDrawerExpanded () {
     if (this.faveCalcs.length === 0) {
       return [true, true, true, true]

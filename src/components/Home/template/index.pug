@@ -17,12 +17,15 @@ v-container(
       :key='i'
       xs6
       md4)
-      v-btn.v-btn--xlarge(
-        color='accent'
-        fab
-        :to='n.path')
-        v-icon.home-calc-btn--icon(
-          large)
-          | {{ n.icon }}
+      v-hover(close-delay='0')
+        v-btn.v-btn--xlarge(
+          slot-scope='{ hover }'
+          :class='`elevation-${hover ? 16 : 4}`'
+          color='accent'
+          fab
+          :to='n.path')
+          v-icon.home-calc-btn--icon(
+            large)
+            | {{ n.icon }}
       br
       span.subheading.font-weight-light {{ n.text }}

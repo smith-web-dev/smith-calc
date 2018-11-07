@@ -2,14 +2,14 @@ extends /layouts/_stepper-step-main.pug
 block title
   | Pulley diameters
 block subtitle
-  | Enter the diameters of the pulleys in {{ theAppIsMetric ? `centimeters` : `inches` }}.
+  | Enter the diameters of the pulleys in {{ units.length.sm.fullPl }}
 block card-body
   v-layout(
     row)
     v-text-field(
       :color='fieldColor'
       type='number'
-      :label='calcInput.equalPulleys ? `Pulley diameters (` + metricConvertCmIn + `)` : `First pulley diameter (` + metricConvertCmIn + `)`'
+      :label='calcInput.equalPulleys ? `Pulley diameters` : `First pulley diameter`'
       box
       v-model='calcInput.pully.one'
       clearable)
@@ -19,7 +19,7 @@ block card-body
       :color='fieldColor'
       type='number'
       v-show='!calcInput.equalPulleys'
-      :label='`Second pulley diameter (` + metricConvertCmIn + `)`'
+      label='Second pulley diameter'
       box
       v-model='calcInput.pully.two'
       clearable)

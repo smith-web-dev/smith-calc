@@ -33,7 +33,7 @@ export default {
       let rOD = this.calcInput.rollOD
       let cOD = this.calcInput.coreOD
       let thk = Number(this.calcInput.thickness) * 1
-      return 'Roll OD: ' + rOD + '", Core OD: ' + cOD + '", Thickness: ' + thk + '"'
+      return 'Roll ' + this.words.od.abbr + ': ' + rOD + this.units.length.sm.sym + ', Core ' + this.words.od.abbr + ': ' + cOD + this.units.length.sm.sym + ', Thickness: ' + thk + this.units.length.sm.sym
     }
   }
 }

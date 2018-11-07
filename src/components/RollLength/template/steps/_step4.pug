@@ -8,22 +8,22 @@ block card-body
     //- Description
     v-list-tile
       v-list-tile-content
-        v-list-tile-title Length (feet)
+        v-list-tile-title Description
         v-list-tile-sub-title {{ resultDesc }}
       v-list-tile-action
         +copyBtn(click='doCopy(resultDesc)')
     //- Length in feet
     v-list-tile
       v-list-tile-content
-        v-list-tile-title Length (feet)
-        v-list-tile-sub-title {{ result }}
+        v-list-tile-title Length ({{ units.length.lg.fullPl }})
+        v-list-tile-sub-title {{ commaNum(result) }}
       v-list-tile-action
         +copyBtn(click='doCopy(result)')
     //- Length in inches
     v-list-tile
       v-list-tile-content
-        v-list-tile-title Length (inches)
-        v-list-tile-sub-title {{ resultToInches }}
+        v-list-tile-title Length ({{ units.length.sm.fullPl }})
+        v-list-tile-sub-title {{ commaNum(resultToInches) }}
       v-list-tile-action
         +copyBtn(click='doCopy(resultToInches)')
 block nav-btns-block

@@ -1,12 +1,12 @@
 v-card-actions
   v-spacer
-  v-btn(flat color='purple' @click='loggingIn = !loggingIn') {{ loggingIn ? words.signup : words.signin }}
+  v-btn(flat :color='btnColor' @click='loggingIn = !loggingIn') {{ loggingIn ? words.signup : words.signin }}
   v-btn(flat @click='loginButtons = !loginButtons')
     | More Options
     v-icon(right) {{ loginButtons ? 'fas fa-caret-up' : 'fas fa-caret-down' }}
 v-slide-y-transition
   v-card-text(v-show='loginButtons')
-    +sirpDivider('{{ words.signin + ` with` }}')
+    +sirpCardDivider('{{ words.signin + ` with` }}')
     v-layout(row justify-space-around)
       //- Google
       v-btn(icon color='red' dark :disabled='loading' :loading='loading' @click.prevent='onSigninGoogle')

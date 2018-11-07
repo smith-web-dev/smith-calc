@@ -14,13 +14,13 @@ block card-body
     v-list-tile
       v-list-tile-content
         v-list-tile-title Square Footage
-        v-list-tile-sub-title {{ resultDisplay }}
+        v-list-tile-sub-title {{ commaNum(resultDisplay) }}
       v-list-tile-action
         +copyBtn(click='doCopy(resultWithLabel)')
     v-list-tile
       v-list-tile-content
         v-list-tile-title Square Inches
-        v-list-tile-sub-title {{ resultDisplayInches }}
+        v-list-tile-sub-title {{ commaNum(resultDisplayInches) }}
       v-list-tile-action
         +copyBtn(click='doCopy(resultInchesWithLabel)')
 block nav-btns-block

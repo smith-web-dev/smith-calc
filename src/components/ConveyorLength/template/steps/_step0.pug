@@ -1,14 +1,17 @@
 v-stepper-header.elevation-0
   //- Pulley diameters
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 1'
     step='1')
   v-divider
   //- Span distance
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 2'
     step='2')
   v-divider
   //- Results
   v-stepper-step(
+    :color='stepColor'
     step='3')

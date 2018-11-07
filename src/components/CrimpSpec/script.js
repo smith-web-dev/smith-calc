@@ -67,9 +67,7 @@ export default {
       // var result =
       var resultInch = this.$findCrimpSpec(w, x, y, z)
 
-      var resLabel = (this.theAppIsMetric ? ' cm' : '"')
-
-      this.calcInput.result = ((result).toFixed(this.decimalRounding) + resLabel)
+      this.calcInput.result = ((result).toFixed(this.decimalRounding) + this.units.length.sm.sym)
       this.calcInput.resultFrac = (makeFraction(resultInch, 64) + '"')
       this.calcInput.resultMetric = (((result) * 25.4).toFixed(this.decimalRounding) + 'mm')
     },

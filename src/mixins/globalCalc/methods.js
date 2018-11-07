@@ -1,4 +1,7 @@
 export default {
+  commaNum (num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  },
   addUserFaveCalc () {
     // lsFaveCalcs = JSON.parse(this.$ls.get('userFaveCalcs'))
     // this.faveCalcs = lsFaveCalcs

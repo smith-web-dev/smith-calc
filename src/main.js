@@ -12,7 +12,7 @@ import App from './App'
 import router from './router'
 import { store } from './store'
 
-import theme from 'AUI/theme'
+import themes from 'AUI/themes/index'
 import icons from 'AUI/icons'
 
 import 'vuetify/dist/vuetify.css'
@@ -32,7 +32,10 @@ Vue.config.productionTip = false
 VueClipboard.config.autoSetContainer = true
 
 Vue.use(Vuetify, {
-  theme: theme,
+  options: {
+    customProperties: true
+  },
+  theme: themes.dark,
   icons: icons
 })
 Vue.use(VueLocalStorage, {
@@ -67,7 +70,6 @@ new Vue({
   store,
   template: '<App/>',
   components: { App },
-  // mixins: [ theAppIsDark ],
   head: {
     meta: [
       {

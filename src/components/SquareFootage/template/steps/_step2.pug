@@ -1,6 +1,6 @@
 extends /layouts/_stepper-step-main.pug
 block title
-  | Enter the Length of the material
+  | Enter the length of the material
 //- block subtitle
 block card-body
   v-layout.mb-4(row wrap justify-center)
@@ -10,14 +10,14 @@ block card-body
         v-model='calcInput.length.ft'
         type='number'
         :color='fieldColor'
-        label='Feet')
+        :label='units.length.lg.fullPl | capitalize')
     v-flex(xs6)
       v-text-field.v-input__joined--right(
         box
         v-model='calcInput.length.in'
         type='number'
         :color='fieldColor'
-        label='Inches')
+        :label='units.length.sm.fullPl | capitalize')
 block nav-btns-left
   +stepBtnBack(
     click='moveStep(`b`)')

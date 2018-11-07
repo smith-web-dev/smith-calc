@@ -34,19 +34,19 @@ export default {
       let lengthText
 
       if (wft === 0) {
-        widthText = win + '"'
+        widthText = win + this.units.length.sm.sym
       } else if (win === 0) {
-        widthText = wft + '\''
+        widthText = wft + this.units.length.lg.sym
       } else {
-        widthText = wft + '\' ' + win + '"'
+        widthText = wft + this.units.length.lg.sym + ' ' + win + this.units.length.sm.sym
       }
 
       if (lft === 0) {
-        lengthText = lin + '"'
+        lengthText = lin + this.units.length.sm.sym
       } else if (lin === 0) {
-        lengthText = lft + '\''
+        lengthText = lft + this.units.length.lg.sym
       } else {
-        lengthText = lft + '\' ' + lin + '"'
+        lengthText = lft + this.units.length.lg.sym + ' ' + lin + this.units.length.sm.sym
       }
       return widthText + ' x ' + lengthText
     },

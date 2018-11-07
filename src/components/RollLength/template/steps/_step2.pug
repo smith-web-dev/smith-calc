@@ -1,15 +1,15 @@
 extends /layouts/_stepper-step-main.pug
 block title
-  | Outside diameter of the core
+  | {{ words.od.full | capitalize }} of the core
 block subtitle
-  | Enter the diameter of the core or center of the roll in inches
+  | Enter the diameter of the core or center of the roll in {{ units.length.sm.fullPl }}
 block card-body
   v-text-field(
     box
     v-model='calcInput.coreOD'
     type='number'
     :color='fieldColor'
-    label='Core O.D')
+    :label='`Core ` + words.od.abbr')
 block nav-btns-left
   +stepBtnBack(
     click='moveStep(`b`)')

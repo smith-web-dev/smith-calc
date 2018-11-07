@@ -2,20 +2,24 @@ v-stepper-header(
   class='elevation-0')
   //- Select snowplow material size
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 1'
     step='1')
   v-divider
   //- Enter snowplow blade length
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 2'
     step='2')
   v-divider
   //- Enter quantity
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 3'
     step='3')
   v-divider
   //- Results
   v-stepper-step(
+    :color='stepColor'
     step='4')
 

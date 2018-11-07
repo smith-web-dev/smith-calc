@@ -12,7 +12,7 @@ block card-body
       v-text-field(
         :color='fieldColor'
         type='number'
-        :label='theAppIsMetric ? `Meters` : `Feet`'
+        :label='units.length.lg.fullPl | capitalize'
         box
         v-model='calcInput.span.feet'
         clearable)
@@ -25,7 +25,7 @@ block card-body
       v-text-field(
         :color='fieldColor'
         type='number'
-        :label='theAppIsMetric ? `Centimeters` : `Inches`'
+        :label='units.length.sm.fullPl | capitalize'
         box
         v-model='calcInput.span.inches'
         clearable)

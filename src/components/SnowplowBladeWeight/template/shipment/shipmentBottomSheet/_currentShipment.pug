@@ -26,7 +26,7 @@ v-list(
           class='grey--text text--darken-3')
           | {{ l.quantity }} {{ l.quantity > 1 ? `pcs` : `pc` }}
         v-list-tile-sub-title
-          | {{ l.weight }} pounds
+          | {{ commaNum(l.weight) }} {{ units.weight.lg.fullPl }}
       v-list-tile-action
         v-icon(
           color='error lighten-1'
@@ -39,7 +39,7 @@ v-list(
         class='font-weight-medium')
         | Total Weight
     v-list-tile-action
-      | {{ shipmentWeight }} pounds
+      | {{ commaNum(shipmentWeight) }} {{ units.weight.lg.fullPl }}
 
 //- v-layout(row)
 //-   v-btn(:disabled='shipment.items.length > 0 ? false : true' color='error' @click.native='confirmClearShipment()') Clear shipment

@@ -1,6 +1,9 @@
 v-toolbar(flat)
   v-list.pa-0
-    v-list-tile(id='navDrawerLogo' avatar to='/' v-bind:active-class='isDark ? `accent--text` : `primary--text`')
+    v-list-tile(
+      id='navDrawerLogo'
+      avatar
+      to='/')
       v-list-tile-avatar(id='navDrawerLogo__avatar')
         img(src='@/assets/img/icon.png')
       v-list-tile-content

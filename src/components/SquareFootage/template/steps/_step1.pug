@@ -10,14 +10,14 @@ block card-body
         v-model='calcInput.width.ft'
         type='number'
         :color='fieldColor'
-        label='Feet')
+        :label='units.length.lg.fullPl | capitalize')
     v-flex.text-xs-center(xs6)
       v-text-field.v-input__joined--right(
         box
         v-model='calcInput.width.in'
         type='number'
         :color='fieldColor'
-        label='Inches')
+        :label='units.length.sm.fullPl | capitalize')
 //- block nav-btns-left
   //- +stepBtnBack(
     //- click='moveStep(`b`)')

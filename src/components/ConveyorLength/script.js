@@ -99,7 +99,7 @@ export default {
       if (this.theAppIsMetric) {
         return (convert(result).from('ft').to('m')).toFixed(this.decimalRounding) + 'm'
       } else {
-        return resultFt + '\' ' + resultIn + '"'
+        return resultFt + this.units.length.lg.sym + ' ' + resultIn + this.units.length.sm.sym
       }
     },
     makeDesc () {
@@ -110,14 +110,14 @@ export default {
       var diamText
       var spanText
       if (this.calcInput.equalPulleys) {
-        diamText = 'Pulleys with diameter of ' + p1 + (this.theAppIsMetric ? 'cm ' : '" ')
+        diamText = 'Pulleys with diameter of ' + p1 + this.units.length.sm.sym
       } else {
-        diamText = 'Pulleys with diameters of ' + p1 + (this.theAppIsMetric ? 'cm ' : '" ') + ' and ' + p2 + (this.theAppIsMetric ? 'cm ' : '" ')
+        diamText = 'Pulleys with diameters of ' + p1 + this.units.length.sm.sym + ' and ' + p2 + this.units.length.sm.sym
       }
       if (cI === null || cI === 0) {
-        spanText = 'with distance between pulleys of ' + cF + (this.theAppIsMetric ? 'm' : '\'')
+        spanText = ' with distance between pulleys of ' + cF + this.units.length.lg.sym
       } else {
-        spanText = 'with distance between pulleys of ' + cF + (this.theAppIsMetric ? 'm ' : '\' ') + cI + (this.theAppIsMetric ? 'cm' : '"')
+        spanText = ' with distance between pulleys of ' + cF + this.units.length.lg.sym + ' ' + cI + this.units.length.sm.sym
       }
       return diamText + spanText
     }

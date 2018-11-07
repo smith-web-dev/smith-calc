@@ -2,7 +2,7 @@ extends /layouts/_stepper-step-main.pug
 block title
   | Enter the length of the belt
 block subtitle
-  | You can enter feet, inches, or feet and inches
+  | You can enter {{ units.length.lg.fullPl }}, {{ units.length.sm.fullPl }}, or {{ units.length.lg.fullPl }} and {{ units.length.sm.fullPl }}
 block card-body
   v-layout(row)
     v-spacer
@@ -10,7 +10,7 @@ block card-body
       v-text-field(
         :color='fieldColor'
         type='number'
-        label='Feet'
+        :label='units.length.lg.fullPl | capitalize'
         box
         v-model='calcInput.length.feet'
         clearable)
@@ -21,7 +21,7 @@ block card-body
       v-text-field(
         :color='fieldColor'
         type='number'
-        label='Inches'
+        :label='units.length.sm.fullPl | capitalize'
         box
         v-model='calcInput.length.inches'
         clearable)

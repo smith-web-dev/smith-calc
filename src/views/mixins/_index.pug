@@ -49,3 +49,9 @@ mixin sirpDivider(text)
     v-flex.text-xs-center(xs12)
       p.sirp-divider
         span= text
+
+mixin sirpCardDivider(text)
+  v-layout(row justify-center)
+    v-flex.text-xs-center(xs12)
+      p.sirp-divider.sirp-divider--card
+        span= text

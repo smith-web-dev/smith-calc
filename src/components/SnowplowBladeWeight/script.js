@@ -104,12 +104,12 @@ export default {
       var inchDisp
       var display
       if (foot !== 0) {
-        footDisp = foot + '\''
+        footDisp = foot + this.units.length.lg.sym
       } else {
         footDisp = ''
       }
       if (inch !== 0) {
-        inchDisp = inch + '"'
+        inchDisp = inch + this.units.length.sm.sym
       } else {
         inchDisp = ''
       }

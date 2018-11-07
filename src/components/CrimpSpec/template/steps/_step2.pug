@@ -1,8 +1,8 @@
 extends /layouts/_stepper-step-main.pug
 block title
-  | Determine the average OD of the fitting shank
+  | Determine the average {{ words.od.abbr }} of the fitting shank
 block subtitle
-  | Measure the shank's outside diameter in at least 3 places, always at the highest points of the serrations. Input in {{ theAppIsMetric ? `centimeters` : `inches` }}
+  | Measure the shank's {{ words.od.full }} in at least 3 places, always at the highest points of the serrations. Input in {{ units.length.sm.fullPl }}.
 block card-body
   div(
     v-for='(f, i) in calcInput.shankMeas'
@@ -14,7 +14,7 @@ block card-body
       box
       v-model='calcInput.shankMeas[i]'
       clearable
-      :label='`Shank OD #` + (i + 1)')
+      :label='`Shank ` + words.od.abbr + ` #` + (i + 1)')
       v-btn(
         flat
         icon

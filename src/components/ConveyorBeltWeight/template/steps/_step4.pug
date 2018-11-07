@@ -17,7 +17,7 @@ block card-body
     v-list-tile
       v-list-tile-content
         v-list-tile-title Belt weight
-        v-list-tile-sub-title {{ beltWeight }} pounds
+        v-list-tile-sub-title {{ commaNum(beltWeight) }} pounds
       v-list-tile-action
         +copyBtn(
           click='doCopy((beltWeight + ` pounds`))')
@@ -25,7 +25,7 @@ block card-body
     v-list-tile
       v-list-tile-content
         v-list-tile-title Weight per foot
-        v-list-tile-sub-title {{ perFootWeight }} pounds
+        v-list-tile-sub-title {{ commaNum(perFootWeight) }} pounds
       v-list-tile-action
         +copyBtn(
           click='doCopy((perFootWeight + ` pounds`))')

@@ -86,16 +86,16 @@ export default {
     },
     beltDescription () {
       var b = this.calcInput.belt.text
-      var w = this.setWidth + '"'
+      var w = this.setWidth + this.units.length.sm.sym
       var lf = Number(this.calcInput.length.feet)
       var li = Number(this.calcInput.length.inches)
       var l
       if (lf === 0) {
-        l = li + '"'
+        l = li + this.units.length.sm.sym
       } else if (li === 0) {
-        l = lf + '\''
+        l = lf + this.units.length.lg.sym
       } else {
-        l = lf + '\'' + ' ' + li + '"'
+        l = lf + this.units.length.lg.sym + ' ' + li + this.units.length.sm.sym
       }
       return w + ' wide ' + b + ', ' + l + ' long'
     },

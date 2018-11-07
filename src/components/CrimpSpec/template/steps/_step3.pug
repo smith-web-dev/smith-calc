@@ -2,7 +2,7 @@ extends /layouts/_stepper-step-main.pug
 block title
   | Determine the average thickness of the hose wall
 block subtitle
-  | Measure the wall of the hose in at least 3 places
+  | Measure the wall of the hose in at least 3 places. Input in {{ units.length.sm.fullPl }}.
 block card-body
   div(
     v-for='(f, i) in calcInput.hoseWallMeas'

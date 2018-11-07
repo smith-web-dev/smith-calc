@@ -8,7 +8,7 @@ block card-body
     //- Decimal Result
     v-list-tile
       v-list-tile-content
-        v-list-tile-title Decimal {{ theAppIsMetric ? `Centimeters` : `Inches` }}
+        v-list-tile-title Decimal {{ units.length.sm.fullPl }}
         v-list-tile-sub-title {{ calcInput.result }}
       v-list-tile-action
         +copyBtn(

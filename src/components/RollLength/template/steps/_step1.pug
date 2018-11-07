@@ -1,15 +1,15 @@
 extends /layouts/_stepper-step-main.pug
 block title
-  | Outside diameter of the roll
+  | {{ words.od.full | capitalize }} of the roll
 block subtitle
-  | Enter the OD of the roll in inches
+  | Enter the {{ words.od.abbr }} of the roll in {{ units.length.sm.fullPl }}
 block card-body
   v-text-field(
     box
     v-model='calcInput.rollOD'
     type='number'
     :color='fieldColor'
-    label='Roll O.D.')
+    :label='`Roll ` + words.od.abbr')
 block nav-btns-right
   +stepBtnNext(
     click='moveStep(`f`)')

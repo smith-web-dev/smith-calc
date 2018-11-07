@@ -1,23 +1,29 @@
 v-stepper-header.elevation-0
   //- Determine the compression factor
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 1'
     step='1')
   v-divider
   //- Determine the average OD of the fitting shank
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 2'
     step='2')
   v-divider
   //- Measure the hose wall thickness
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 3'
     step='3')
   v-divider
   //- Measure the sleeve or ferrule wall
   v-stepper-step(
+    :color='stepColor'
     :complete='currentStep > 4'
     step='4')
   v-divider
   //- Results
-  v-stepper-step(step='5')
+  v-stepper-step(
+    :color='stepColor'
+    step='5')
