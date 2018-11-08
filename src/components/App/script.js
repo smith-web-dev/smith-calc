@@ -81,12 +81,10 @@ export default {
   },
   methods: {
     clearAllTheThings () {
-      this.$ls.remove('appMetricUnits')
-      this.$ls.remove('appDarkMode')
-      this.$ls.remove('shipments')
-      this.$ls.remove('appDecimalRounding')
-      this.$ls.remove('cbWeightUserBelts')
-      this.$ls.set('appDecimalRounding', 3)
+      var lsi
+      for (lsi = 0; lsi < localStorageValues.length; ++lsi) {
+        this.$ls.set(localStorageValues[lsi].lsValue, localStorageValues[lsi].defaultValue)
+      }
       this.clearDataDialog = false
     },
     fabClicked (func) {
