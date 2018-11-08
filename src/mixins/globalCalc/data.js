@@ -18,15 +18,20 @@ export function data () {
       settings: false
     },
     colorProps: ColorProps,
-    isDark: false,
-    isMetric: false,
-    decimalRounding: Number,
     decimalItems: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     currentStep: 0,
     snackbar: { text: null, display: false },
     form: { email: '', pass: '' },
     avatar: null,
     saving: false,
-    saved: false
+    saved: false,
+    //
+    // Prefs
+    //
+    isDark: false,
+    isMetric: false,
+    useCommaSep: true,
+    groupNavItems: false,
+    decimalRounding: Number
   }
 }

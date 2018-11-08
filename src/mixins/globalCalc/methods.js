@@ -1,6 +1,10 @@
 export default {
   commaNum (num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    if (this.useCommaSep) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    } else {
+      return num
+    }
   },
   addUserFaveCalc () {
     // lsFaveCalcs = JSON.parse(this.$ls.get('userFaveCalcs'))
@@ -59,6 +63,18 @@ export default {
     } else {
       this.$ls.set('appDarkMode', JSON.stringify(false))
       this.isDark = false
+    }
+    this.$forceUpdate()
+  },
+  toggleCommaNum () {
+    var appCommaNum = this.$ls.get('appCommaNum')
+
+    if (JSON.parse(appCommaNum) === false) {
+      this.$ls.set('appCommaNum', JSON.stringify(true))
+      this.useCommaSep = true
+    } else {
+      this.$ls.set('appCommaNum', JSON.stringify(false))
+      this.useCommaSep = false
     }
     this.$forceUpdate()
   },

@@ -1,0 +1,6 @@
+v-list-tile(@click='toggleCommaNum()')
+  v-list-tile-content
+    v-list-tile-title Thousands separator
+    v-list-tile-sub-title {{ useCommaSep ? `Use` : `Don't use` }} comma as the thousands separator
+  v-list-tile-action
+    v-switch(v-model='useCommaSep')

@@ -5,6 +5,7 @@ import navItems from 'DATA/MainNavItems.json'
 import { globalCalc } from 'MXN/globalCalc'
 import firebaseConfig from 'DATA/firebase.json'
 import FileUpload from '@/components/FileUpload/Index.vue'
+import localStorageValues from 'DATA/localStorageValues'
 
 let pjson = require('../../../package.json')
 
@@ -60,56 +61,22 @@ export default {
       self.onDeviceReady()
     })
 
-    // ---------------
-    // Dark mode check
-    // ---------------
-    var appDarkMode = this.$ls.get('appDarkMode')
-    // check if its in localstorage
-    if (appDarkMode === null) {
-      this.$ls.set('appDarkMode', false)
-      appDarkMode = this.$ls.get('appDarkMode')
-      this.isDark = JSON.parse(appDarkMode)
-    } else {
-      appDarkMode = this.$ls.get('appDarkMode')
-      this.isDark = JSON.parse(appDarkMode)
-    }
-
-    // --------------------
-    // Favorite calcs check
-    // --------------------
-    var userFaveCalcs = this.$ls.get('userFaveCalcs')
-    var blankCalcs = []
-    // check if its in localstorage
-    if (userFaveCalcs === null || userFaveCalcs === undefined) {
-      this.$ls.set('userFaveCalcs', JSON.stringify(blankCalcs))
-      userFaveCalcs = this.$ls.get('userFaveCalcs')
-      this.faveCalcs = JSON.parse(userFaveCalcs)
-    } else {
-      userFaveCalcs = this.$ls.get('userFaveCalcs')
-      this.faveCalcs = JSON.parse(userFaveCalcs)
-    }
-
-    var appDecimalRounding = this.$ls.get('appDecimalRounding')
-    // check if its in localstorage
-    if (appDecimalRounding === null) {
-      this.$ls.set('appDecimalRounding', 3)
-      appDecimalRounding = this.$ls.get('appDecimalRounding')
-      this.decimalRounding = JSON.parse(appDecimalRounding)
-    } else {
-      appDecimalRounding = this.$ls.get('appDecimalRounding')
-      this.decimalRounding = JSON.parse(appDecimalRounding)
-    }
-
-    var cbWeightUserBelts = this.$ls.get('cbWeightUserBelts')
-    let blankUserBelts = []
-    // check if its in localstorage
-    if (cbWeightUserBelts === null) {
-      this.$ls.set('cbWeightUserBelts', JSON.stringify(blankUserBelts))
-      cbWeightUserBelts = this.$ls.get('cbWeightUserBelts')
-      this.cbWeightUserBelts = JSON.parse(cbWeightUserBelts)
-    } else {
-      cbWeightUserBelts = this.$ls.get('cbWeightUserBelts')
-      this.cbWeightUserBelts = JSON.parse(cbWeightUserBelts)
+    //
+    // Local Storage Checks
+    // ('local storage value', 'data value', 'default value')
+    //
+    var lsi
+    for (lsi = 0; lsi < localStorageValues.length; ++lsi) {
+      var tmp = this.$ls.get(localStorageValues[lsi].lsValue)
+      // check if its in localstorage
+      if (tmp === null) {
+        this.$ls.set(localStorageValues[lsi].lsValue, localStorageValues[lsi].defaultValue)
+        tmp = this.$ls.get(localStorageValues[lsi].lsValue)
+        this[localStorageValues[lsi].dataValue] = JSON.parse(tmp)
+      } else {
+        tmp = this.$ls.get(localStorageValues[lsi].lsValue)
+        this[localStorageValues[lsi].dataValue] = JSON.parse(tmp)
+      }
     }
   },
   methods: {

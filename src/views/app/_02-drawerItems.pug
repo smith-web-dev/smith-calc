@@ -1,9 +1,9 @@
 v-list(dense)
   template(v-for='(n, i) in $arrayFilter(navItems, `display`, true)')
-    v-layout(v-if='n.heading' :key='i' row align-center)
+    v-layout(v-if='n.heading' :key='i' row align-center v-show='groupNavItems')
       v-flex(xs12)
         v-subheader(v-if='n.heading') {{ n.heading }}
-    v-divider.my-1(v-else-if='n.divider' :key='i')
+    v-divider.my-1(v-else-if='n.divider' :key='i' v-show='groupNavItems')
     v-list-tile(
       v-else
       :key='i'
