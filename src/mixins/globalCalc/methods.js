@@ -23,7 +23,7 @@ export default {
   uploadImage () {
     this.saving = true
     setTimeout(() => this.savedAvatar(), 1000)
-    console.log('upload the file')
+    // console.log('upload the file')
   },
   savedAvatar () {
     this.saving = false
@@ -54,27 +54,15 @@ export default {
     this.currentStep = 1
     this.calcInput = defaults
   },
-  toggleDarkMode () {
-    var appDarkMode = this.$ls.get('appDarkMode')
+  togglePref (ls, data) {
+    var temp = this.$ls.get(ls)
 
-    if (JSON.parse(appDarkMode) === false) {
-      this.$ls.set('appDarkMode', JSON.stringify(true))
-      this.isDark = true
+    if (JSON.parse(temp) === false) {
+      this.$ls.set(ls, JSON.stringify(true))
+      this[data] = true
     } else {
-      this.$ls.set('appDarkMode', JSON.stringify(false))
-      this.isDark = false
-    }
-    this.$forceUpdate()
-  },
-  toggleCommaNum () {
-    var appCommaNum = this.$ls.get('appCommaNum')
-
-    if (JSON.parse(appCommaNum) === false) {
-      this.$ls.set('appCommaNum', JSON.stringify(true))
-      this.useCommaSep = true
-    } else {
-      this.$ls.set('appCommaNum', JSON.stringify(false))
-      this.useCommaSep = false
+      this.$ls.set(ls, JSON.stringify(false))
+      this[data] = false
     }
     this.$forceUpdate()
   },
@@ -119,10 +107,10 @@ export default {
   },
   closeSettings () {
     this.dialogs.settings = false
-    if (this.avatar && this.saved === false) {
-      this.uploadImage()
-    } else {
-      console.log('no image uploaded')
-    }
+    // wif (this.avatar && this.saved === false) {
+    //   this.uploadImage()
+    // } else {
+    //   console.log('no image uploaded')
+    // }
   }
 }

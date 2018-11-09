@@ -12,11 +12,13 @@ v-dialog(v-model='dialogs.settings' max-width='560px' persistent)
         v-divider
         include ./settings/_pref-commaSep.pug
         v-divider
-        //- include ./settings/_pref-changeUnits.pug
-        //- v-divider
+        include ./settings/_pref-changeUnits.pug
+        v-divider
 
         v-subheader.accent--text Appearance
         include ./settings/_appear-darkMode.pug
+        v-divider
+        include ./settings/_appear-groupNav.pug
         v-divider
 
         v-subheader.accent--text User

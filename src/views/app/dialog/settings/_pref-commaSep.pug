@@ -1,4 +1,4 @@
-v-list-tile(@click='toggleCommaNum()')
+v-list-tile(@click='togglePref(`appCommaNum`, `useCommaSep`)')
   v-list-tile-content
     v-list-tile-title Thousands separator
     v-list-tile-sub-title {{ useCommaSep ? `Use` : `Don't use` }} comma as the thousands separator

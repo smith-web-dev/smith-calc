@@ -1,5 +1,6 @@
-v-list-tile(@click='toggleDarkMode()')
+v-list-tile(@click='togglePref(`appDarkMode`, `isDark`)')
   v-list-tile-content
     v-list-tile-title Enable dark mode
+    v-list-tile-sub-title Use the {{ isDark ? `dark` : `light` }} theme app-wide
   v-list-tile-action
     v-switch(v-model='isDark')

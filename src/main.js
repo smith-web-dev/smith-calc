@@ -35,7 +35,7 @@ Vue.use(Vuetify, {
   options: {
     customProperties: true
   },
-  theme: themes.dark,
+  theme: themes.light,
   icons: icons
 })
 Vue.use(VueLocalStorage, {

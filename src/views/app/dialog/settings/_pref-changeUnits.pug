@@ -1,9 +1,11 @@
-v-list-tile(
-  @click='toggleDarkMode()')
+v-list-tile()
+  //- @click='toggleDarkMode()')
   v-list-tile-content
-    v-list-tile-title Use Metric Units
-    v-list-tile-sub-title Enter and calculate using Metric units app-wide
+    v-list-tile-title.text--disabled Use Metric Units
+    v-list-tile-sub-title.text--disabled.font-italic Coming soon
+    //- v-list-tile-sub-title Enter and calculate using {{ isMetric ? `Metric` : `Imperial` }} units app-wide
   v-list-tile-action
     v-switch(
-      v-model='isDark')
+      disabled
+      v-model='isMetric')
 v-divider

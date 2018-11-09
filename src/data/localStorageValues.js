@@ -5,6 +5,11 @@ export default [
     defaultValue: false
   },
   {
+    lsValue: 'appGroupNav',
+    dataValue: 'groupNavItems',
+    defaultValue: true
+  },
+  {
     lsValue: 'appCommaNum',
     dataValue: 'useCommaSep',
     defaultValue: true

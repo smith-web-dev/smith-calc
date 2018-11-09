@@ -6,7 +6,7 @@ v-menu(bottom left :dark='theAppIsDark')
     v-list-tile(@click='dialogs.settings = !dialogs.settings, drawer = false')
       v-list-tile-title Settings
     //- Dark mode
-    v-list-tile(@click='toggleDarkMode()')
+    v-list-tile(@click='togglePref(`appDarkMode`, `isDark`)')
       v-list-tile-title {{ isDark ? `Disable` : `Enable` }} dark mode
     //- Wiki
     v-list-tile(target='_blank' href='https://gitlab.com/smith-irp/calc/wikis/home')

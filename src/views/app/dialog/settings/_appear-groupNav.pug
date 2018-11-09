@@ -1,0 +1,6 @@
+v-list-tile(@click='togglePref(`appGroupNav`, `groupNavItems`)')
+  v-list-tile-content
+    v-list-tile-title Group Navigation Items
+    v-list-tile-sub-title {{ groupNavItems ? `Group` : `Don't group` }} navigation by category
+  v-list-tile-action
+    v-switch(v-model='groupNavItems')
