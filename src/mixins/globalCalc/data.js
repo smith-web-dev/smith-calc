@@ -1,4 +1,4 @@
-import ColorProps from 'DATA/colorProps.json'
+// import ColorProps from 'DATA/colorProps.json'
 import navDrawerItems from 'DATA/NavDrawerItems.js'
 import ComponentColors from '../../ui/componentColors.js'
 import themes from 'AUI/themes/index'
@@ -17,7 +17,7 @@ export function data () {
       addPhotoBottomSheet: false,
       settings: false
     },
-    colorProps: ColorProps,
+    // colorProps: ColorProps,
     currentStep: 0,
     snackbar: { text: null, display: false },
     form: { email: '', pass: '' },
