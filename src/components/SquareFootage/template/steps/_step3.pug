@@ -13,13 +13,13 @@ block card-body
         +copyBtn(click='doCopy(displayDescription)')
     v-list-tile
       v-list-tile-content
-        v-list-tile-title Square Footage
+        v-list-tile-title Square {{ units.length.lg.fullPl }}
         v-list-tile-sub-title {{ commaNum(resultDisplay) }}
       v-list-tile-action
         +copyBtn(click='doCopy(resultWithLabel)')
     v-list-tile
       v-list-tile-content
-        v-list-tile-title Square Inches
+        v-list-tile-title Square {{ units.length.sm.fullPl }}
         v-list-tile-sub-title {{ commaNum(resultDisplayInches) }}
       v-list-tile-action
         +copyBtn(click='doCopy(resultInchesWithLabel)')

@@ -19,12 +19,16 @@ export default {
   },
   computed: {
     result () {
-      let rollRadiusSquared = Math.pow((Number(this.calcInput.rollOD) / 2), 2)
-      let coreRadiusSquared = Math.pow((Number(this.calcInput.coreOD) / 2), 2)
+      let rollRadiusSquared = Math.pow((this.unitsNum(this.calcInput.rollOD) / 2), 2)
+      let coreRadiusSquared = Math.pow((this.unitsNum(this.calcInput.coreOD) / 2), 2)
       let piTheNumber = Math.PI
-      let calcThickness = Number(this.calcInput.thickness)
+      let calcThickness = this.unitsNum(this.calcInput.thickness)
       let theResult = Number((((piTheNumber * (rollRadiusSquared - coreRadiusSquared)) / calcThickness) / 12).toFixed(this.decimalRounding))
-      return theResult
+      if (this.isMetric) {
+        return (this.nits(theResult, 'ft', 'm').toFixed(this.decimalRounding))
+      } else {
+        return (theResult.toFixed(this.decimalRounding))
+      }
     },
     resultToInches () {
       return (this.result * 12).toFixed(this.decimalRounding)

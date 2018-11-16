@@ -7,6 +7,7 @@ block card-body
     v-flex.text-xs-center(xs6)
       v-text-field.v-input__joined--left(
         box
+        clearable
         v-model='calcInput.width.ft'
         type='number'
         :color='fieldColor'
@@ -14,6 +15,7 @@ block card-body
     v-flex.text-xs-center(xs6)
       v-text-field.v-input__joined--right(
         box
+        clearable
         v-model='calcInput.width.in'
         type='number'
         :color='fieldColor'

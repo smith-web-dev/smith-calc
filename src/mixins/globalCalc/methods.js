@@ -1,4 +1,15 @@
+let convert = require('convert-units')
 export default {
+  nits (num, from, to) {
+    return Number(convert(num).from(from).to(to))
+  },
+  unitsNum (num) {
+    if (this.isMetric) {
+      return Number(convert(num).from('cm').to('in'))
+    } else {
+      return Number(num)
+    }
+  },
   commaNum (num) {
     if (this.useCommaSep) {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')

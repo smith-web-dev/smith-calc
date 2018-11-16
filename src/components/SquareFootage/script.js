@@ -51,22 +51,54 @@ export default {
       return widthText + ' x ' + lengthText
     },
     result () {
-      return ((Number(this.calcInput.width.ft) + (Number(this.calcInput.width.in) / 12)) * (Number(this.calcInput.length.ft) + (Number(this.calcInput.length.in) / 12)))
+      let theWidth
+      let theLength
+      let divis = this.isMetric ? 100 : 12
+
+      theWidth = (Number(this.calcInput.width.ft) + (Number(this.calcInput.width.in) / divis))
+      theLength = (Number(this.calcInput.length.ft) + (Number(this.calcInput.length.in) / divis))
+      return (theWidth * theLength)
     },
     resultDisplay () {
-      return this.result.toFixed(this.decimalRounding)
+      return this.getTheResult(false).toFixed(this.decimalRounding)
     },
     resultWithLabel () {
-      return this.resultDisplay + ' ft²'
+      return this.resultDisplay + ' ' + this.units.length.lg.abbr + '²'
     },
     resultInches () {
-      return ((Number(this.calcInput.width.ft) * 12) + Number(this.calcInput.width.in)) * ((Number(this.calcInput.length.ft) * 12) + Number(this.calcInput.length.in))
+      let theWidth
+      let theLength
+      let multipl = this.isMetric ? 100 : 12
+
+      theWidth = ((Number(this.calcInput.width.ft) * multipl) + Number(this.calcInput.width.in))
+      theLength = ((Number(this.calcInput.length.ft) * multipl) + Number(this.calcInput.length.in))
+      return (theWidth * theLength)
     },
     resultDisplayInches () {
-      return this.resultInches.toFixed(this.decimalRounding)
+      return this.getTheResult(true).toFixed(this.decimalRounding)
     },
     resultInchesWithLabel () {
-      return this.resultDisplayInches + ' in²'
+      return this.resultDisplayInches + ' ' + this.units.length.sm.abbr + '²'
+    }
+  },
+  methods: {
+    getTheResult (inch) {
+      let theWidth
+      let theLength
+      let ftMultipl
+      let inMultipl
+
+      if (inch) {
+        inMultipl = 1
+        ftMultipl = this.isMetric ? 100 : 12
+      } else {
+        inMultipl = this.isMetric ? 0.01 : 0.0833333333333333
+        ftMultipl = 1
+      }
+
+      theWidth = ((Number(this.calcInput.width.ft) * ftMultipl) + (Number(this.calcInput.width.in) * inMultipl))
+      theLength = ((Number(this.calcInput.length.ft) * ftMultipl) + (Number(this.calcInput.length.in) * inMultipl))
+      return (theWidth * theLength)
     }
   }
 }

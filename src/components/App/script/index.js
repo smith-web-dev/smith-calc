@@ -1,5 +1,6 @@
 import { data } from './data'
 import { created } from './created'
+import { mounted } from './mounted'
 import watch from './watch'
 import methods from './methods'
 import computed from './computed'
@@ -14,6 +15,7 @@ export default {
   mixins: [ globalCalc ],
   data,
   watch,
+  mounted,
   created,
   methods,
   computed

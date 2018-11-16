@@ -17,7 +17,6 @@ export function data () {
       addPhotoBottomSheet: false,
       settings: false
     },
-    // colorProps: ColorProps,
     currentStep: 0,
     snackbar: { text: null, display: false },
     form: { email: '', pass: '' },
