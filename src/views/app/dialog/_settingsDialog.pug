@@ -2,6 +2,9 @@ v-dialog(v-model='dialogs.settings' max-width='560px' persistent)
   v-card(:dark='isDark')
     v-card-title(primary-title)
       div.title Settings
+      v-spacer
+      v-btn(icon flat @click='dialogs.settings = false')
+        v-icon far fa-times
     v-container.pt-0(fluid)
       v-layout(row)
       v-list(two-line)
