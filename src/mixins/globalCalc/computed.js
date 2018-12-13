@@ -51,13 +51,16 @@ export default {
           toReturn = !this.setCompFac
           break
         case 2:
-          toReturn = this.$noNullVals(this.calcInput.shankMeas)
+          toReturn = false
+          // toReturn = this.$noNullVals(this.calcInput.shankMeas)
           break
         case 3:
-          toReturn = this.$noNullVals(this.calcInput.hoseWallMeas)
+          toReturn = false
+          // toReturn = this.$noNullVals(this.calcInput.hoseWallMeas)
           break
         case 4:
-          toReturn = this.$noNullVals(this.calcInput.ferruleWallMeas)
+          toReturn = false
+          // toReturn = this.$noNullVals(this.calcInput.ferruleWallMeas)
           break
       }
     }
