@@ -17,8 +17,7 @@
     "ios": "npm run build && cordova run ios",
     "android": "npm run build && cordova run android --device",
     "android-vm": "npm run build && cordova run android",
-    "svg": "vsvg -s ./svg -t ./src/assets/sirp-icon",
-    "deploy": "yarn run build; push-dir --dir=dist --branch=gh-pages --cleanup"
+    "svg": "vsvg -s ./svg -t ./src/assets/sirp-icon"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",

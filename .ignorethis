@@ -1,8 +1,0 @@
-build/
-config/
-hooks/
-node_modules/
-platforms/
-plugins/
-res/
-test/
