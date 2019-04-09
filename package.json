@@ -17,7 +17,8 @@
     "ios": "npm run build && cordova run ios",
     "android": "npm run build && cordova run android --device",
     "android-vm": "npm run build && cordova run android",
-    "svg": "vsvg -s ./svg -t ./src/assets/sirp-icon"
+    "svg": "vsvg -s ./svg -t ./src/assets/sirp-icon",
+    "deploy": "yarn run build; push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.4",
@@ -40,6 +41,7 @@
     "pug-html-loader": "^1.1.5",
     "pug-loader": "^2.4.0",
     "pug-plain-loader": "^1.0.0",
+    "push-dir": "^0.4.1",
     "roboto-fontface": "^0.10.0",
     "sass-loader": "^7.1.0",
     "uuid": "^3.3.2",
