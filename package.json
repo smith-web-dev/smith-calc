@@ -33,7 +33,7 @@
     "firebase": "^5.5.4",
     "fractional": "^1.0.0",
     "html-webpack-pug-plugin": "^0.3.0",
-    "mathjs": "^5.1.1",
+    "mathjs": "^7.5.1",
     "moment": "^2.22.2",
     "node-sass": "^4.9.3",
     "pug": "^2.0.3",
