@@ -34,7 +34,7 @@
     "fractional": "^1.0.0",
     "html-webpack-pug-plugin": "^0.3.0",
     "mathjs": "^5.1.1",
-    "moment": "^2.22.2",
+    "moment": "^2.29.4",
     "node-sass": "^4.9.3",
     "pug": "^2.0.3",
     "pug-html-loader": "^1.1.5",
